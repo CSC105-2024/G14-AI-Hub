@@ -1,15 +1,20 @@
-import React from 'react'
+import React from "react";
 
-const Left = ({ className }) => {
+const Left = () => {
   return (
-    <div className = {`${className} flex flex-col justify-center p-4 bg-purple-500 h-screen text-white items-center text-center`}>
-        <div className="heading-container absolute top-3 left-3 mt-5 ml-5">
-            <h1 className = "heading text-2xl font-bold">Welcome to AI Hub!</h1>
-            <div className = "bg-white w-1/2 h-[0.2rem] mt-1"></div>
-        </div>
-            <p>AI Hub is an e-learning website designed to provide users with accessible learning experiences. This website will offer courses that are based on the basic concepts of AI.</p>
-    </div> 
-  )
-}
+    <div className="bg-[var(--primary-color)] flex flex-col justify-start items-center p-4 text-white">
+      <h2 className="mb-20 md:mb-40 mt-20 font-bold  text-3xl">
+        Welcome to AI Hub!
+      </h2>
+      <div className="p-3">
+        <p className="text-center text-lg">
+          AI Hub is an e-learning website designed to provide users with
+          accessible learning experiences. This website will offer courses that
+          are based on the basic concepts of AI.
+        </p>
+      </div>
+    </div>
+  );
+};
 
-export default Left
+export default Left;
