@@ -17,7 +17,7 @@ const FormInput = ({
           {title}
           <span className="text-red-600">*</span>
         </label>
-        <div className="border-1 border-gray-300 rounded-lg flex justify-between px-4 py-2 mb-4 items-center hover:border-[var(--primary-color)]">
+        <div className="border-1 border-gray-300 rounded-lg flex justify-between px-4 py-2 mb-2 items-center hover:border-[var(--primary-color)]">
           <input
             type={type}
             name={name}

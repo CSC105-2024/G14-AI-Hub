@@ -92,9 +92,7 @@ const Left = () => {
             />
           </div>
           {errors.role && (
-            <p className="text-red-500 text-sm mb-1 text-center">
-              {errors.role.message}
-            </p>
+            <p className="text-red-500 text-sm mb-1 ">{errors.role.message}</p>
           )}
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -112,9 +110,7 @@ const Left = () => {
             {...register("email")}
           />
           {errors.email && (
-            <p className="text-red-500 text-sm mb-1 text-center">
-              {errors.email.message}
-            </p>
+            <p className="text-red-500 text-sm mb-1">{errors.email.message}</p>
           )}
           <FormInput
             title={"Password"}
@@ -127,7 +123,7 @@ const Left = () => {
             {...register("password")}
           />
           {errors.password && (
-            <p className="text-red-500 text-sm mb-1 text-center">
+            <p className="text-red-500 text-sm mb-1">
               {errors.password.message}
             </p>
           )}
@@ -138,7 +134,7 @@ const Left = () => {
             {...register("confirmPassword")}
           />
           {errors.confirmPassword && (
-            <p className="text-red-500 text-sm mb-1 text-center">
+            <p className="text-red-500 text-sm mb-1">
               {errors.confirmPassword.message}
             </p>
           )}

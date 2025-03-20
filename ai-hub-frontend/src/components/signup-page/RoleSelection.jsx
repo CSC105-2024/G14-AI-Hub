@@ -3,7 +3,7 @@ import React from "react";
 const RoleSelection = ({ role, name, value, onClick, selectedRole }) => {
   return (
     <button
-      className={`p-3 border-1 lg:w-47 w-40 rounded-2xl cursor-pointer mb-4
+      className={`p-3 border-1 lg:w-47 w-40 rounded-2xl cursor-pointer mb-2
             ${
               selectedRole === value
                 ? "bg-[var(--primary-color)] text-white border-[var(--primary-color)] "
