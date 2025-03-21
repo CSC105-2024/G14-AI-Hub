@@ -3,9 +3,9 @@ import hiBot from "../../assets/hiBot.png";
 
 const Right = () => {
   return (
-    <div className="flex justify-center items-center md:h-full h-0">
-      <div className="md:border-l md:border-black md:h-180 flex flex-col justify-center w-auto">
-        <img src={hiBot} alt="img error" className="w-90" />
+    <div className="flex justify-center items-center h-full order-1 md:order-2">
+      <div className="flex justify-center items-center md:border-l md:border-black md:h-180 w-full sm:w-auto">
+        <img src={hiBot} alt="img error" className="md:w-90 w-45" />
       </div>
     </div>
   );
