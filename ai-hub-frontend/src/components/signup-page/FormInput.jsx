@@ -12,7 +12,7 @@ const FormInput = ({
 }) => {
   return (
     <>
-      <div className="lg:w-100 w-85">
+      <div className="lg:w-100 w-80">
         <label htmlFor="" className="font-bold">
           {title}
           <span className="text-red-600">*</span>

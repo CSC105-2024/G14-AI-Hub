@@ -65,7 +65,7 @@ const Left = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center h-screen col-span-2">
+      <div className="flex flex-col items-center justify-center md:h-screen col-span-2 order-2 md:order-1">
         <h1 className="font-bold text-2xl">Create Your Account</h1>
         <div className="mt-10">
           <label htmlFor="" className="font-bold">
@@ -140,7 +140,7 @@ const Left = () => {
           )}
 
           <Button btn={"Register"} />
-          <div className="mt-3 flex flex-row items-center justify-center gap-2">
+          <div className="mt-3 flex flex-row items-center justify-center gap-2 mb-3">
             <p>Already have an account?</p>
             <p>
               <Link
