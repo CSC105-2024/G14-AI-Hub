@@ -2,3 +2,7 @@
 :root{
     --primary-color: #5F27CD;
 }
+
+button {
+    cursor: pointer;
+}
