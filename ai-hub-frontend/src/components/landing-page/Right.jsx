@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Button from "./Button";
 
 const Right = () => {
   const navigate = useNavigate();
@@ -15,18 +16,19 @@ const Right = () => {
       <div className="flex justify-center flex-col items-center text-center text-lg p-4">
         <p>Please log in or sign up to get access to the course.</p>
         <div className="flex gap-4 mt-4">
-          <button
-            onClick={() => navigate("/login")}
-            className="bg-white py-1 hover:bg-[var(--primary-color)] hover:text-white px-6 hover:px-7 rounded-sm border-2 border-solid border-[var(--primary-color)]"
-          >
-            Log In
-          </button>
-          <button
-            onClick={() => navigate("/signup")}
-            className="bg-[var(--primary-color)] text-white hover:bg-white hover:border-[var(--primary-color)] hover:border-2  hover:text-black py-1 px-6 rounded-sm"
-          >
-            Sign Up
-          </button>
+          <Button
+            btn={"Login"}
+            variant={"secondary"}
+            onClick={() => {
+              navigate("/login");
+            }}
+          />
+          <Button
+            btn={"Sign up"}
+            onClick={() => {
+              navigate("/signup");
+            }}
+          />
         </div>
       </div>
       <div className="flex justify-center mb-10">
