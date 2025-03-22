@@ -53,7 +53,7 @@ const Left = () => {
       return;
     } else {
       console.log("Form data:", data);
-      navigate("/");
+      navigate("/courses");
     }
   };
 
