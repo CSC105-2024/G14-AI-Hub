@@ -1,6 +1,6 @@
 import React from "react";
-import Left from "../components/login-page/Left";
-import Right from "../components/login-page/Right";
+import Left from "../../components/login-page/Left";
+import Right from "../../components/login-page/Right";
 
 const LoginPage = () => {
   return (

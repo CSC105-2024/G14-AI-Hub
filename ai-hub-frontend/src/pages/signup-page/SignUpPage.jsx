@@ -1,6 +1,6 @@
 import React from "react";
-import Left from "../components/signup-page/Left";
-import Right from "../components/signup-page/Right";
+import Left from "@/components/signup-page/Left";
+import Right from "@/components/signup-page/Right";
 
 const SignUpPage = () => {
   return (
