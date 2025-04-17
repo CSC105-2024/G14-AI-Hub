@@ -2,7 +2,6 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom"; //import these modules
 import "./index.css";
-import App from "./App.jsx";
 import CourseOverviewPage from "./pages/course-overview/CourseOverviewPage";
 import DashBoardLayout from "./pages/dash-board-layout/DashBoardLayout";
 import LandingPage from "./pages/landing-page/LandingPage";
