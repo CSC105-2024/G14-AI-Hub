@@ -1,10 +1,12 @@
 import React, { useRef } from "react";
 import { IoReorderThreeSharp } from "react-icons/io5";
 import logo from "../../assets/logo.png";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
 import { Button } from "@/components/ui/button";
 import SortBtn from "./SortBtn";
 import AlertBox from "../alert-box/AlertBox";
+import { useNavigate } from "react-router-dom";
+import Profile from "./Profile";
 
 //TODO: will add later
 const btns = [
@@ -16,10 +18,14 @@ const btns = [
 
 const Sidebar = () => {
   const drawerRef = useRef();
+  const navigate = useNavigate();
 
   const handleClick = (name) => {
     if (name === "Course Overview") {
+      //This is the same as document.getElementById("my-drawer-4").checked
       drawerRef.current.checked = false;
+      //navigate
+      navigate("/courses");
     }
   };
 
@@ -55,12 +61,10 @@ const Sidebar = () => {
             {/* Sidebar content here */}
             <li>
               <div className="rounded flex justify-center mt-15">
-                <Avatar className="w-15 h-15">
-                  <AvatarImage src="https://github.com/shadcn.png" />
-                  <AvatarFallback>CN</AvatarFallback>
-                </Avatar>
+                <Profile />
               </div>
             </li>
+
             {btns.map((b) => (
               <li className="flex flex-col items-center">
                 <div>
@@ -77,10 +81,12 @@ const Sidebar = () => {
                 </div>
               </li>
             ))}
+
             <li className="flex justify-center">
               <SortBtn name={"Sort"} />
             </li>
           </div>
+
           <li className="flex justify-center mt-47">
             <AlertBox
               btnName={"Log out"}
