@@ -1,10 +1,29 @@
+import Popup from "@/components/Popup";
 import { Button } from "@/components/ui/button";
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 //Nadi
 const IndividualCourse = () => {
+  const [showPopup, setShowPopup] = useState(false);
+
   const navigate = useNavigate();
+  function handleDelete() {
+    setShowPopup(true);
+  }
+
+  function confirmDelete() {
+    
+    navigate("/");
+  }
+
+  function cancelDelete() {
+    setShowPopup(false);
+  }
+
+  function handleEdit() {
+    navigate("/");
+  }
 
   return (
     <div className="flex flex-col gap-5 justify-center items-center dark bg-[var(--background)] py-7 px-7 md:px-10">
@@ -87,22 +106,25 @@ const IndividualCourse = () => {
       </h2>
       <div className="buttons justify-center gap-3 hidden md:flex">
         <Button
-          onClick={() => {
-            navigate("/"); //update once delete page is made
-          }}
+          onClick={handleDelete}
           className="w-2/3 bg-white text-black text-lg hover:text-[var(--primary-color)] hover:bg-[#E5E7EB]"
         >
           Delete
         </Button>
         <Button
-          onClick={() => {
-            navigate("/"); //update once edit page is made
-          }}
+          onClick={handleEdit}
           className="w-2/3 bg-[var(--primary-color)] text-white text-lg hover:bg-[#4D179A]"
         >
           Edit
         </Button>
       </div>
+      {showPopup && (
+        <Popup
+          message="Are you sure you want to delete this course?"
+          onConfirm={confirmDelete}
+          onCancel={cancelDelete}
+        />
+      )}
     </div>
   );
 };
