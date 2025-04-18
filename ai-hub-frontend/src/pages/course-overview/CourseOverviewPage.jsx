@@ -1,5 +1,4 @@
 import React from "react";
-import Avatar from "../../components/ui/avatar";
 import NavBar from "@/components/navbar/NavBar";
 
 //Albert
@@ -54,7 +53,6 @@ const CourseOverviewPage = () => {
   return (
     <div>
       <NavBar />
-      <Avatar/>
       <h2>Course Overview</h2>
       <div className="grid grid-cols-4 p-3 gap-3">
         {courses.map((course, index) => (
