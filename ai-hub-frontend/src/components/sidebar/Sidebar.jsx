@@ -7,6 +7,7 @@ import SortBtn from "./SortBtn";
 import AlertBox from "../alert-box/AlertBox";
 import { useNavigate } from "react-router-dom";
 import Profile from "./Profile";
+import { useAuthContext } from "@/hooks/useAuthContext";
 
 //TODO: will add later
 const btns = [
@@ -19,6 +20,9 @@ const btns = [
 const Sidebar = () => {
   const drawerRef = useRef();
   const navigate = useNavigate();
+
+  const { user } = useAuthContext();
+  console.log(user);
 
   const handleClick = (name) => {
     if (name === "Course Overview") {

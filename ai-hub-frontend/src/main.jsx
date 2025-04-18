@@ -10,6 +10,7 @@ import SignUpPage from "./pages/signup-page/SignUpPage";
 import IndividualCourse from "./pages/individual-course/IndividualCourse";
 import { WindowWidthContextProvider } from "./context/WindowWidthContext";
 import { AuthContextProvider } from "./context/AuthContext";
+import { DataContextProvider } from "./context/DataContext";
 
 //TODO: protect the routes
 const router = createBrowserRouter([
@@ -47,9 +48,11 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <AuthContextProvider>
-      <WindowWidthContextProvider>
-        <RouterProvider router={router} />
-      </WindowWidthContextProvider>
+      <DataContextProvider>
+        <WindowWidthContextProvider>
+          <RouterProvider router={router} />
+        </WindowWidthContextProvider>
+      </DataContextProvider>
     </AuthContextProvider>
   </StrictMode>
 );

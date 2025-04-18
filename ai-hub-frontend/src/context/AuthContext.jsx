@@ -1,7 +1,6 @@
-import { type } from "os";
 import { createContext, useEffect, useReducer } from "react";
 
-export const AuthContext = createContext;
+export const AuthContext = createContext();
 
 //reducer
 export const authReducer = (state, action) => {
@@ -19,7 +18,7 @@ export const authReducer = (state, action) => {
 
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, {
-    // user: null,
+    //user: null,
 
     //fake datas
     user: {
@@ -27,15 +26,15 @@ export const AuthContextProvider = ({ children }) => {
       img_url:
         "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
       email: "okok@gmail.com",
-      role: "teacher",
+      role: "Teacher",
     },
   });
 
-  useEffect(() => {
-    //get items from localStorage
-    const user = JSON.parse(localStorage.getItem("user"));
-    dispatch({ type: "LOGIN", payload: user });
-  }, []);
+  // useEffect(() => {
+  //   //get items from localStorage
+  //   const user = JSON.parse(localStorage.getItem("user"));
+  //   dispatch({ type: "LOGIN", payload: user });
+  // }, []);
 
   return (
     <AuthContext.Provider value={{ ...state, dispatch }}>

@@ -30,7 +30,6 @@ const items = [
 
 const DashBoardLayout = () => {
   const { width } = useWidth();
-  console.log(width);
 
   return (
     <>
