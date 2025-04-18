@@ -9,6 +9,7 @@ import LoginPage from "./pages/login-page/LoginPage";
 import SignUpPage from "./pages/signup-page/SignUpPage";
 import IndividualCourse from "./pages/individual-course/IndividualCourse";
 import { WindowWidthContextProvider } from "./context/WindowWidthContext";
+import { AuthContextProvider } from "./context/AuthContext";
 
 const router = createBrowserRouter([
   {
@@ -44,8 +45,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <WindowWidthContextProvider>
-      <RouterProvider router={router} />
-    </WindowWidthContextProvider>
+    <AuthContextProvider>
+      <WindowWidthContextProvider>
+        <RouterProvider router={router} />
+      </WindowWidthContextProvider>
+    </AuthContextProvider>
   </StrictMode>
 );
