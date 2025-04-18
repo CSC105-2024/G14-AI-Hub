@@ -11,6 +11,7 @@ import IndividualCourse from "./pages/individual-course/IndividualCourse";
 import { WindowWidthContextProvider } from "./context/WindowWidthContext";
 import { AuthContextProvider } from "./context/AuthContext";
 
+//TODO: protect the routes
 const router = createBrowserRouter([
   {
     path: "/", // Home route
