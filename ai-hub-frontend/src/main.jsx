@@ -11,6 +11,7 @@ import IndividualCourse from "./pages/individual-course/IndividualCourse";
 import { WindowWidthContextProvider } from "./context/WindowWidthContext";
 import { AuthContextProvider } from "./context/AuthContext";
 import { DataContextProvider } from "./context/DataContext";
+import CreatePage from "./pages/create-page/CreatePage";
 
 //TODO: protect the routes
 const router = createBrowserRouter([
@@ -41,6 +42,7 @@ const router = createBrowserRouter([
         element: <IndividualCourse />,
       },
       { path: "course", element: <IndividualCourse /> },
+      { path: "create", element: <CreatePage /> },
     ],
   },
 ]);
