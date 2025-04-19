@@ -19,15 +19,15 @@ const CourseForm = () => {
           className={"bg-white text-black w-90"}
         />
       </div>
-      <div className="flex flex-row gap-7 h-[521px] overflow-y-auto">
-        <div className="bg-white w-1/2">
+      <div className="flex flex-row gap-7 h-[521px] bg-black">
+        <div className=" w-1/2 bg-red-500 ">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae
           eaque iste optio odit eos. Quis optio numquam natus dolor iusto nobis,
           culpa doloribus modi sapiente voluptatibus amet dolores labore
           perferendis.
         </div>
-        <div className="bg-red-600 w-1/2">
-          <h1 className="">Content</h1>
+        <div className="w-1/2 p-10 bg-white  overflow-y-auto">
+          <h1 className="font-bold text-xl text-black">Content</h1>
           <TextEditor />
         </div>
       </div>

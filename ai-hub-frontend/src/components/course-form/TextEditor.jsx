@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Underline from "@tiptap/extension-underline";
@@ -31,15 +31,7 @@ import { FaAlignCenter } from "react-icons/fa6";
 import { FaAlignRight } from "react-icons/fa6";
 import { FaAlignJustify } from "react-icons/fa6";
 
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-
-const content = "<p>Hello World!</p>";
+const content = "<p>Course</p>";
 
 const Button = ({ onClick, children }) => (
   <button onClick={onClick} style={{ margin: "0 5px" }}>
@@ -51,7 +43,10 @@ const Toolbar = ({ editor }) => {
   if (!editor) return null;
 
   return (
-    <div style={{ borderBottom: "1px solid #ccc", padding: "10px" }}>
+    <div
+      style={{ borderBottom: "1px solid black", padding: "10px" }}
+      className="text-black"
+    >
       <Button onClick={() => editor.chain().focus().undo().run()}>
         <LuUndo2 />
       </Button>
@@ -126,6 +121,10 @@ const Toolbar = ({ editor }) => {
 };
 
 const TextEditor = () => {
+  const [editorContent, setEditorContent] = useState(null);
+
+  //const [htmlContent, setHtmlContent] = useState("");
+
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
@@ -144,6 +143,14 @@ const TextEditor = () => {
       Link.configure({ openOnClick: false }),
     ],
     content,
+    onUpdate: ({ editor }) => {
+      // Capture the updated content as JSON
+      setEditorContent(editor.getJSON());
+
+      //render
+      //   const html = editor.getHTML();
+      //   setHtmlContent(html);
+    },
   });
 
   return (
@@ -152,7 +159,7 @@ const TextEditor = () => {
       <EditorContent
         editor={editor}
         style={{ padding: "20px" }}
-        className="p-5 [&_ul]:list-disc [&_ul]:pl-6 [&_li]:mb-1 [&_h1]:text-3xl [&_h1]:font-bold [&_h2]:text-2xl [&_h2]:font-semibold [&_ol]:list-decimal [&_ol]:pl-6 [&_li]:mb-1"
+        className="p-5 [&_ul]:list-disc [&_ul]:pl-6 [&_li]:mb-1 [&_h1]:text-3xl [&_h1]:font-bold [&_h2]:text-2xl [&_h2]:font-semibold [&_ol]:list-decimal [&_ol]:pl-6 [&_li]:mb-1 text-black"
       />
     </div>
   );
