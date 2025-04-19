@@ -22,14 +22,22 @@ import { FaStrikethrough } from "react-icons/fa";
 import { FaHighlighter } from "react-icons/fa";
 import { FaSuperscript } from "react-icons/fa";
 import { FaSubscript } from "react-icons/fa";
-import { MdFormatListBulleted } from "react-icons/md";
-import { MdFormatListNumbered } from "react-icons/md";
+import { FaListUl } from "react-icons/fa6";
+import { FaListOl } from "react-icons/fa";
 import { FaLink } from "react-icons/fa";
 import { FaUnlink } from "react-icons/fa";
 import { FaAlignLeft } from "react-icons/fa6";
 import { FaAlignCenter } from "react-icons/fa6";
 import { FaAlignRight } from "react-icons/fa6";
 import { FaAlignJustify } from "react-icons/fa6";
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const content = "<p>Hello World!</p>";
 
@@ -73,11 +81,11 @@ const Toolbar = ({ editor }) => {
       </Button>
 
       <Button onClick={() => editor.chain().focus().toggleBulletList().run()}>
-        <MdFormatListBulleted />
+        <FaListUl />
       </Button>
 
       <Button onClick={() => editor.chain().focus().toggleOrderedList().run()}>
-        <MdFormatListNumbered />
+        <FaListOl />
       </Button>
 
       <Button
