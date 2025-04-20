@@ -15,16 +15,33 @@ const UploadImage = () => {
     ref.current.focus();
   };
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
+  const handleFileChange = (e, type) => {
+    let file;
+    if (type !== "url") {
+      file = e.target.files[0];
+    } else {
+      file = e;
+    }
 
-    const datas = {
-      url: URL.createObjectURL(file), //temp url
-      name: file.name.split(" ")[0],
-      size: (file.size / 1024).toFixed(0), //KB
-      originalURL: file.name,
-    };
-    console.log(datas);
+    let datas;
+
+    if (type !== "url") {
+      datas = {
+        url: URL.createObjectURL(file), //temp url
+        name: file.name.split(" ")[0],
+        size: (file.size / 1024).toFixed(0), //KB
+        originalURL: file.name,
+        local: true,
+      };
+    } else {
+      datas = {
+        url: file,
+        name: "Img Url",
+        size: 0, //KB
+        originalURL: file,
+        local: false,
+      };
+    }
 
     setFile((f) => [...f, datas]);
   };
@@ -68,6 +85,7 @@ const UploadImage = () => {
       <div className="border p-3 bg-gray-100 rounded-2xl border-white mb-5">
         <input
           type="text"
+          value={url}
           className="w-[80%] focus:ring-0 focus:outline-none ml-4"
           onChange={(e) => setUrl(e.target.value)}
           ref={ref}
@@ -75,7 +93,16 @@ const UploadImage = () => {
         />
         <Button
           className={"bg-[var(--primary-color)] hover:bg-violet-800"}
-          onClick={!url ? focus : ""}
+          onClick={
+            !url
+              ? focus
+              : () => {
+                  if (files.length < 3) {
+                    handleFileChange(url, "url");
+                    setUrl("");
+                  }
+                }
+          }
         >
           Upload
         </Button>

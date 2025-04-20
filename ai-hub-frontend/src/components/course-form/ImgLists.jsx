@@ -8,14 +8,18 @@ const ImgLists = ({ data, index, setFile }) => {
 
   return (
     <div
-      className="border p-2 rounded-2xl gap-50 border-gray-100 mb-3 flex items-center justify-around"
+      className="border  rounded-2xl gap-50 border-gray-100 mb-3 flex items-center justify-around h-15"
       id={index}
     >
       <div className="flex gap-3 items-center w-60">
-        <img src={data.url} alt="no img" className="text-black h-10" />
+        <img src={data.url} alt="no img" className="text-black h-10 w-16" />
         <div>
           <div>{data.name}</div>
-          <div className="text-gray-500">{data.size}KB</div>
+          {data.size !== 0 ? (
+            <div className="text-gray-500">{data.size}KB</div>
+          ) : (
+            <div className="text-gray-500">.....</div>
+          )}
         </div>
       </div>
       <div>
