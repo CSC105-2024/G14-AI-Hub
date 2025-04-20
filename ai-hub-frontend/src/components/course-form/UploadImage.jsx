@@ -7,8 +7,6 @@ const UploadImage = () => {
   const [files, setFile] = useState([]);
   const [url, setUrl] = useState(null);
 
-  console.log(files);
-
   const ref = useRef(null);
 
   const focus = () => {
@@ -92,7 +90,7 @@ const UploadImage = () => {
           placeholder="URL"
         />
         <Button
-          className={"bg-[var(--primary-color)] hover:bg-violet-800"}
+          className={"bg-[var(--primary-color)] hover:bg-violet-900"}
           onClick={
             !url
               ? focus
