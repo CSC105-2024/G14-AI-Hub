@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import TextEditor from "./TextEditor";
+import UploadImage from "./UploadImage";
 
 const CourseForm = () => {
   return (
@@ -11,7 +12,7 @@ const CourseForm = () => {
           To Course Overview
         </Link>
       </div>
-      <div className="flex items-center flex-col">
+      <div className="flex items-center flex-col mb-7">
         <h1>Course Name</h1>
         <Input
           type="text"
@@ -20,13 +21,11 @@ const CourseForm = () => {
         />
       </div>
       <div className="flex flex-row gap-7 h-[521px] bg-black">
-        <div className=" w-1/2 bg-red-500 ">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae
-          eaque iste optio odit eos. Quis optio numquam natus dolor iusto nobis,
-          culpa doloribus modi sapiente voluptatibus amet dolores labore
-          perferendis.
+        <div className="w-1/2 p-10 bg-white rounded-3xl overflow-y-auto">
+          <h1 className="font-bold text-xl text-black">Upload Images</h1>
+          <UploadImage />
         </div>
-        <div className="w-1/2 p-10 bg-white  overflow-y-auto">
+        <div className="w-1/2 p-10 bg-white rounded-3xl overflow-y-auto">
           <h1 className="font-bold text-xl text-black">Content</h1>
           <TextEditor />
         </div>
