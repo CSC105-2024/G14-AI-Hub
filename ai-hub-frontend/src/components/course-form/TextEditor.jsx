@@ -53,34 +53,77 @@ const Toolbar = ({ editor }) => {
       <Button onClick={() => editor.chain().focus().redo().run()}>
         <LuRedo2 />
       </Button>
+
       <Button onClick={() => editor.chain().focus().toggleBold().run()}>
-        <FaBold />
+        <FaBold
+          className={
+            editor.isActive("bold") ? "text-[var(--primary-color)]" : ""
+          }
+        />
       </Button>
+
       <Button onClick={() => editor.chain().focus().toggleItalic().run()}>
-        <FaItalic />
+        <FaItalic
+          className={
+            editor.isActive("italic") ? "text-[var(--primary-color)]" : ""
+          }
+        />
       </Button>
+
       <Button onClick={() => editor.chain().focus().toggleUnderline().run()}>
-        <FaUnderline />
+        <FaUnderline
+          className={
+            editor.isActive("underline") ? "text-[var(--primary-color)]" : ""
+          }
+        />
       </Button>
+
       <Button onClick={() => editor.chain().focus().toggleStrike().run()}>
-        <FaStrikethrough />
+        <FaStrikethrough
+          className={
+            editor.isActive("strike") ? "text-[var(--primary-color)]" : ""
+          }
+        />
       </Button>
+
       <Button onClick={() => editor.chain().focus().toggleHighlight().run()}>
-        <FaHighlighter />
+        <FaHighlighter
+          className={
+            editor.isActive("highlight") ? "text-[var(--primary-color)]" : ""
+          }
+        />
       </Button>
+
       <Button onClick={() => editor.chain().focus().toggleSuperscript().run()}>
-        <FaSuperscript />
+        <FaSuperscript
+          className={
+            editor.isActive("superscript") ? "text-[var(--primary-color)]" : ""
+          }
+        />
       </Button>
+
       <Button onClick={() => editor.chain().focus().toggleSubscript().run()}>
-        <FaSubscript />
+        <FaSubscript
+          className={
+            editor.isActive("subscript") ? "text-[var(--primary-color)]" : ""
+          }
+        />
       </Button>
 
       <Button onClick={() => editor.chain().focus().toggleBulletList().run()}>
-        <FaListUl />
+        <FaListUl
+          className={
+            editor.isActive("bulletList") ? "text-[var(--primary-color)]" : ""
+          }
+        />
       </Button>
 
       <Button onClick={() => editor.chain().focus().toggleOrderedList().run()}>
-        <FaListOl />
+        <FaListOl
+          className={
+            editor.isActive("orderedList") ? "text-[var(--primary-color)]" : ""
+          }
+        />
       </Button>
 
       <Button
@@ -91,31 +134,76 @@ const Toolbar = ({ editor }) => {
       >
         <FaLink />
       </Button>
+
       <Button onClick={() => editor.chain().focus().unsetLink().run()}>
-        <FaUnlink />
+        <FaUnlink
+          className={
+            editor.isActive("link") ? "text-[var(--primary-color)]" : ""
+          }
+        />
       </Button>
 
       <Button onClick={() => editor.chain().focus().setTextAlign("left").run()}>
-        <FaAlignLeft />
+        <FaAlignLeft
+          className={
+            editor.isActive({ textAlign: "left" })
+              ? "text-[var(--primary-color)]"
+              : ""
+          }
+        />
       </Button>
       <Button
         onClick={() => editor.chain().focus().setTextAlign("center").run()}
       >
-        <FaAlignCenter />
+        <FaAlignCenter
+          className={
+            editor.isActive({ textAlign: "center" })
+              ? "text-[var(--primary-color)]"
+              : ""
+          }
+        />
       </Button>
       <Button
         onClick={() => editor.chain().focus().setTextAlign("right").run()}
       >
-        <FaAlignRight />
+        <FaAlignRight
+          className={
+            editor.isActive({ textAlign: "right" })
+              ? "text-[var(--primary-color)]"
+              : ""
+          }
+        />
       </Button>
       <Button
         onClick={() => editor.chain().focus().setTextAlign("justify").run()}
       >
-        <FaAlignJustify />
+        <FaAlignJustify
+          className={
+            editor.isActive({ textAlign: "justify" })
+              ? "text-[var(--primary-color)]"
+              : ""
+          }
+        />
       </Button>
 
-      <HeadingButton editor={editor} level={1} />
-      <HeadingButton editor={editor} level={2} />
+      <HeadingButton
+        editor={editor}
+        level={1}
+        className={
+          editor.isActive("heading", { level: 1 })
+            ? "text-[var(--primary-color)]"
+            : ""
+        }
+      />
+      <HeadingButton
+        editor={editor}
+        level={2}
+        className={
+          editor.isActive("heading", { level: 2 })
+            ? "text-[var(--primary-color)]"
+            : ""
+        }
+      />
     </div>
   );
 };
