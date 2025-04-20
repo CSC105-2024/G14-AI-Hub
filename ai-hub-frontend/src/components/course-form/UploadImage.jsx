@@ -1,13 +1,14 @@
 import React, { useRef, useState } from "react";
 import { MdOutlineCloudUpload } from "react-icons/md";
 import { Button } from "../ui/button";
+import ImgLists from "./ImgLists";
+import { size } from "@floating-ui/react";
 
 const UploadImage = () => {
   const [files, setFile] = useState([]);
   const [url, setUrl] = useState(null);
 
   console.log(files);
-  console.log(url);
 
   const ref = useRef(null);
 
@@ -15,6 +16,19 @@ const UploadImage = () => {
     ref.current.focus();
   };
 
+  const handleFileChange = (e) => {
+    //Change array
+    const files = Array.from(e.target.files);
+
+    const datas = files.map((f) => ({
+      url: URL.createObjectURL(f), //temp url
+      name: f.name.split(" ")[0],
+      size: (f.size / 1024).toFixed(0), //KB
+      originalURL: f.name,
+    }));
+
+    setFile(datas);
+  };
   return (
     <div className="text-black">
       <div className="text-gray-400 ">
@@ -35,7 +49,7 @@ const UploadImage = () => {
               onChange={(e) => {
                 //files
                 if (files.length < 3) {
-                  setFile((f) => [...f, e.target.files[0]]);
+                  handleFileChange(e);
                 }
               }}
             />
@@ -68,7 +82,11 @@ const UploadImage = () => {
         </Button>
       </div>
 
-      <div className="border p-3 rounded-2xl border-gray-100">ok</div>
+      {files.map((d) => (
+        <>
+          <ImgLists data={d} />
+        </>
+      ))}
     </div>
   );
 };
