@@ -13,14 +13,14 @@ const CourseForm = () => {
         </Link>
       </div>
       <div className="flex items-center flex-col mb-7">
-        <h1>Course Name</h1>
+        <h1 className="font-bold text-xl">Course Name</h1>
         <Input
           type="text"
           placeholder="Course"
           className={"bg-white text-black w-90"}
         />
       </div>
-      <div className="flex flex-row gap-7 h-[521px] bg-black">
+      <div className="flex flex-row gap-7 h-[550px] bg-black">
         <div className="w-1/2 p-10 bg-white rounded-3xl overflow-y-auto">
           <h1 className="font-bold text-xl text-black">Upload Images</h1>
           <UploadImage />

@@ -1,14 +1,27 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { MdOutlineCloudUpload } from "react-icons/md";
+import { Button } from "../ui/button";
 
 const UploadImage = () => {
+  const [files, setFile] = useState([]);
+  const [url, setUrl] = useState(null);
+
+  console.log(files);
+  console.log(url);
+
+  const ref = useRef(null);
+
+  const focus = () => {
+    ref.current.focus();
+  };
+
   return (
     <div className="text-black">
       <div className="text-gray-400 ">
         Add your documents here, and you have to upload 3 files
       </div>
-      <div className=" border-[var(--primary-color)] border-2 border-dashed mt-5 rounded-xl">
-        <label className="cursor-pointer text-center text-gray-700 p-10">
+      <div className=" border-[var(--primary-color)] border-2 border-dashed mt-5 rounded-xl p-10">
+        <label className="cursor-pointer text-center text-gray-700 ">
           {/* Custom placeholder text */}
           <MdOutlineCloudUpload className="text-4xl text-[var(--primary-color)] mx-auto" />
           <div className="text-sm">
@@ -16,14 +29,46 @@ const UploadImage = () => {
             <span className="text-[var(--primary-color)] font-bold">
               browse
             </span>
-            <input type="file" className="hidden" />
-            <div className="text-gray-700 mt-3">
+            <input
+              type="file"
+              className="hidden"
+              onChange={(e) => {
+                //files
+                if (files.length < 3) {
+                  setFile((f) => [...f, e.target.files[0]]);
+                }
+              }}
+            />
+            <div className="text-gray-500 mt-3">
               Max 10 MB files are allowed
             </div>
           </div>
         </label>
       </div>
-      <div>Only support .jpg</div>
+      <div className="mt-3 mb-3 text-gray-500">Only support .jpg</div>
+      <div className="flex items-center gap-2 text-gray-500">
+        <hr className="w-[47%]" />
+        <span className="item-center">OR</span>
+        <hr className="w-[47%]" />
+      </div>
+      <h1 className="font-bold text-xl mb-4 ">Upload From URL</h1>
+      <div className="border p-3 bg-gray-100 rounded-2xl border-white mb-5">
+        <input
+          type="text"
+          className="w-[80%] focus:ring-0 focus:outline-none ml-4"
+          onChange={(e) => setUrl(e.target.value)}
+          ref={ref}
+          placeholder="URL"
+        />
+        <Button
+          className={"bg-[var(--primary-color)] hover:bg-violet-800"}
+          onClick={!url ? focus : ""}
+        >
+          Upload
+        </Button>
+      </div>
+
+      <div className="border p-3 rounded-2xl border-gray-100">ok</div>
     </div>
   );
 };
