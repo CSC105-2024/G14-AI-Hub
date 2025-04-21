@@ -2,8 +2,9 @@ import React, { useEffect, useRef, useState } from "react";
 import { MdOutlineCloudUpload } from "react-icons/md";
 import { Button } from "../ui/button";
 import ImgLists from "./ImgLists";
+import { RxCross2 } from "react-icons/rx";
 
-const UploadImage = ({ setForm }) => {
+const UploadImage = ({ setForm, length }) => {
   const [files, setFile] = useState([]);
   const [url, setUrl] = useState(null);
 
@@ -50,6 +51,14 @@ const UploadImage = ({ setForm }) => {
   };
   return (
     <div className="text-black">
+      <div className="flex justify-between">
+        <h1 className="font-bold text-xl text-black">Upload Images</h1>
+        {length === 1 && (
+          <button>
+            <RxCross2 className="text-xl" />
+          </button>
+        )}
+      </div>
       <div className="text-gray-400 ">
         Add your documents here, and you have to upload 3 files
       </div>
@@ -67,7 +76,7 @@ const UploadImage = ({ setForm }) => {
               className="hidden"
               onChange={(e) => {
                 //files
-                if (files.length < 3) {
+                if (files.length < length) {
                   handleFileChange(e);
                 }
               }}
@@ -100,7 +109,7 @@ const UploadImage = ({ setForm }) => {
             !url
               ? focus
               : () => {
-                  if (files.length < 3) {
+                  if (files.length < length) {
                     handleFileChange(url, "url");
                     setUrl("");
                   }

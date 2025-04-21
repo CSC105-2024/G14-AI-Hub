@@ -19,6 +19,7 @@ const CourseForm = ({ mode }) => {
   const { create, formError, setFormError } = useCreate();
 
   const onSubmit = async () => {
+    //create
     await create(form);
   };
 
@@ -45,8 +46,7 @@ const CourseForm = ({ mode }) => {
         </div>
         <div className="flex flex-row gap-7 h-[550px] bg-black">
           <div className="w-1/2 p-10 bg-white rounded-2xl overflow-y-auto">
-            <h1 className="font-bold text-xl text-black">Upload Images</h1>
-            <UploadImage setForm={setForm} />
+            <UploadImage setForm={setForm} length={3} />
           </div>
           <div className="w-1/2 p-10 bg-white rounded-2xl overflow-y-auto">
             <h1 className="font-bold text-xl text-black">Content</h1>
