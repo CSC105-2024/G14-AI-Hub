@@ -3,7 +3,7 @@ import React from "react";
 
 const CreatePage = () => {
   return (
-    <div className="bg-black h-270">
+    <div className="bg-black md:h-270 ">
       <CourseForm mode={"create"} />
     </div>
   );

@@ -1,13 +1,16 @@
 import Popup from "@/components/Popup";
 import { Button } from "@/components/ui/button";
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { courses } from "@/services/data";
 import { useAuthContext } from "@/hooks/useAuthContext";
 import { useWidth } from "@/hooks/useWidth";
 
 //Nadi
 const IndividualCourse = () => {
+  //params
+  const { id } = useParams();
+
   const { user } = useAuthContext();
   const { width } = useWidth();
 
@@ -28,7 +31,7 @@ const IndividualCourse = () => {
   }
 
   function handleEdit() {
-    navigate("/");
+    navigate(`/dashboard/edit/${id}`);
   }
 
   return (
