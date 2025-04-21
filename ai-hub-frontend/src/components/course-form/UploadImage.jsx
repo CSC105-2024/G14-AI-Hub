@@ -1,13 +1,18 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { MdOutlineCloudUpload } from "react-icons/md";
 import { Button } from "../ui/button";
 import ImgLists from "./ImgLists";
 
-const UploadImage = () => {
+const UploadImage = ({ setForm }) => {
   const [files, setFile] = useState([]);
   const [url, setUrl] = useState(null);
 
   const ref = useRef(null);
+
+  //will update everytime uploads an img
+  useEffect(() => {
+    setForm((f) => ({ ...f, imgs: files }));
+  }, [files]);
 
   const focus = () => {
     ref.current.focus();

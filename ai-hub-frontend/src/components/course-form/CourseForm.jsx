@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import TextEditor from "./TextEditor";
@@ -7,6 +7,17 @@ import { Button } from "../ui/button";
 
 const CourseForm = ({ mode }) => {
   //main data
+  const [form, setForm] = useState({
+    name: "",
+    imgs: "",
+    content: "",
+    note: "",
+  });
+
+  const onSubmit = () => {
+    //obj.val changes obj into arr
+    const empty = Object.values(form).some((f) => f === "");
+  };
 
   return (
     <div className="text-white w-[90%] mx-auto">
@@ -24,16 +35,18 @@ const CourseForm = ({ mode }) => {
           type="text"
           placeholder="Course"
           className={"bg-white text-black w-90"}
+          onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
+          value={form.name}
         />
       </div>
       <div className="flex flex-row gap-7 h-[550px] bg-black">
         <div className="w-1/2 p-10 bg-white rounded-2xl overflow-y-auto">
           <h1 className="font-bold text-xl text-black">Upload Images</h1>
-          <UploadImage />
+          <UploadImage setForm={setForm} />
         </div>
         <div className="w-1/2 p-10 bg-white rounded-2xl overflow-y-auto">
           <h1 className="font-bold text-xl text-black">Content</h1>
-          <TextEditor />
+          <TextEditor setForm={setForm} />
         </div>
       </div>
       <div>
@@ -41,10 +54,15 @@ const CourseForm = ({ mode }) => {
         <textarea
           placeholder="Note"
           className="bg-white text-black h-25 w-full resize-none p-2 rounded-2xl p-5"
+          value={form.note}
+          onChange={(e) => setForm((f) => ({ ...f, note: e.target.value }))}
         />
       </div>
       <div className="flex justify-center mt-5">
-        <Button className={"bg-[var(--primary-color)] hover:bg-violet-800 p-6"}>
+        <Button
+          className={"bg-[var(--primary-color)] hover:bg-violet-800 p-6"}
+          onClick={onSubmit}
+        >
           {mode === "create" ? "Create Course" : "Save Changes"}
         </Button>
       </div>

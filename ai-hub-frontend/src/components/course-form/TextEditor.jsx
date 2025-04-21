@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Underline from "@tiptap/extension-underline";
@@ -208,8 +208,12 @@ const Toolbar = ({ editor }) => {
   );
 };
 
-const TextEditor = () => {
+const TextEditor = ({ setForm }) => {
   const [editorContent, setEditorContent] = useState(null);
+
+  useEffect(() => {
+    setForm((f) => ({ ...f, content: editorContent }));
+  }, [editorContent]);
 
   //const [htmlContent, setHtmlContent] = useState("");
 
