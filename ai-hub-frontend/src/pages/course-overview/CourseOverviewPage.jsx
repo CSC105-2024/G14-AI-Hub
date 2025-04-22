@@ -1,5 +1,6 @@
 import React from "react";
 import NavBar from "@/components/navbar/NavBar";
+import Footer from "@/components/footer/Footer";
 
 //Albert
 const CourseOverviewPage = () => {
@@ -71,19 +72,24 @@ const CourseOverviewPage = () => {
     <div>
       <NavBar />
       <div className="bg-black p-5">
-        <h2 className="ml-3 text-white font-semibold">Course Overview</h2>
+        <h2 className="ml-3 text-2xl text-white font-semibold">Course Overview</h2>
         <div className="grid grid-cols-4 p-3 content-center gap-3">
            {courses.map((course, index) => (
            <div className="bg-white rounded-lg" key={index}>
              <img src={course.imgUrl} />
-             <p className="text-center">{course.title}</p>
+             <p className="text-center text-xl">{course.title}</p>
            </div>
             ))}
         </div>
       </div>
+      <Footer />
       
     </div>
   );
 };
+
+
+
+
 
 export default CourseOverviewPage;
