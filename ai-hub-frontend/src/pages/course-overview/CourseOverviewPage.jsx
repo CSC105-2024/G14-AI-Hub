@@ -74,13 +74,14 @@ const CourseOverviewPage = () => {
       <div className="bg-black  p-5">
         <h2 className="ml-3 mb-5 text-2xl text-white font-semibold">Course Overview</h2>
         <div className="grid grid-cols-1 md:grid-cols-4 rounded-lg gap-4 gap-y-10 ">
-          
+        
            {courses.map((course, index) => (
+
            <div className="bg-white  rounded-lg flex  md:flex-col  overflow-hidden" key={index}>
-             <img src={course.imgUrl} className="h-30 md:h-50"/>
+             <img src={course.imgUrl} className="md:h-50"/>
               <hr className="border border-black"/>
               
-             <p className="text-center text-xl p-3 font-bold">{course.title}</p>
+             <p className="flex flex-col text-xl p-3 font-bold">{course.title}</p>
            </div>
 
             ))}
