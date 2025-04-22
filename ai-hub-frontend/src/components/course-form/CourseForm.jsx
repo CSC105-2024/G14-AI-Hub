@@ -7,10 +7,11 @@ import { Button } from "../ui/button";
 import ErrorBox from "../error-box/ErrorBox";
 import { useCreate } from "@/hooks/useCreate";
 
-const CourseForm = ({ mode }) => {
+const CourseForm = ({ mode, oldForm }) => {
   //main data
+  //TODO: need to do imgs and content
   const [form, setForm] = useState({
-    name: "",
+    title: "",
     imgs: "",
     content: "",
     note: "",
@@ -40,15 +41,15 @@ const CourseForm = ({ mode }) => {
             type="text"
             placeholder="Course"
             className={"bg-white text-black w-90"}
-            onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-            value={form.name}
+            onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))}
+            value={oldForm?.title || form.title}
           />
         </div>
-        <div className="flex flex-row gap-7 h-[550px] bg-black">
-          <div className="w-1/2 p-10 bg-white rounded-2xl overflow-y-auto">
+        <div className="grid md:grid-cols-2 gap-7 md:h-[550px] bg-black">
+          <div className=" p-10 bg-white rounded-2xl overflow-y-auto">
             <UploadImage setForm={setForm} length={3} />
           </div>
-          <div className="w-1/2 p-10 bg-white rounded-2xl overflow-y-auto">
+          <div className=" p-10 bg-white rounded-2xl overflow-y-auto">
             <h1 className="font-bold text-xl text-black">Content</h1>
             <TextEditor setForm={setForm} />
           </div>
@@ -58,13 +59,13 @@ const CourseForm = ({ mode }) => {
           <textarea
             placeholder="Note"
             className="bg-white text-black h-25 w-full resize-none p-2 rounded-2xl p-5"
-            value={form.note}
+            value={oldForm?.note || form.note}
             onChange={(e) => setForm((f) => ({ ...f, note: e.target.value }))}
           />
         </div>
         <div className="flex justify-center mt-5">
           <Button
-            className={"bg-[var(--primary-color)] hover:bg-violet-800 p-6"}
+            className={"bg-[var(--primary-color)] hover:bg-violet-800 p-6 mb-5"}
             onClick={onSubmit}
           >
             {mode === "create" ? "Create Course" : "Save Changes"}
@@ -75,7 +76,7 @@ const CourseForm = ({ mode }) => {
         <ErrorBox
           setError={setFormError}
           description={formError}
-          title={"Create a New Course"}
+          title={mode === "create" ? "Create a New Course" : "Edit a Course"}
         />
       )}
     </>

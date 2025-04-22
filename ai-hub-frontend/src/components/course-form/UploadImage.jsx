@@ -53,6 +53,7 @@ const UploadImage = ({ setForm, length }) => {
     <div className="text-black">
       <div className="flex justify-between">
         <h1 className="font-bold text-xl text-black">Upload Images</h1>
+        {/* TODO: need to add onClick */}
         {length === 1 && (
           <button>
             <RxCross2 className="text-xl" />
