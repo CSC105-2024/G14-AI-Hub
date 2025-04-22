@@ -1,11 +1,19 @@
 import Popup from "@/components/Popup";
 import { Button } from "@/components/ui/button";
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { courses } from "@/services/data";
+import { useAuthContext } from "@/hooks/useAuthContext";
+import { useWidth } from "@/hooks/useWidth";
 
 //Nadi
 const IndividualCourse = () => {
+  //params
+  const { id } = useParams();
+
+  const { user } = useAuthContext();
+  const { width } = useWidth();
+
   const data = courses[0];
   const [showPopup, setShowPopup] = useState(false);
 
@@ -23,7 +31,7 @@ const IndividualCourse = () => {
   }
 
   function handleEdit() {
-    navigate("/");
+    navigate(`/dashboard/edit/${id}`);
   }
 
   return (
@@ -57,20 +65,23 @@ const IndividualCourse = () => {
       <h2 className="text-right text-lg md:text-xl text-white font-semibold self-end">
         {data.instructor}
       </h2>
-      <div className="buttons justify-center gap-3 hidden md:flex">
-        <Button
-          onClick={handleDelete}
-          className="w-2/3 bg-white text-black text-lg hover:text-[var(--primary-color)] hover:bg-[#E5E7EB]"
-        >
-          Delete
-        </Button>
-        <Button
-          onClick={handleEdit}
-          className="w-2/3 bg-[var(--primary-color)] text-white text-lg hover:bg-[#4D179A]"
-        >
-          Edit
-        </Button>
-      </div>
+      {user.role === "Teacher" && width > 768 && (
+        <div className="buttons justify-center gap-3 hidden md:flex">
+          <Button
+            onClick={handleDelete}
+            className="w-2/3 bg-white text-black text-lg hover:text-[var(--primary-color)] hover:bg-[#E5E7EB]"
+          >
+            Delete
+          </Button>
+          <Button
+            onClick={handleEdit}
+            className="w-2/3 bg-[var(--primary-color)] text-white text-lg hover:bg-[#4D179A]"
+          >
+            Edit
+          </Button>
+        </div>
+      )}
+
       {showPopup && (
         <Popup
           message="Are you sure you want to delete this course?"

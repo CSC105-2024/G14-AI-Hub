@@ -9,7 +9,12 @@ import LoginPage from "./pages/login-page/LoginPage";
 import SignUpPage from "./pages/signup-page/SignUpPage";
 import IndividualCourse from "./pages/individual-course/IndividualCourse";
 import { WindowWidthContextProvider } from "./context/WindowWidthContext";
+import { AuthContextProvider } from "./context/AuthContext";
+import { DataContextProvider } from "./context/DataContext";
+import CreatePage from "./pages/create-page/CreatePage";
+import EditPage from "./pages/edit-page/EditPage";
 
+//TODO: protect the routes
 const router = createBrowserRouter([
   {
     path: "/", // Home route
@@ -37,15 +42,21 @@ const router = createBrowserRouter([
         index: true, //default
         element: <IndividualCourse />,
       },
-      { path: "course", element: <IndividualCourse /> },
+      { path: "course/:id", element: <IndividualCourse /> },
+      { path: "create", element: <CreatePage /> },
+      { path: "edit/:id", element: <EditPage /> },
     ],
   },
 ]);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <WindowWidthContextProvider>
-      <RouterProvider router={router} />
-    </WindowWidthContextProvider>
+    <AuthContextProvider>
+      <DataContextProvider>
+        <WindowWidthContextProvider>
+          <RouterProvider router={router} />
+        </WindowWidthContextProvider>
+      </DataContextProvider>
+    </AuthContextProvider>
   </StrictMode>
 );

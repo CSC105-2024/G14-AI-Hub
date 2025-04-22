@@ -10,7 +10,6 @@ import {
 
 const SortBtn = ({ name }) => {
   const [value, setValue] = useState("default");
-  console.log(value);
 
   const handleChange = (data) => {
     setValue(data);
