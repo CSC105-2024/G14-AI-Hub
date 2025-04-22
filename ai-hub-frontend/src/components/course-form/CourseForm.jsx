@@ -45,7 +45,7 @@ const CourseForm = ({ mode, oldForm }) => {
             value={oldForm?.title || form.title}
           />
         </div>
-        <div className="grid md:grid-cols-2 gap-7 md:h-[550px] bg-black">
+        <div className="grid md:grid-cols-2 gap-7 md:h-[560px] 2xl:h-[650px] bg-black">
           <div className=" p-10 bg-white rounded-2xl overflow-y-auto">
             <UploadImage setForm={setForm} length={3} />
           </div>
