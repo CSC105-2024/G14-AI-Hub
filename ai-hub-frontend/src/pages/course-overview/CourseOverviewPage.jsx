@@ -10,45 +10,62 @@ const CourseOverviewPage = () => {
         "https://static.printler.com/cache/c/4/1/7/d/c/c417dc9c0acfba8b61c6a40e81636b953e9a5566.jpg",
     },
     {
-      title: "What is AI?",
+      title: "Related Fields",
       imgUrl:
         "https://static.printler.com/cache/c/4/1/7/d/c/c417dc9c0acfba8b61c6a40e81636b953e9a5566.jpg",
     },
     {
-      title: "What is AI?",
+      title: "AI Problem Solving",
       imgUrl:
         "https://static.printler.com/cache/c/4/1/7/d/c/c417dc9c0acfba8b61c6a40e81636b953e9a5566.jpg",
     },
     {
-      title: "What is AI?",
+      title: "The Bayes Rule",
       imgUrl:
         "https://static.printler.com/cache/c/4/1/7/d/c/c417dc9c0acfba8b61c6a40e81636b953e9a5566.jpg",
     },
     {
-      title: "What is AI?",
+      title: "Naive Bayes Classification",
       imgUrl:
         "https://static.printler.com/cache/c/4/1/7/d/c/c417dc9c0acfba8b61c6a40e81636b953e9a5566.jpg",
     },
     {
-      title: "What is AI?",
+      title: "Types of ML",
       imgUrl:
         "https://static.printler.com/cache/c/4/1/7/d/c/c417dc9c0acfba8b61c6a40e81636b953e9a5566.jpg",
     },
     {
-      title: "What is AI?",
+      title: "The Nearest Neighbor Classifier",
       imgUrl:
         "https://static.printler.com/cache/c/4/1/7/d/c/c417dc9c0acfba8b61c6a40e81636b953e9a5566.jpg",
     },
     {
-      title: "What is AI?",
+      title: "Regression",
       imgUrl:
         "https://static.printler.com/cache/c/4/1/7/d/c/c417dc9c0acfba8b61c6a40e81636b953e9a5566.jpg",
     },
     {
-      title: "What is AI?",
+      title: "Neural Networks",
       imgUrl:
         "https://static.printler.com/cache/c/4/1/7/d/c/c417dc9c0acfba8b61c6a40e81636b953e9a5566.jpg",
     },
+    {
+      title: "How Neural Networks are built",
+      imgUrl:
+        "https://static.printler.com/cache/c/4/1/7/d/c/c417dc9c0acfba8b61c6a40e81636b953e9a5566.jpg",
+    },
+    {
+      title: "Advanced neural network techniques",
+      imgUrl:
+        "https://static.printler.com/cache/c/4/1/7/d/c/c417dc9c0acfba8b61c6a40e81636b953e9a5566.jpg",
+    },
+    {
+      title: "Implications of AI",
+      imgUrl:
+        "https://static.printler.com/cache/c/4/1/7/d/c/c417dc9c0acfba8b61c6a40e81636b953e9a5566.jpg",
+    },
+    
+    
   ];
   return (
     <div>
@@ -58,7 +75,7 @@ const CourseOverviewPage = () => {
         {courses.map((course, index) => (
           <div className="bg-red-500">
             <img src={course.imgUrl} />
-            <p>{course.title}</p>
+            <p className="">{course.title}</p>
           </div>
         ))}
       </div>
