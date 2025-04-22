@@ -44,6 +44,26 @@ const CourseOverviewPage = () => {
       imgUrl:
         "https://static.printler.com/cache/c/4/1/7/d/c/c417dc9c0acfba8b61c6a40e81636b953e9a5566.jpg",
     },
+    {
+      title: "Neural Networks",
+      imgUrl:
+        "https://static.printler.com/cache/c/4/1/7/d/c/c417dc9c0acfba8b61c6a40e81636b953e9a5566.jpg",
+    },
+    {
+      title: "How Neural Networks are built",
+      imgUrl:
+        "https://static.printler.com/cache/c/4/1/7/d/c/c417dc9c0acfba8b61c6a40e81636b953e9a5566.jpg",
+    },
+    {
+      title: "Regression",
+      imgUrl:
+        "https://static.printler.com/cache/c/4/1/7/d/c/c417dc9c0acfba8b61c6a40e81636b953e9a5566.jpg",
+    },
+    {
+      title: "Regression",
+      imgUrl:
+        "https://static.printler.com/cache/c/4/1/7/d/c/c417dc9c0acfba8b61c6a40e81636b953e9a5566.jpg",
+    },
     
     
   ];
@@ -55,7 +75,7 @@ const CourseOverviewPage = () => {
         {courses.map((course, index) => (
           <div className="bg-red-500">
             <img src={course.imgUrl} />
-            <p>{course.title}</p>
+            <p className="">{course.title}</p>
           </div>
         ))}
       </div>
