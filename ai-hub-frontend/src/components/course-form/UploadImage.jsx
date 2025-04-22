@@ -61,7 +61,8 @@ const UploadImage = ({ setForm, length }) => {
         )}
       </div>
       <div className="text-gray-400 ">
-        Add your documents here, and you have to upload 3 files
+        Please upload 4 images. The first image will be displayed on the course
+        overview.
       </div>
       <div className=" border-[var(--primary-color)] border-2 border-dashed mt-5 rounded-xl p-10 2xl:p-20">
         <label className="cursor-pointer text-center text-gray-700 ">

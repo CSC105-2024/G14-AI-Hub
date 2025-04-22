@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from "react";
 import CourseForm from "@/components/course-form/CourseForm";
 import { courses } from "@/services/data";
+import { useParams } from "react-router-dom";
 
 const EditPage = () => {
-  const [form, setForm] = useState();
-
-  console.log(form);
-
-  useEffect(() => {
-    //TODO: not static
-    setForm(courses[0]);
-  }, []);
+  const id = useParams();
+  const [form, setForm] = useState(courses[0]);
 
   return (
     <div className="bg-black md:h-270 ">
