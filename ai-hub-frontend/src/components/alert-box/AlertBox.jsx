@@ -37,7 +37,9 @@ const AlertBox = ({ btnName, css, title, onClick }) => {
               </AlertDialogCancel>
             </div>
             <AlertDialogHeader>
-              <AlertDialogTitle className={"md:flex justify-center"}>
+              <AlertDialogTitle
+                className={"md:flex justify-center text-center"}
+              >
                 {title}
               </AlertDialogTitle>
             </AlertDialogHeader>

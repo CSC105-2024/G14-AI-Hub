@@ -1,3 +1,5 @@
+import AlertBox from "@/components/alert-box/AlertBox";
+import EditProfile from "@/components/edit-profile/EditProfile";
 import Footer from "@/components/footer/Footer";
 import NavBar from "@/components/navbar/NavBar";
 import { Button } from "@/components/ui/button";
@@ -19,16 +21,18 @@ const SettingsPage = () => {
   return (
     <>
       <NavBar activePage={"setting"} />
-      <div className="bg-black md:h-270 flex flex-col items-center text-white">
-        <div className="font-bold self-end text-xl mr-10 mt-10">
+
+      <div className="bg-black md:h-200 flex flex-col items-center text-white">
+        <div className="font-bold self-end text-xl mr-10 mt-10 mb-15">
           <Link
             to={"/courses"}
-            className="mt-10 hover:text-[var(--primary-color)]"
+            className="mt-10 hover:text-[var(--primary-color)] "
           >
             To Course Overview
           </Link>
         </div>
-        <div className="bg-black flex flex-col items-start h-full gap-2 justify-center">
+        <EditProfile img_url={user.img_url} />
+        <div className="bg-black flex flex-col items-start gap-2 justify-center mt-10">
           <h1 className="font-bold text-2xl self-center">Edit Your Account</h1>
           <h2 className="font-bold text-xl">Username</h2>
           <Input
@@ -63,17 +67,21 @@ const SettingsPage = () => {
             onChange={(e) => setForm({ ...form, newPassword: e.target.value })}
           />
           <div className="buttons mt-5 flex justify-center gap-5 w-full">
-            <Button className="w-35 bg-white text-black text-md hover:text-[var(--primary-color)] hover:bg-[#E5E7EB]">
-              Save Changes
-            </Button>
-            <Button
-              className="w-35 bg-[var(--primary-color)]  text-white text-md hover:bg-[#4D179A]"
-              onClick={() => {
-                navigate("/login");
-              }}
-            >
-              Log out
-            </Button>
+            <AlertBox
+              btnName={"Save Changes"}
+              css={
+                "w-35 bg-white text-black text-md hover:text-[var(--primary-color)] hover:bg-white"
+              }
+              title={"Are you sure you want to update your profile?"}
+            />
+            <AlertBox
+              btnName={"Log out"}
+              css={
+                "w-35 bg-[var(--primary-color)]  text-white text-md hover:bg-[#4D179A]"
+              }
+              title={"Are you sure you want to log out?"}
+              onClick={() => navigate("/login")}
+            />
           </div>
         </div>
       </div>
