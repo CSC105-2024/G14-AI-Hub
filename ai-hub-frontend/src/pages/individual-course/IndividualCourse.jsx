@@ -5,6 +5,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { courses } from "@/services/data";
 import { useAuthContext } from "@/hooks/useAuthContext";
 import { useWidth } from "@/hooks/useWidth";
+import AlertBox from "@/components/alert-box/AlertBox";
 
 //Nadi
 const IndividualCourse = () => {
@@ -15,12 +16,8 @@ const IndividualCourse = () => {
   const { width } = useWidth();
 
   const data = courses[0];
-  const [showPopup, setShowPopup] = useState(false);
 
   const navigate = useNavigate();
-  function handleDelete() {
-    setShowPopup(true);
-  }
 
   function confirmDelete() {
     navigate("/");
@@ -66,27 +63,20 @@ const IndividualCourse = () => {
       </h2>
       {user.role === "Teacher" && width > 768 && (
         <div className="buttons justify-center gap-3 hidden md:flex">
-          <Button
-            onClick={handleDelete}
-            className="w-2/3 bg-white text-black text-lg hover:text-[var(--primary-color)] hover:bg-[#E5E7EB]"
-          >
-            Delete
-          </Button>
+          <AlertBox
+            css={
+              "w-30 bg-white text-black text-lg hover:text-[var(--primary-color)] hover:bg-[#E5E7EB]"
+            }
+            btnName={"Delete"}
+            title={"Are you sure you want to log out ?"}
+          />
           <Button
             onClick={handleEdit}
-            className="w-2/3 bg-[var(--primary-color)] text-white text-lg hover:bg-[#4D179A]"
+            className="w-30 bg-[var(--primary-color)] text-white text-lg hover:bg-[#4D179A]"
           >
             Edit
           </Button>
         </div>
-      )}
-
-      {showPopup && (
-        <Popup
-          message="Are you sure you want to delete this course?"
-          onConfirm={confirmDelete}
-          onCancel={cancelDelete}
-        />
       )}
     </div>
   );

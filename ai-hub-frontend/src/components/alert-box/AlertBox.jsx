@@ -25,7 +25,7 @@ const AlertBox = ({ btnName, css, title, onClick }) => {
           </Button>
         </AlertDialogTrigger>
 
-        <AlertDialogContent>
+        <AlertDialogContent className={"md:w-100"}>
           <div>
             <div className="flex justify-end">
               <AlertDialogCancel
@@ -37,21 +37,21 @@ const AlertBox = ({ btnName, css, title, onClick }) => {
               </AlertDialogCancel>
             </div>
             <AlertDialogHeader>
-              <AlertDialogTitle>{title}</AlertDialogTitle>
+              <AlertDialogTitle className={"md:flex justify-center"}>
+                {title}
+              </AlertDialogTitle>
             </AlertDialogHeader>
           </div>
-          <AlertDialogFooter>
-            <div className="flex justify-around">
-              <AlertDialogCancel className={"w-30"}>Cancel</AlertDialogCancel>
-              <AlertDialogAction
-                className={
-                  "w-30 text-white bg-[var(--primary-color)]  hover:bg-violet-900"
-                }
-                onClick={onClick}
-              >
-                Yes
-              </AlertDialogAction>
-            </div>
+          <AlertDialogFooter className="flex justify-around md:justify-center flex-row">
+            <AlertDialogCancel className={"w-30"}>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              className={
+                "w-30 text-white bg-[var(--primary-color)]  hover:bg-violet-900"
+              }
+              onClick={onClick}
+            >
+              Yes
+            </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
