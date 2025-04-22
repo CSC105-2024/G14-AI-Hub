@@ -1,3 +1,5 @@
+import Footer from "@/components/footer/Footer";
+import NavBar from "@/components/navbar/NavBar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useAuthContext } from "@/hooks/useAuthContext";
@@ -16,6 +18,7 @@ const SettingsPage = () => {
 
   return (
     <>
+      <NavBar activePage={"setting"} />
       <div className="bg-black md:h-270 flex flex-col items-center text-white">
         <div className="font-bold self-end text-xl mr-10 mt-10">
           <Link
@@ -74,6 +77,7 @@ const SettingsPage = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

@@ -46,8 +46,11 @@ const router = createBrowserRouter([
       { path: "course/:id", element: <IndividualCourse /> },
       { path: "create", element: <CreatePage /> },
       { path: "edit/:id", element: <EditPage /> },
-      { path: "settings", element: <SettingsPage />}
     ],
+  },
+  {
+    path: "/settings",
+    element: <SettingsPage />,
   },
 ]);
 
