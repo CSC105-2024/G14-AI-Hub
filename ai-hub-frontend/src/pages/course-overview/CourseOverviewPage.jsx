@@ -70,8 +70,8 @@ const CourseOverviewPage = () => {
   return (
     <div>
       <NavBar />
-      <div>
-        <h2 className="ml-3 text-white-500">Course Overview</h2>
+      <div className="bg-black-500">
+        <h2 className="ml-3 color-white-500">Course Overview</h2>
         <div className="grid grid-cols-4 p-3 content-center gap-3">
            {courses.map((course, index) => (
            <div className="bg-white rounded-lg border-2 border-black-500 p-4" key={index}>
