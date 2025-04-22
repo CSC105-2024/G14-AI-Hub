@@ -10,7 +10,27 @@ const CourseOverviewPage = () => {
         "https://static.printler.com/cache/c/4/1/7/d/c/c417dc9c0acfba8b61c6a40e81636b953e9a5566.jpg",
     },
     {
-      title: "What is AI?",
+      title: "Related Fields",
+      imgUrl:
+        "https://static.printler.com/cache/c/4/1/7/d/c/c417dc9c0acfba8b61c6a40e81636b953e9a5566.jpg",
+    },
+    {
+      title: "AI Problem Solving",
+      imgUrl:
+        "https://static.printler.com/cache/c/4/1/7/d/c/c417dc9c0acfba8b61c6a40e81636b953e9a5566.jpg",
+    },
+    {
+      title: "The Bayes Rule",
+      imgUrl:
+        "https://static.printler.com/cache/c/4/1/7/d/c/c417dc9c0acfba8b61c6a40e81636b953e9a5566.jpg",
+    },
+    {
+      title: "Types of ML",
+      imgUrl:
+        "https://static.printler.com/cache/c/4/1/7/d/c/c417dc9c0acfba8b61c6a40e81636b953e9a5566.jpg",
+    },
+    {
+      title: "The Nearest Neighbor Classifier",
       imgUrl:
         "https://static.printler.com/cache/c/4/1/7/d/c/c417dc9c0acfba8b61c6a40e81636b953e9a5566.jpg",
     },
@@ -24,31 +44,7 @@ const CourseOverviewPage = () => {
       imgUrl:
         "https://static.printler.com/cache/c/4/1/7/d/c/c417dc9c0acfba8b61c6a40e81636b953e9a5566.jpg",
     },
-    {
-      title: "What is AI?",
-      imgUrl:
-        "https://static.printler.com/cache/c/4/1/7/d/c/c417dc9c0acfba8b61c6a40e81636b953e9a5566.jpg",
-    },
-    {
-      title: "What is AI?",
-      imgUrl:
-        "https://static.printler.com/cache/c/4/1/7/d/c/c417dc9c0acfba8b61c6a40e81636b953e9a5566.jpg",
-    },
-    {
-      title: "What is AI?",
-      imgUrl:
-        "https://static.printler.com/cache/c/4/1/7/d/c/c417dc9c0acfba8b61c6a40e81636b953e9a5566.jpg",
-    },
-    {
-      title: "What is AI?",
-      imgUrl:
-        "https://static.printler.com/cache/c/4/1/7/d/c/c417dc9c0acfba8b61c6a40e81636b953e9a5566.jpg",
-    },
-    {
-      title: "What is AI?",
-      imgUrl:
-        "https://static.printler.com/cache/c/4/1/7/d/c/c417dc9c0acfba8b61c6a40e81636b953e9a5566.jpg",
-    },
+    
   ];
   return (
     <div>
