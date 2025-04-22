@@ -55,12 +55,12 @@ const CourseOverviewPage = () => {
         "https://static.printler.com/cache/c/4/1/7/d/c/c417dc9c0acfba8b61c6a40e81636b953e9a5566.jpg",
     },
     {
-      title: "Regression",
+      title: "Advanced neural network techniques",
       imgUrl:
         "https://static.printler.com/cache/c/4/1/7/d/c/c417dc9c0acfba8b61c6a40e81636b953e9a5566.jpg",
     },
     {
-      title: "Regression",
+      title: "Implications of AI",
       imgUrl:
         "https://static.printler.com/cache/c/4/1/7/d/c/c417dc9c0acfba8b61c6a40e81636b953e9a5566.jpg",
     },
