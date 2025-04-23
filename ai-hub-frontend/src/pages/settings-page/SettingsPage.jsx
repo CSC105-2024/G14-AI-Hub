@@ -5,12 +5,15 @@ import NavBar from "@/components/navbar/NavBar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useAuthContext } from "@/hooks/useAuthContext";
+import { useWidth } from "@/hooks/useWidth";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const SettingsPage = () => {
   const navigate = useNavigate();
   const { user } = useAuthContext();
+  const { width } = useWidth();
+
   const [form, setForm] = useState({
     name: user.name,
     email: user.email,
@@ -21,16 +24,18 @@ const SettingsPage = () => {
   return (
     <>
       <NavBar activePage={"setting"} />
+      <div className="bg-black md:h-200 h-180 flex flex-col items-center text-white ">
+        {width > 768 && (
+          <div className="font-bold self-end text-xl mr-10 mt-10 mb-15">
+            <Link
+              to={"/courses"}
+              className="mt-10 hover:text-[var(--primary-color)] "
+            >
+              To Course Overview
+            </Link>
+          </div>
+        )}
 
-      <div className="bg-black md:h-200 flex flex-col items-center text-white">
-        <div className="font-bold self-end text-xl mr-10 mt-10 mb-15">
-          <Link
-            to={"/courses"}
-            className="mt-10 hover:text-[var(--primary-color)] "
-          >
-            To Course Overview
-          </Link>
-        </div>
         <EditProfile img_url={user.img_url} />
         <div className="bg-black flex flex-col items-start gap-2 justify-center mt-10">
           <h1 className="font-bold text-2xl self-center">Edit Your Account</h1>
