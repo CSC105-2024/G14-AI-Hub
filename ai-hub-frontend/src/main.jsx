@@ -13,6 +13,7 @@ import { AuthContextProvider } from "./context/AuthContext";
 import { DataContextProvider } from "./context/DataContext";
 import CreatePage from "./pages/create-page/CreatePage";
 import EditPage from "./pages/edit-page/EditPage";
+import SettingsPage from "./pages/settings-page/SettingsPage";
 
 //TODO: protect the routes
 const router = createBrowserRouter([
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       { path: "create", element: <CreatePage /> },
       { path: "edit/:id", element: <EditPage /> },
     ],
+  },
+  {
+    path: "/settings",
+    element: <SettingsPage />,
   },
 ]);
 

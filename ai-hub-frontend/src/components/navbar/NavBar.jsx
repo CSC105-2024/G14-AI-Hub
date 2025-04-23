@@ -2,26 +2,43 @@ import React from "react";
 import logo from "../../assets/logo.png";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useAuthContext } from "@/hooks/useAuthContext";
+import { useWidth } from "@/hooks/useWidth";
 
-const NavBar = () => {
+const NavBar = ({ activePage }) => {
   const { user } = useAuthContext();
+  const { width } = useWidth();
 
   return (
-    <nav className="flex flex-row justify-between ">
+    <nav className={`flex flex-row justify-between px-2 py-3`}>
       <div>
-        <img src={logo} alt="Error" className="w-20" />
+        <img src={logo} alt="Error" className="md:w-20 w-10" />
       </div>
-      <div className="font-bold text-md flex items-center">
-        Contribute the AI knowledge with AI Hub!
-      </div>
-      <div className="mr-2 flex flex-col items-center mt-3">
-        {/* will also implement conditional rendering */}
-        <Avatar className={"h-auto w-13"}>
-          <AvatarImage src={user.img_url} />
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
-        <div className="font-bold">{user.role}</div>
-      </div>
+
+      {width > 768 ? (
+        <>
+          <div className="font-bold text-md flex items-center">
+            Contribute the AI knowledge with AI Hub!
+          </div>
+          <div
+            className={`mr-2 flex items-center text-center ${
+              activePage !== "setting" ? "flex-col" : ""
+            }`}
+          >
+            {activePage !== "setting" && (
+              <Avatar className={"h-auto w-13"}>
+                <AvatarImage src={user.img_url} />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+            )}
+
+            <div className="font-bold text-xl">{user.role}</div>
+          </div>
+        </>
+      ) : (
+        <h2 className="text-[var(--primary-color)] text-2xl font-bold flex items-center">
+          AI HUB
+        </h2>
+      )}
     </nav>
   );
 };

@@ -8,7 +8,7 @@ const ImgLists = ({ data, index, setFile }) => {
 
   return (
     <div
-      className="border  rounded-2xl gap-50 border-gray-100 mb-3 flex items-center justify-around h-15"
+      className="border rounded-2xl gap-50 border-gray-100 mb-3 flex items-center justify-between h-15 px-4 2xl:px-6"
       id={index}
     >
       <div className="flex gap-3 items-center w-60">

@@ -5,6 +5,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { courses } from "@/services/data";
 import { useAuthContext } from "@/hooks/useAuthContext";
 import { useWidth } from "@/hooks/useWidth";
+import AlertBox from "@/components/alert-box/AlertBox";
 
 //Nadi
 const IndividualCourse = () => {
@@ -15,12 +16,8 @@ const IndividualCourse = () => {
   const { width } = useWidth();
 
   const data = courses[0];
-  const [showPopup, setShowPopup] = useState(false);
 
   const navigate = useNavigate();
-  function handleDelete() {
-    setShowPopup(true);
-  }
 
   function confirmDelete() {
     navigate("/");
@@ -38,15 +35,16 @@ const IndividualCourse = () => {
     <div className="flex flex-col gap-5 justify-center items-center dark bg-[var(--background)] py-7 px-7 md:px-10">
       <header className="flex flex-col text-white w-full">
         <h1 className="text-center text-3xl font-bold">{data.title}</h1>
-        <Button
-          onClick={() => {
-            navigate("/courses");
-          }}
-          variant="link"
-          className="self-end text-xl font-semibold hover:text-[var(--primary-color)] hover:cursor-pointer hidden md:block"
-        >
-          To Course Overview
-        </Button>
+        {width > 768 && (
+          <div className="font-bold self-end text-xl">
+            <Link
+              to={"/courses"}
+              className="mt-10 hover:text-[var(--primary-color)]"
+            >
+              To Course Overview
+            </Link>
+          </div>
+        )}
       </header>
       <div className="image-container bg-black md:bg-white w-full pt-5 md:py-20 flex flex-col md:flex-row justify-around items-center gap-5">
         {data.images.map((image) => (
@@ -67,27 +65,20 @@ const IndividualCourse = () => {
       </h2>
       {user.role === "Teacher" && width > 768 && (
         <div className="buttons justify-center gap-3 hidden md:flex">
-          <Button
-            onClick={handleDelete}
-            className="w-2/3 bg-white text-black text-lg hover:text-[var(--primary-color)] hover:bg-[#E5E7EB]"
-          >
-            Delete
-          </Button>
+          <AlertBox
+            css={
+              "w-30 bg-white text-black text-lg hover:text-[var(--primary-color)] hover:bg-[#E5E7EB]"
+            }
+            btnName={"Delete"}
+            title={"Are you sure you want to log out ?"}
+          />
           <Button
             onClick={handleEdit}
-            className="w-2/3 bg-[var(--primary-color)] text-white text-lg hover:bg-[#4D179A]"
+            className="w-30 bg-[var(--primary-color)] text-white text-lg hover:bg-[#4D179A]"
           >
             Edit
           </Button>
         </div>
-      )}
-
-      {showPopup && (
-        <Popup
-          message="Are you sure you want to delete this course?"
-          onConfirm={confirmDelete}
-          onCancel={cancelDelete}
-        />
       )}
     </div>
   );

@@ -61,9 +61,10 @@ const UploadImage = ({ setForm, length }) => {
         )}
       </div>
       <div className="text-gray-400 ">
-        Add your documents here, and you have to upload 3 files
+        Please upload 4 images. The first image will be displayed on the course
+        overview.
       </div>
-      <div className=" border-[var(--primary-color)] border-2 border-dashed mt-5 rounded-xl p-10">
+      <div className=" border-[var(--primary-color)] border-2 border-dashed mt-5 rounded-xl p-10 2xl:p-20">
         <label className="cursor-pointer text-center text-gray-700 ">
           {/* Custom placeholder text */}
           <MdOutlineCloudUpload className="text-4xl text-[var(--primary-color)] mx-auto" />
@@ -95,11 +96,11 @@ const UploadImage = ({ setForm, length }) => {
         <hr className="w-[47%]" />
       </div>
       <h1 className="font-bold text-xl mb-4 ">Upload From URL</h1>
-      <div className="border p-3 bg-gray-100 rounded-2xl border-white mb-5">
+      <div className="border p-3 bg-gray-100 rounded-2xl border-white mb-5 flex justify-between 2xl:px-10 px-5">
         <input
           type="text"
           value={url}
-          className="w-[80%] focus:ring-0 focus:outline-none ml-4"
+          className="w-[80%] focus:ring-0 focus:outline-none "
           onChange={(e) => setUrl(e.target.value)}
           ref={ref}
           placeholder="URL"
