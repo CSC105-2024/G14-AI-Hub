@@ -9,13 +9,9 @@ const NavBar = ({ activePage }) => {
   const { width } = useWidth();
 
   return (
-    <nav
-      className={`flex flex-row justify-between px-2 ${
-        activePage !== "setting" ? "py-2" : ""
-      }`}
-    >
+    <nav className={`flex flex-row justify-between px-2 py-3`}>
       <div>
-        <img src={logo} alt="Error" className="md:w-20 w-15 " />
+        <img src={logo} alt="Error" className="md:w-20 w-10" />
       </div>
 
       {width > 768 ? (
