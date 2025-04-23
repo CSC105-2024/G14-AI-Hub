@@ -1,9 +1,16 @@
 import React from "react";
 import NavBar from "@/components/navbar/NavBar";
 import Footer from "@/components/footer/Footer";
+import Courses from "@/components/courses/Courses";
+import { useAuthContext } from "@/hooks/useAuthContext";
+import { Button } from "@/components/ui/button";
+import { useWidth } from "@/hooks/useWidth";
 
 //Albert
 const CourseOverviewPage = () => {
+  const { user } = useAuthContext();
+  const { width } = useWidth();
+
   const courses = [
     {
       title: "What is AI?",
@@ -65,39 +72,37 @@ const CourseOverviewPage = () => {
       imgUrl:
         "https://static.printler.com/cache/c/4/1/7/d/c/c417dc9c0acfba8b61c6a40e81636b953e9a5566.jpg",
     },
-    
-    
   ];
-  return (                                   
-    <div>                                    
-      <NavBar />                                
-      <div className="bg-black  p-5">
-        <h2 className="ml-3 mb-5 text-2xl text-white font-semibold">Course Overview</h2>
+  return (
+    <div>
+      <NavBar />
+      <div className="bg-black p-5 ">
+        <div className="w-320 mx-auto">
+          <h2 className="ml-3 mb-5 text-2xl text-white font-semibold mt-10">
+            Course Overview
+          </h2>
 
-        <div className="grid grid-row-8 md:grid-cols-4 rounded-lg gap-4 gap-y-10 ">
-        
-           {courses.map((course, index) => (
-
-           <div className="bg-white  rounded-lg flex  md:flex-col  overflow-hidden" key={index}>
-             <img src={course.imgUrl} className="md:h-50"/>
-              <hr className="border border-black"/>
-              
-             <h2 className="text-center text-xl p-3 font-bold">{course.title}</h2>
-           </div>
-
+          <div className="grid md:grid-cols-4 rounded-lg gap-4 gap-y-7 mb-10">
+            {courses.map((course, index) => (
+              <Courses course={course} index={index} key={index} />
             ))}
-        
+          </div>
+          {user.role === "Teacher" && width > 768 && (
+            <div className="flex justify-center">
+              <Button
+                className={
+                  "bg-[var(--primary-color)] p-6 mb-5 hover:bg-violet-900"
+                }
+              >
+                Create Course
+              </Button>
+            </div>
+          )}
         </div>
       </div>
       <Footer />
-      
     </div>
   );
 };
 
 export default CourseOverviewPage;
-
-
-
-
-
