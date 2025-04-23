@@ -73,6 +73,7 @@ const CourseOverviewPage = () => {
       <NavBar />                                
       <div className="bg-black  p-5">
         <h2 className="ml-3 mb-5 text-2xl text-white font-semibold">Course Overview</h2>
+
         <div className="grid grid-row-8 md:grid-cols-4 rounded-lg gap-4 gap-y-10 ">
         
            {courses.map((course, index) => (
@@ -81,7 +82,7 @@ const CourseOverviewPage = () => {
              <img src={course.imgUrl} className="md:h-50"/>
               <hr className="border border-black"/>
               
-             <p className="text-center text-xl p-3 font-bold">{course.title}</p>
+             <h2 className="text-center text-xl p-3 font-bold">{course.title}</h2>
            </div>
 
             ))}
@@ -95,3 +96,8 @@ const CourseOverviewPage = () => {
 };
 
 export default CourseOverviewPage;
+
+
+
+
+
