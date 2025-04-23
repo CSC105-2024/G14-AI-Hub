@@ -35,14 +35,16 @@ const IndividualCourse = () => {
     <div className="flex flex-col gap-5 justify-center items-center dark bg-[var(--background)] py-7 px-7 md:px-10">
       <header className="flex flex-col text-white w-full">
         <h1 className="text-center text-3xl font-bold">{data.title}</h1>
-        <div className="font-bold self-end text-xl">
-          <Link
-            to={"/courses"}
-            className="mt-10 hover:text-[var(--primary-color)]"
-          >
-            To Course Overview
-          </Link>
-        </div>
+        {width > 768 && (
+          <div className="font-bold self-end text-xl">
+            <Link
+              to={"/courses"}
+              className="mt-10 hover:text-[var(--primary-color)]"
+            >
+              To Course Overview
+            </Link>
+          </div>
+        )}
       </header>
       <div className="image-container bg-black md:bg-white w-full pt-5 md:py-20 flex flex-col md:flex-row justify-around items-center gap-5">
         {data.images.map((image) => (
