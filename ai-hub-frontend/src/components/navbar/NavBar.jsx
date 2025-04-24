@@ -49,7 +49,12 @@ const NavBar = ({ activePage, setSelectedCourses, courses }) => {
 
                 <IoSearchSharp />
               </div>
-              <SortBtn name={"Sort by:"} className={" border-gray-400"} />
+              <SortBtn
+                name={"Sort by:"}
+                className={" border-gray-400"}
+                setSelectedCourses={setSelectedCourses}
+                courses={courses}
+              />
             </div>
           ) : (
             <div className="font-bold text-md flex items-center">

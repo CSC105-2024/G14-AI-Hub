@@ -8,11 +8,24 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-const SortBtn = ({ name, className }) => {
+const SortBtn = ({ name, className, setSelectedCourses, courses }) => {
   const [value, setValue] = useState("default");
+  const [tempCourse, setTempCourse] = useState(courses);
 
   const handleChange = (data) => {
     setValue(data);
+
+    switch (data) {
+      case "default":
+        setSelectedCourses(courses);
+        break;
+      case "alpha":
+        setSelectedCourses(
+          tempCourse.sort((a, b) => a.title.localeCompare(b.title)) //localeCompare is for alphabatical sorting
+        );
+        break;
+      //TODO: will implement latest and newest later
+    }
   };
 
   return (
