@@ -8,31 +8,27 @@
 
 ## 🔄 Contribution Workflow
 
-
 1. git clone `https://github.com/CSC105-2024/G14-AI-Hub.git`
-2. *Create a feature branch*: git checkout -b feature-xxx
-3. *Commit your changes*:
+2. _Create a feature branch_: git checkout -b feature-xxx
+3. _Commit your changes_:
 
-   
+   ```sh
    git add .
    git commit -m "Added new feature"
-   
+   ```
 
-5. *Push to GitHub*: git push origin feature-xxx
-6. *Create a Pull Request* to dev branch and request a review
+4. _Push to GitHub_: git push origin feature-xxx
+5. _Create a Pull Request_ to dev branch and request a review
 
 ## ✅ Code Guidelines
 
-- Follow best practices for *React & Express.js*
-- Keep commits *small and meaningful*
-- Write *clear commit messages*
+- Follow best practices for _React & Express.js_
+- Keep commits _small and meaningful_
+- Write _clear commit messages_
 - Run npm run lint before submitting PRs
 
 ## 🛡️ Security & Best Practices
 
-- *Use environment variables* (.env) for API keys & secrets
-- *Validate user input* to prevent SQL injection
-- *Run tests before merging*
-
----
-
+- _Use environment variables_ (.env) for API keys & secrets
+- _Validate user input_ to prevent SQL injection
+- _Run tests before merging_
