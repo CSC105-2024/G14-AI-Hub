@@ -27,7 +27,6 @@ const SortBtn = ({ name, className }) => {
           <SelectGroup>
             <SelectItem value="default">{name}</SelectItem>
             <SelectItem value="alpha">A {"->"} Z</SelectItem>
-            <SelectItem value="tr">Teacher's Name</SelectItem>
             <SelectItem value="earl">Earliest</SelectItem>
             <SelectItem value="new">Newest</SelectItem>
           </SelectGroup>

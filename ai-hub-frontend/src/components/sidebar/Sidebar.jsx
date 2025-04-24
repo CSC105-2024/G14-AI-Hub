@@ -86,12 +86,12 @@ const Sidebar = () => {
               </li>
             ))}
 
-            <li className="flex justify-center">
+            <li className="flex justify-center mb-40">
               <SortBtn name={"Sort"} />
             </li>
           </div>
 
-          <li className="flex justify-center mt-47">
+          <li className="flex justify-center">
             <AlertBox
               btnName={"Log out"}
               title={"Are you sure you want to log out?"}

@@ -7,12 +7,21 @@ import SortBtn from "../sidebar/SortBtn";
 import { Input } from "@/components/ui/input";
 import { IoSearchSharp } from "react-icons/io5";
 
-const NavBar = ({ activePage }) => {
+const NavBar = ({ activePage, setSelectedCourses, courses }) => {
   const { user } = useAuthContext();
   const { width } = useWidth();
 
+  const onSearch = (e) => {
+    const title = e.target.value.toLowerCase();
+    setSelectedCourses(
+      courses.filter((c) => c.title.toLowerCase().includes(title))
+    );
+  };
+
   return (
-    <nav className={`flex flex-row justify-between px-2 py-3`}>
+    <nav
+      className={`flex flex-row justify-between px-2 py-3 sticky top-0 bg-white `}
+    >
       <div className="flex items-center gap-2">
         <img src={logo} alt="Error" className="md:w-20 w-10" />
         {/* condtional rendering */}
@@ -35,6 +44,7 @@ const NavBar = ({ activePage }) => {
                   type="text"
                   placeholder="Search"
                   className="outline-none ring-0 border-none shadow-none focus:outline-none focus:ring-0 focus:border-none focus-visible:ring-0 focus-visible:border-none bg-transparent text-inherit placeholder:text-inherit"
+                  onChange={(e) => onSearch(e)}
                 />
 
                 <IoSearchSharp />

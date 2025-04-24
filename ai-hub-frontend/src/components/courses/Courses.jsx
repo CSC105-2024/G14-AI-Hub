@@ -3,7 +3,7 @@ import React from "react";
 const Courses = ({ course, index }) => {
   return (
     <div
-      className="bg-white w-95 md:w-auto rounded-2xl flex item-center md:flex-col border-2 border-black overflow-hidden hover:border-[var(--primary-color)] md:p-0 h-30 md:h-75 "
+      className="bg-white w-85 md:w-auto rounded-2xl flex item-center md:flex-col border-2 border-black overflow-hidden hover:border-[var(--primary-color)] md:p-0 h-30 md:h-75 "
       id={index}
     >
       <img src={course.imgUrl} className="md:h-50 md:w-full h-full w-[35%]" />
