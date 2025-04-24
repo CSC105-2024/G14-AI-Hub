@@ -8,6 +8,7 @@ import AlertBox from "../alert-box/AlertBox";
 import { useNavigate } from "react-router-dom";
 import Profile from "./Profile";
 import { useAuthContext } from "@/hooks/useAuthContext";
+import { IoSearchSharp } from "react-icons/io5";
 
 //TODO: will add later
 const btns = [
@@ -17,7 +18,7 @@ const btns = [
   { name: "Course Overview" },
 ];
 
-const Sidebar = ({ setSelectedCourses, courses }) => {
+const Sidebar = ({ setSelectedCourses, courses, activePage, setIsSearch }) => {
   const drawerRef = useRef();
   const navigate = useNavigate();
 
@@ -50,11 +51,19 @@ const Sidebar = ({ setSelectedCourses, courses }) => {
         <h2 className="text-[var(--primary-color)] text-2xl font-bold">
           AI HUB
         </h2>
-        {/* Page content here */}
+
         {/* TODO: need to do conditional rendering */}
-        <label htmlFor="my-drawer-4" className="text-4xl">
-          <IoReorderThreeSharp />
-        </label>
+        <div className="flex items-center gap-2">
+          <IoSearchSharp
+            className={`text-2xl ${
+              activePage !== "courseoverview" ? "hidden" : ""
+            }`}
+            onClick={() => setIsSearch(true)}
+          />
+          <label htmlFor="my-drawer-4" className="text-4xl">
+            <IoReorderThreeSharp />
+          </label>
+        </div>
       </div>
       <div className="drawer-side">
         <label
