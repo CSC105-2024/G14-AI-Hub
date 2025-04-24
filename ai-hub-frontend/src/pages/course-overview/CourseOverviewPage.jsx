@@ -77,12 +77,12 @@ const CourseOverviewPage = () => {
     <div>
       <NavBar />
       <div className="bg-black p-5 ">
-        <div className="w-320 mx-auto">
-          <h2 className="ml-3 mb-5 text-2xl text-white font-semibold mt-10">
+        <div className="md:w-330 mx-auto md:block flex justify-center">
+          <h2 className="ml-3 mb-5 text-2xl text-white font-semibold mt-10 md:block hidden">
             Course Overview
           </h2>
 
-          <div className="grid md:grid-cols-4 rounded-lg gap-4 gap-y-7 mb-10">
+          <div className="grid md:grid-cols-4 rounded-lg gap-4 md:gap-y-7 mb-10 ">
             {courses.map((course, index) => (
               <Courses course={course} index={index} key={index} />
             ))}

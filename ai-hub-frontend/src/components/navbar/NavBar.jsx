@@ -24,12 +24,14 @@ const NavBar = ({ activePage }) => {
               activePage !== "setting" ? "flex-col" : ""
             }`}
           >
-            {activePage !== "setting" && (
-              <Avatar className={"h-auto w-13"}>
-                <AvatarImage src={user.img_url} />
-                <AvatarFallback>CN</AvatarFallback>
-              </Avatar>
-            )}
+            <Avatar
+              className={`h-auto w-13 ${
+                activePage === "setting" ? "hidden" : ""
+              }`}
+            >
+              <AvatarImage src={user.img_url} />
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
 
             <div className="font-bold text-xl">{user.role}</div>
           </div>
