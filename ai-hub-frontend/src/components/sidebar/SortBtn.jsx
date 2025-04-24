@@ -8,7 +8,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-const SortBtn = ({ name, className, setSelectedCourses, courses }) => {
+const SortBtn = ({ name, className, setSelectedCourses, courses, onClick }) => {
   const [value, setValue] = useState("default");
   const [tempCourse, setTempCourse] = useState(courses);
 
@@ -37,7 +37,7 @@ const SortBtn = ({ name, className, setSelectedCourses, courses }) => {
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
-          <SelectGroup>
+          <SelectGroup onClick={onClick}>
             <SelectItem value="default">{name}</SelectItem>
             <SelectItem value="alpha">A {"->"} Z</SelectItem>
             <SelectItem value="earl">Earliest</SelectItem>

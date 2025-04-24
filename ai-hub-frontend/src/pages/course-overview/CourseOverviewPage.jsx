@@ -6,6 +6,7 @@ import { useAuthContext } from "@/hooks/useAuthContext";
 import { Button } from "@/components/ui/button";
 import { useWidth } from "@/hooks/useWidth";
 import { useNavigate } from "react-router-dom";
+import Sidebar from "@/components/sidebar/Sidebar";
 
 //Albert
 const CourseOverviewPage = () => {
@@ -80,12 +81,21 @@ const CourseOverviewPage = () => {
 
   return (
     <div>
-      <NavBar
-        activePage={"courseoverview"}
-        setSelectedCourses={setSelectedCourses}
-        //temp
-        courses={courses}
-      />
+      {width > 768 ? (
+        <NavBar
+          activePage={"courseoverview"}
+          setSelectedCourses={setSelectedCourses}
+          //temp
+          courses={courses}
+        />
+      ) : (
+        <Sidebar
+          setSelectedCourses={setSelectedCourses}
+          //temp
+          courses={courses}
+        />
+      )}
+
       <div className="bg-black p-5 ">
         <div className="md:w-330 mx-auto md:block flex justify-center">
           <h2 className="ml-3 mb-5 text-2xl text-white font-semibold mt-10 md:block hidden">

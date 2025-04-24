@@ -37,6 +37,7 @@ const SettingsPage = () => {
         )}
 
         <EditProfile img_url={user.img_url} />
+
         <div className="bg-black flex flex-col items-start gap-2 justify-center mt-10">
           <h1 className="font-bold text-2xl self-center">Edit Your Account</h1>
           <h2 className="font-bold text-xl">Username</h2>
@@ -44,7 +45,7 @@ const SettingsPage = () => {
             type="text"
             value={form.name}
             placeholder="Username"
-            className={"bg-white text-black w-90"}
+            className={"bg-white text-black max-w-90"}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
           />
           <h2 className="font-bold text-xl">Email</h2>
@@ -52,14 +53,14 @@ const SettingsPage = () => {
             type="text"
             placeholder="Email"
             value={form.email}
-            className={"bg-white text-black w-90"}
+            className={"bg-white text-black max-w-90"}
             onChange={(e) => setForm({ ...form, email: e.target.value })}
           />
           <h2 className="font-bold text-xl">Password</h2>
           <Input
             type="text"
             placeholder="Previous password"
-            className={"bg-white text-black w-90"}
+            className={"bg-white text-black max-w-90"}
             onChange={(e) => setForm({ ...form, oldPassword: e.target.value })}
           />
           <h2 className="font-bold text-xl">New Password</h2>
@@ -67,7 +68,7 @@ const SettingsPage = () => {
             type="text"
             placeholder="New password"
             className={
-              "bg-white text-black w-90 hover:text-[var(--primary-color)]"
+              "bg-white text-black max-w-90 hover:text-[var(--primary-color)]"
             }
             onChange={(e) => setForm({ ...form, newPassword: e.target.value })}
           />

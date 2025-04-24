@@ -17,12 +17,11 @@ const btns = [
   { name: "Course Overview" },
 ];
 
-const Sidebar = () => {
+const Sidebar = ({ setSelectedCourses, courses }) => {
   const drawerRef = useRef();
   const navigate = useNavigate();
 
   const { user } = useAuthContext();
-  console.log(user);
 
   const handleClick = (name) => {
     if (name === "Course Overview") {
@@ -30,11 +29,14 @@ const Sidebar = () => {
       drawerRef.current.checked = false;
       //navigate
       navigate("/courses");
+    } else if (name === "Profile Setting") {
+      drawerRef.current.checked = false;
+      navigate("/settings");
     }
   };
 
   return (
-    <div className="drawer drawer-end p-3">
+    <div className="drawer drawer-end p-3 sticky top-0 z-50 bg-white shadow">
       <input
         id="my-drawer-4"
         type="checkbox"
@@ -87,7 +89,13 @@ const Sidebar = () => {
             ))}
 
             <li className="flex justify-center mb-40">
-              <SortBtn name={"Sort"} />
+              <SortBtn
+                name={"Sort"}
+                setSelectedCourses={setSelectedCourses}
+                //temp
+                courses={courses}
+                onClick={() => (drawerRef.current.checked = false)}
+              />
             </li>
           </div>
 

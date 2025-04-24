@@ -20,7 +20,7 @@ const NavBar = ({ activePage, setSelectedCourses, courses }) => {
 
   return (
     <nav
-      className={`flex flex-row justify-between px-2 py-3 sticky top-0 bg-white `}
+      className={`flex flex-row justify-between px-2 py-3 sticky top-0 bg-white z-50 shadow`}
     >
       <div className="flex items-center gap-2">
         <img src={logo} alt="Error" className="md:w-20 w-10" />
