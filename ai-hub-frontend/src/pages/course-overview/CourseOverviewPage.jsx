@@ -75,7 +75,7 @@ const CourseOverviewPage = () => {
   ];
   return (
     <div>
-      <NavBar />
+      <NavBar activePage={"courseoverview"} />
       <div className="bg-black p-5 ">
         <div className="md:w-330 mx-auto md:block flex justify-center">
           <h2 className="ml-3 mb-5 text-2xl text-white font-semibold mt-10 md:block hidden">

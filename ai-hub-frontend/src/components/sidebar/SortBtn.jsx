@@ -8,7 +8,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-const SortBtn = ({ name }) => {
+const SortBtn = ({ name, className }) => {
   const [value, setValue] = useState("default");
 
   const handleChange = (data) => {
@@ -18,7 +18,9 @@ const SortBtn = ({ name }) => {
   return (
     <div>
       <Select value={value} onValueChange={handleChange}>
-        <SelectTrigger className="w-35 border-black">
+        <SelectTrigger
+          className={`w-35 border-black hover:border-[var(--primary-color)]${className}`}
+        >
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
