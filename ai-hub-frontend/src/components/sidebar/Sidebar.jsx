@@ -58,7 +58,7 @@ const Sidebar = ({ setSelectedCourses, courses, activePage, setIsSearch }) => {
             className={`text-2xl ${
               activePage !== "courseoverview" ? "hidden" : ""
             }`}
-            onClick={() => setIsSearch(true)}
+            onClick={() => setIsSearch((s) => !s)}
           />
           <label htmlFor="my-drawer-4" className="text-4xl">
             <IoReorderThreeSharp />

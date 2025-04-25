@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useWidth } from "@/hooks/useWidth";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "@/components/sidebar/Sidebar";
+import { SearchResults } from "@/components/search-results/SearchResults";
 
 //Albert
 const CourseOverviewPage = () => {
@@ -82,55 +83,57 @@ const CourseOverviewPage = () => {
 
   return (
     <>
-      {isSearch ? (
-        ""
-      ) : (
-        <div>
-          {width > 768 ? (
-            <NavBar
-              activePage={"courseoverview"}
-              setSelectedCourses={setSelectedCourses}
-              //temp
-              courses={courses}
-            />
-          ) : (
-            <Sidebar
-              setSelectedCourses={setSelectedCourses}
-              //temp
-              courses={courses}
-              activePage={"courseoverview"}
-              setIsSearch={setIsSearch}
-            />
-          )}
+      <div>
+        {width > 768 ? (
+          <NavBar
+            activePage={"courseoverview"}
+            setSelectedCourses={setSelectedCourses}
+            //temp
+            courses={courses}
+          />
+        ) : (
+          <Sidebar
+            setSelectedCourses={setSelectedCourses}
+            //temp
+            courses={courses}
+            activePage={"courseoverview"}
+            setIsSearch={setIsSearch}
+          />
+        )}
 
-          <div className="bg-black p-5 ">
-            <div className="md:w-330 mx-auto md:block flex justify-center">
-              <h2 className="ml-3 mb-5 text-2xl text-white font-semibold mt-10 md:block hidden">
-                Course Overview
-              </h2>
+        {isSearch && width < 768 ? (
+          <SearchResults setIsSearch={setIsSearch} />
+        ) : (
+          <>
+            <div className="bg-black p-5 ">
+              <div className="md:w-330 mx-auto md:block flex justify-center">
+                <h2 className="ml-3 mb-5 text-2xl text-white font-semibold mt-10 md:block hidden">
+                  Course Overview
+                </h2>
 
-              <div className="grid md:grid-cols-4 rounded-lg gap-4 md:gap-y-7 mb-10 ">
-                {selectedCourses.map((course, index) => (
-                  <Courses course={course} index={index} key={index} />
-                ))}
-              </div>
-              {user.role === "Teacher" && width > 768 && (
-                <div className="flex justify-center">
-                  <Button
-                    className={
-                      "bg-[var(--primary-color)] p-6 mb-5 hover:bg-violet-900"
-                    }
-                    onClick={() => navigate("/dashboard/create")}
-                  >
-                    Create Course
-                  </Button>
+                <div className="grid md:grid-cols-4 rounded-lg gap-4 md:gap-y-7 mb-10 ">
+                  {selectedCourses.map((course, index) => (
+                    <Courses course={course} index={index} key={index} />
+                  ))}
                 </div>
-              )}
+                {user.role === "Teacher" && width > 768 && (
+                  <div className="flex justify-center">
+                    <Button
+                      className={
+                        "bg-[var(--primary-color)] p-6 mb-5 hover:bg-violet-900"
+                      }
+                      onClick={() => navigate("/dashboard/create")}
+                    >
+                      Create Course
+                    </Button>
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
-          <Footer />
-        </div>
-      )}
+            <Footer />
+          </>
+        )}
+      </div>
     </>
   );
 };
