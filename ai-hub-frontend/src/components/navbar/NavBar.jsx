@@ -6,8 +6,10 @@ import { useWidth } from "@/hooks/useWidth";
 import SortBtn from "../sidebar/SortBtn";
 import { Input } from "@/components/ui/input";
 import { IoSearchSharp } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = ({ activePage, setSelectedCourses, courses }) => {
+  const navigate = useNavigate();
   const { user } = useAuthContext();
   const { width } = useWidth();
 
@@ -63,9 +65,14 @@ const NavBar = ({ activePage, setSelectedCourses, courses }) => {
           )}
 
           <div
+            onClick={() => {
+              if (activePage !== "setting") {
+                navigate("/settings");
+              }
+            }}
             className={`mr-2 flex items-center text-center ${
               activePage !== "setting" ? "flex-col" : ""
-            }`}
+            } ${activePage !== "setting" ? "cursor-pointer" : ""}`}
           >
             {/* condtional rendering */}
             <Avatar
