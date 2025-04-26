@@ -7,8 +7,6 @@ import { useNavigate } from "react-router-dom";
 export const SearchResults = ({ setIsSearch }) => {
   const [searchCourses, setSearchCourses] = useState([]);
 
-  console.log(searchCourses);
-
   //TODO: need to replace with real data
   const onSearchChange = (e) => {
     const course = e.target.value.toLowerCase();

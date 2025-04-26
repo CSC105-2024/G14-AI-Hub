@@ -39,8 +39,10 @@ const SettingsPage = () => {
         <EditProfile img_url={user.img_url} />
 
         <div className="bg-black flex flex-col items-start gap-2 justify-center mt-10">
-          <h1 className="font-bold text-2xl self-center">Edit Your Account</h1>
-          <h2 className="font-bold text-xl">Username</h2>
+          <h1 className="font-bold text-2xl self-center cursor-pointer">
+            Edit Your Account
+          </h1>
+          <h2 className="font-bold text-xl cursor-pointer">Username</h2>
           <Input
             type="text"
             value={form.name}
@@ -48,7 +50,7 @@ const SettingsPage = () => {
             className={"bg-white text-black max-w-90"}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
           />
-          <h2 className="font-bold text-xl">Email</h2>
+          <h2 className="font-bold text-xl cursor-pointer">Email</h2>
           <Input
             type="text"
             placeholder="Email"
@@ -56,14 +58,14 @@ const SettingsPage = () => {
             className={"bg-white text-black max-w-90"}
             onChange={(e) => setForm({ ...form, email: e.target.value })}
           />
-          <h2 className="font-bold text-xl">Password</h2>
+          <h2 className="font-bold text-xl cursor-pointer">Password</h2>
           <Input
             type="text"
             placeholder="Previous password"
             className={"bg-white text-black max-w-90"}
             onChange={(e) => setForm({ ...form, oldPassword: e.target.value })}
           />
-          <h2 className="font-bold text-xl">New Password</h2>
+          <h2 className="font-bold text-xl cursor-pointer">New Password</h2>
           <Input
             type="text"
             placeholder="New password"

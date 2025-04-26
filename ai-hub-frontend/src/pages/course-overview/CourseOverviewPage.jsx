@@ -80,6 +80,7 @@ const CourseOverviewPage = () => {
   ];
 
   const [selectedCourses, setSelectedCourses] = useState(courses);
+  console.log(selectedCourses.length);
 
   return (
     <>
@@ -112,9 +113,15 @@ const CourseOverviewPage = () => {
                 </h2>
 
                 <div className="grid md:grid-cols-4 rounded-lg gap-4 md:gap-y-7 mb-10 ">
-                  {selectedCourses.map((course, index) => (
-                    <Courses course={course} index={index} key={index} />
-                  ))}
+                  {selectedCourses.length > 0 ? (
+                    selectedCourses.map((course, index) => (
+                      <Courses course={course} index={index} key={index} />
+                    ))
+                  ) : (
+                    <div className="font-bold text-white h-80 flex items-center mx-auto item-center col-span-4 text-3xl mb-20">
+                      No courses found
+                    </div>
+                  )}
                 </div>
                 {user.role === "Teacher" && width > 768 && (
                   <div className="flex justify-center">

@@ -22,7 +22,7 @@ const NavBar = ({ activePage, setSelectedCourses, courses }) => {
     <nav
       className={`flex flex-row justify-between px-2 py-3 sticky top-0 bg-white z-50 shadow`}
     >
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 cursor-pointer">
         <img src={logo} alt="Error" className="md:w-20 w-10" />
         {/* condtional rendering */}
         <h2
@@ -38,7 +38,7 @@ const NavBar = ({ activePage, setSelectedCourses, courses }) => {
         <>
           {/* condtional rendering */}
           {activePage === "courseoverview" ? (
-            <div className="flex gap-3 items-center">
+            <div className="flex gap-3 items-center cursor-pointer">
               <div className="flex items-center border border-gray-400 px-3 w-100 rounded-md hover:border-[var(--primary-color)] h-9">
                 <Input
                   type="text"
@@ -57,7 +57,7 @@ const NavBar = ({ activePage, setSelectedCourses, courses }) => {
               />
             </div>
           ) : (
-            <div className="font-bold text-md flex items-center">
+            <div className="font-bold text-md flex items-center cursor-pointer">
               Contribute the AI knowledge with AI Hub!
             </div>
           )}
@@ -68,6 +68,7 @@ const NavBar = ({ activePage, setSelectedCourses, courses }) => {
             }`}
           >
             {/* condtional rendering */}
+
             <Avatar
               className={`h-auto w-13 ${
                 activePage === "setting" ? "hidden" : ""
@@ -80,7 +81,7 @@ const NavBar = ({ activePage, setSelectedCourses, courses }) => {
             <div
               className={`font-bold ${
                 activePage === "setting" ? "text-xl" : ""
-              }`}
+              } cursor-pointer`}
             >
               {user.role}
             </div>
