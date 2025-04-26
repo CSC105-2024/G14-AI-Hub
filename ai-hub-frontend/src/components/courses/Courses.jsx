@@ -10,7 +10,7 @@ const Courses = ({ course, index }) => {
 
   return (
     <div
-      className="bg-white max-w-80 md:w-auto rounded-2xl flex item-center md:flex-col border-2 border-black overflow-hidden hover:border-[var(--primary-color)] md:p-0 h-30 md:h-75 "
+      className="bg-white max-w-80 md:w-auto rounded-2xl flex item-center md:flex-col border-2 border-black overflow-hidden hover:border-[var(--primary-color)] md:p-0 h-30 md:h-75 cursor-pointer"
       id={index}
       onClick={redirect}
     >
