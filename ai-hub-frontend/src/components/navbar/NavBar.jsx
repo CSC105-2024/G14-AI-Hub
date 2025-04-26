@@ -65,11 +65,6 @@ const NavBar = ({ activePage, setSelectedCourses, courses }) => {
           )}
 
           <div
-            onClick={() => {
-              if (activePage !== "setting") {
-                navigate("/settings");
-              }
-            }}
             className={`mr-2 flex items-center text-center ${
               activePage !== "setting" ? "flex-col" : ""
             } ${activePage !== "setting" ? "cursor-pointer" : ""}`}
@@ -77,6 +72,9 @@ const NavBar = ({ activePage, setSelectedCourses, courses }) => {
             {/* condtional rendering */}
 
             <Avatar
+              onClick={() => {
+                navigate("/settings");
+              }}
               className={`h-auto w-13 ${
                 activePage === "setting" ? "hidden" : ""
               }`}
