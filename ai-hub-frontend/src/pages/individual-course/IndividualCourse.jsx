@@ -70,7 +70,7 @@ const IndividualCourse = () => {
               "w-30 bg-white text-black text-lg hover:text-[var(--primary-color)] hover:bg-[#E5E7EB]"
             }
             btnName={"Delete"}
-            title={"Are you sure you want to log out ?"}
+            title={"Are you sure you want to delete this course ?"}
           />
           <Button
             onClick={handleEdit}
