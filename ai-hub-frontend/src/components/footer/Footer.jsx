@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer>
       <div className="md:flex md:ml-10 md:text-sm font-bold mt-8 ml-4 text-xs">
-        <div>
+        <div className="cursor-pointer">
           <div className="hover:text-[var(--primary-color)]">AI HUB</div>
           <div className="hover:text-[var(--primary-color)]">
             Privacy Policy
@@ -20,14 +20,16 @@ const Footer = () => {
             <Avatar className={"w-7 h-7"}>
               <AvatarImage src={GitHub} />
               <AvatarFallback>CN</AvatarFallback>
-            </Avatar>{" "}
+            </Avatar>
             <button className="hover:text-[var(--primary-color)]">
-              GitHub
+              <a href="https://github.com/CSC105-2024/G14-AI-Hub/tree/master/ai-hub-frontend">
+                GitHub
+              </a>
             </button>
           </div>
         </div>
       </div>
-      <div className="md:text-sm text-gray-500 mt-5 flex justify-center text-xs">
+      <div className="md:text-sm text-gray-500 mt-5 flex justify-center text-xs cursor-pointer">
         Copyright © 2025 by AI HUB, Inc. All rights reserved.
       </div>
     </footer>

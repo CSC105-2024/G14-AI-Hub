@@ -54,9 +54,9 @@ const router = createBrowserRouter([
     element: <SettingsPage />,
   },
   {
-    path: "*",
-    element: <NotFoundPage />,
-  },
+    path:"*",
+    element: <NotFoundPage/>
+  }
 ]);
 
 createRoot(document.getElementById("root")).render(
