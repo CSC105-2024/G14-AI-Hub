@@ -14,6 +14,7 @@ import { DataContextProvider } from "./context/DataContext";
 import CreatePage from "./pages/create-page/CreatePage";
 import EditPage from "./pages/edit-page/EditPage";
 import SettingsPage from "./pages/settings-page/SettingsPage";
+import NotFoundPage from "./pages/notfound-page/NotFoundPage";
 
 //TODO: protect the routes
 const router = createBrowserRouter([
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
     path: "/settings",
     element: <SettingsPage />,
   },
+  {
+    path:"*",
+    element: <NotFoundPage/>
+  }
 ]);
 
 createRoot(document.getElementById("root")).render(
