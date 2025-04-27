@@ -41,6 +41,7 @@ export const SearchResults = ({ setIsSearch }) => {
           <RxCross2 onClick={() => setIsSearch(false)} />
         </div>
       </div>
+
       {searchCourses.map((c, i) => (
         <div
           className="text-black border p-3"
