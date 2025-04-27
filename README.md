@@ -1,3 +1,23 @@
+# AI Hub 🚀
+
+**AI Hub** is a modern e-learning platform built to help users learn and explore Artificial Intelligence concepts in an easy, structured, and interactive way.  
+It is designed for both **students** and **instructors**, providing a space to create, manage, and participate in AI-related courses.
+
+## Features ✨
+
+- 📝 User account registration
+- 📚 Create, edit, and delete courses
+- 🔍 Search for courses
+- 📈 Sort courses by A-Z, earliest, and latest
+- ✏️ Edit user information
+
+## Tech Stack 🛠️
+
+- **Frontend**: React ⚛️
+- **Backend**: Express 🚂, PostgreSQL 🐘
+- **Database ORM**: Prisma 🌱
+- **Authentication**: JWT 🔒
+
 # Contributing to AI-HUB
 
 ## Branching Strategy
