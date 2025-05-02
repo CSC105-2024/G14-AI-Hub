@@ -13,6 +13,7 @@ const registerUser = async (name: string, email: string, role: string) => {
   return user;
 };
 
+//password
 const registerPassword = async (hash: string, userId: number) => {
   const user = await db.password.create({
     data: {
@@ -24,4 +25,13 @@ const registerPassword = async (hash: string, userId: number) => {
   return user;
 };
 
-export { registerUser, registerPassword };
+//find email
+const findEmail = async (email: string) => {
+  const user = await db.user.findUnique({
+    where: { email: email },
+  });
+
+  return user;
+};
+
+export { registerUser, registerPassword, findEmail };
