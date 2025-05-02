@@ -1107,6 +1107,7 @@ export namespace Prisma {
     email: string | null
     role: string | null
     img_url: string | null
+    img_id: string | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1115,6 +1116,7 @@ export namespace Prisma {
     email: string | null
     role: string | null
     img_url: string | null
+    img_id: string | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1123,6 +1125,7 @@ export namespace Prisma {
     email: number
     role: number
     img_url: number
+    img_id: number
     _all: number
   }
 
@@ -1141,6 +1144,7 @@ export namespace Prisma {
     email?: true
     role?: true
     img_url?: true
+    img_id?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -1149,6 +1153,7 @@ export namespace Prisma {
     email?: true
     role?: true
     img_url?: true
+    img_id?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -1157,6 +1162,7 @@ export namespace Prisma {
     email?: true
     role?: true
     img_url?: true
+    img_id?: true
     _all?: true
   }
 
@@ -1252,6 +1258,7 @@ export namespace Prisma {
     email: string
     role: string
     img_url: string
+    img_id: string | null
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1279,6 +1286,7 @@ export namespace Prisma {
     email?: boolean
     role?: boolean
     img_url?: boolean
+    img_id?: boolean
     password?: boolean | User$passwordArgs<ExtArgs>
     course?: boolean | User$courseArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1290,6 +1298,7 @@ export namespace Prisma {
     email?: boolean
     role?: boolean
     img_url?: boolean
+    img_id?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1298,6 +1307,7 @@ export namespace Prisma {
     email?: boolean
     role?: boolean
     img_url?: boolean
+    img_id?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -1306,9 +1316,10 @@ export namespace Prisma {
     email?: boolean
     role?: boolean
     img_url?: boolean
+    img_id?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "role" | "img_url", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "role" | "img_url" | "img_id", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     password?: boolean | User$passwordArgs<ExtArgs>
     course?: boolean | User$courseArgs<ExtArgs>
@@ -1329,6 +1340,7 @@ export namespace Prisma {
       email: string
       role: string
       img_url: string
+      img_id: string | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -1759,6 +1771,7 @@ export namespace Prisma {
     readonly email: FieldRef<"User", 'String'>
     readonly role: FieldRef<"User", 'String'>
     readonly img_url: FieldRef<"User", 'String'>
+    readonly img_id: FieldRef<"User", 'String'>
   }
     
 
@@ -3301,9 +3314,13 @@ export namespace Prisma {
     title: string | null
     note: string | null
     img1: string | null
+    img1_id: string | null
     img2: string | null
+    img2_id: string | null
     img3: string | null
+    img3_id: string | null
     img4: string | null
+    img4_id: string | null
     user_id: number | null
   }
 
@@ -3312,9 +3329,13 @@ export namespace Prisma {
     title: string | null
     note: string | null
     img1: string | null
+    img1_id: string | null
     img2: string | null
+    img2_id: string | null
     img3: string | null
+    img3_id: string | null
     img4: string | null
+    img4_id: string | null
     user_id: number | null
   }
 
@@ -3324,9 +3345,13 @@ export namespace Prisma {
     note: number
     content: number
     img1: number
+    img1_id: number
     img2: number
+    img2_id: number
     img3: number
+    img3_id: number
     img4: number
+    img4_id: number
     user_id: number
     _all: number
   }
@@ -3347,9 +3372,13 @@ export namespace Prisma {
     title?: true
     note?: true
     img1?: true
+    img1_id?: true
     img2?: true
+    img2_id?: true
     img3?: true
+    img3_id?: true
     img4?: true
+    img4_id?: true
     user_id?: true
   }
 
@@ -3358,9 +3387,13 @@ export namespace Prisma {
     title?: true
     note?: true
     img1?: true
+    img1_id?: true
     img2?: true
+    img2_id?: true
     img3?: true
+    img3_id?: true
     img4?: true
+    img4_id?: true
     user_id?: true
   }
 
@@ -3370,9 +3403,13 @@ export namespace Prisma {
     note?: true
     content?: true
     img1?: true
+    img1_id?: true
     img2?: true
+    img2_id?: true
     img3?: true
+    img3_id?: true
     img4?: true
+    img4_id?: true
     user_id?: true
     _all?: true
   }
@@ -3469,9 +3506,13 @@ export namespace Prisma {
     note: string
     content: JsonValue
     img1: string
+    img1_id: string
     img2: string
+    img2_id: string
     img3: string
+    img3_id: string
     img4: string
+    img4_id: string
     user_id: number
     _count: CourseCountAggregateOutputType | null
     _avg: CourseAvgAggregateOutputType | null
@@ -3500,9 +3541,13 @@ export namespace Prisma {
     note?: boolean
     content?: boolean
     img1?: boolean
+    img1_id?: boolean
     img2?: boolean
+    img2_id?: boolean
     img3?: boolean
+    img3_id?: boolean
     img4?: boolean
+    img4_id?: boolean
     user_id?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["course"]>
@@ -3513,9 +3558,13 @@ export namespace Prisma {
     note?: boolean
     content?: boolean
     img1?: boolean
+    img1_id?: boolean
     img2?: boolean
+    img2_id?: boolean
     img3?: boolean
+    img3_id?: boolean
     img4?: boolean
+    img4_id?: boolean
     user_id?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["course"]>
@@ -3526,9 +3575,13 @@ export namespace Prisma {
     note?: boolean
     content?: boolean
     img1?: boolean
+    img1_id?: boolean
     img2?: boolean
+    img2_id?: boolean
     img3?: boolean
+    img3_id?: boolean
     img4?: boolean
+    img4_id?: boolean
     user_id?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["course"]>
@@ -3539,13 +3592,17 @@ export namespace Prisma {
     note?: boolean
     content?: boolean
     img1?: boolean
+    img1_id?: boolean
     img2?: boolean
+    img2_id?: boolean
     img3?: boolean
+    img3_id?: boolean
     img4?: boolean
+    img4_id?: boolean
     user_id?: boolean
   }
 
-  export type CourseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "note" | "content" | "img1" | "img2" | "img3" | "img4" | "user_id", ExtArgs["result"]["course"]>
+  export type CourseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "note" | "content" | "img1" | "img1_id" | "img2" | "img2_id" | "img3" | "img3_id" | "img4" | "img4_id" | "user_id", ExtArgs["result"]["course"]>
   export type CourseInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -3567,9 +3624,13 @@ export namespace Prisma {
       note: string
       content: Prisma.JsonValue
       img1: string
+      img1_id: string
       img2: string
+      img2_id: string
       img3: string
+      img3_id: string
       img4: string
+      img4_id: string
       user_id: number
     }, ExtArgs["result"]["course"]>
     composites: {}
@@ -4000,9 +4061,13 @@ export namespace Prisma {
     readonly note: FieldRef<"Course", 'String'>
     readonly content: FieldRef<"Course", 'Json'>
     readonly img1: FieldRef<"Course", 'String'>
+    readonly img1_id: FieldRef<"Course", 'String'>
     readonly img2: FieldRef<"Course", 'String'>
+    readonly img2_id: FieldRef<"Course", 'String'>
     readonly img3: FieldRef<"Course", 'String'>
+    readonly img3_id: FieldRef<"Course", 'String'>
     readonly img4: FieldRef<"Course", 'String'>
+    readonly img4_id: FieldRef<"Course", 'String'>
     readonly user_id: FieldRef<"Course", 'Int'>
   }
     
@@ -4432,7 +4497,8 @@ export namespace Prisma {
     name: 'name',
     email: 'email',
     role: 'role',
-    img_url: 'img_url'
+    img_url: 'img_url',
+    img_id: 'img_id'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -4453,9 +4519,13 @@ export namespace Prisma {
     note: 'note',
     content: 'content',
     img1: 'img1',
+    img1_id: 'img1_id',
     img2: 'img2',
+    img2_id: 'img2_id',
     img3: 'img3',
+    img3_id: 'img3_id',
     img4: 'img4',
+    img4_id: 'img4_id',
     user_id: 'user_id'
   };
 
@@ -4475,6 +4545,14 @@ export namespace Prisma {
   };
 
   export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
+
+
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   export const JsonNullValueFilter: {
@@ -4546,6 +4624,7 @@ export namespace Prisma {
     email?: StringFilter<"User"> | string
     role?: StringFilter<"User"> | string
     img_url?: StringFilter<"User"> | string
+    img_id?: StringNullableFilter<"User"> | string | null
     password?: XOR<PasswordNullableScalarRelationFilter, PasswordWhereInput> | null
     course?: CourseListRelationFilter
   }
@@ -4556,6 +4635,7 @@ export namespace Prisma {
     email?: SortOrder
     role?: SortOrder
     img_url?: SortOrder
+    img_id?: SortOrderInput | SortOrder
     password?: PasswordOrderByWithRelationInput
     course?: CourseOrderByRelationAggregateInput
   }
@@ -4569,6 +4649,7 @@ export namespace Prisma {
     name?: StringFilter<"User"> | string
     role?: StringFilter<"User"> | string
     img_url?: StringFilter<"User"> | string
+    img_id?: StringNullableFilter<"User"> | string | null
     password?: XOR<PasswordNullableScalarRelationFilter, PasswordWhereInput> | null
     course?: CourseListRelationFilter
   }, "id" | "email">
@@ -4579,6 +4660,7 @@ export namespace Prisma {
     email?: SortOrder
     role?: SortOrder
     img_url?: SortOrder
+    img_id?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -4595,6 +4677,7 @@ export namespace Prisma {
     email?: StringWithAggregatesFilter<"User"> | string
     role?: StringWithAggregatesFilter<"User"> | string
     img_url?: StringWithAggregatesFilter<"User"> | string
+    img_id?: StringNullableWithAggregatesFilter<"User"> | string | null
   }
 
   export type PasswordWhereInput = {
@@ -4653,9 +4736,13 @@ export namespace Prisma {
     note?: StringFilter<"Course"> | string
     content?: JsonFilter<"Course">
     img1?: StringFilter<"Course"> | string
+    img1_id?: StringFilter<"Course"> | string
     img2?: StringFilter<"Course"> | string
+    img2_id?: StringFilter<"Course"> | string
     img3?: StringFilter<"Course"> | string
+    img3_id?: StringFilter<"Course"> | string
     img4?: StringFilter<"Course"> | string
+    img4_id?: StringFilter<"Course"> | string
     user_id?: IntFilter<"Course"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
@@ -4666,9 +4753,13 @@ export namespace Prisma {
     note?: SortOrder
     content?: SortOrder
     img1?: SortOrder
+    img1_id?: SortOrder
     img2?: SortOrder
+    img2_id?: SortOrder
     img3?: SortOrder
+    img3_id?: SortOrder
     img4?: SortOrder
+    img4_id?: SortOrder
     user_id?: SortOrder
     user?: UserOrderByWithRelationInput
   }
@@ -4682,9 +4773,13 @@ export namespace Prisma {
     note?: StringFilter<"Course"> | string
     content?: JsonFilter<"Course">
     img1?: StringFilter<"Course"> | string
+    img1_id?: StringFilter<"Course"> | string
     img2?: StringFilter<"Course"> | string
+    img2_id?: StringFilter<"Course"> | string
     img3?: StringFilter<"Course"> | string
+    img3_id?: StringFilter<"Course"> | string
     img4?: StringFilter<"Course"> | string
+    img4_id?: StringFilter<"Course"> | string
     user_id?: IntFilter<"Course"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
@@ -4695,9 +4790,13 @@ export namespace Prisma {
     note?: SortOrder
     content?: SortOrder
     img1?: SortOrder
+    img1_id?: SortOrder
     img2?: SortOrder
+    img2_id?: SortOrder
     img3?: SortOrder
+    img3_id?: SortOrder
     img4?: SortOrder
+    img4_id?: SortOrder
     user_id?: SortOrder
     _count?: CourseCountOrderByAggregateInput
     _avg?: CourseAvgOrderByAggregateInput
@@ -4715,9 +4814,13 @@ export namespace Prisma {
     note?: StringWithAggregatesFilter<"Course"> | string
     content?: JsonWithAggregatesFilter<"Course">
     img1?: StringWithAggregatesFilter<"Course"> | string
+    img1_id?: StringWithAggregatesFilter<"Course"> | string
     img2?: StringWithAggregatesFilter<"Course"> | string
+    img2_id?: StringWithAggregatesFilter<"Course"> | string
     img3?: StringWithAggregatesFilter<"Course"> | string
+    img3_id?: StringWithAggregatesFilter<"Course"> | string
     img4?: StringWithAggregatesFilter<"Course"> | string
+    img4_id?: StringWithAggregatesFilter<"Course"> | string
     user_id?: IntWithAggregatesFilter<"Course"> | number
   }
 
@@ -4725,7 +4828,8 @@ export namespace Prisma {
     name: string
     email: string
     role: string
-    img_url: string
+    img_url?: string
+    img_id?: string | null
     password?: PasswordCreateNestedOneWithoutUserInput
     course?: CourseCreateNestedManyWithoutUserInput
   }
@@ -4735,7 +4839,8 @@ export namespace Prisma {
     name: string
     email: string
     role: string
-    img_url: string
+    img_url?: string
+    img_id?: string | null
     password?: PasswordUncheckedCreateNestedOneWithoutUserInput
     course?: CourseUncheckedCreateNestedManyWithoutUserInput
   }
@@ -4745,6 +4850,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
     img_url?: StringFieldUpdateOperationsInput | string
+    img_id?: NullableStringFieldUpdateOperationsInput | string | null
     password?: PasswordUpdateOneWithoutUserNestedInput
     course?: CourseUpdateManyWithoutUserNestedInput
   }
@@ -4755,6 +4861,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
     img_url?: StringFieldUpdateOperationsInput | string
+    img_id?: NullableStringFieldUpdateOperationsInput | string | null
     password?: PasswordUncheckedUpdateOneWithoutUserNestedInput
     course?: CourseUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -4764,7 +4871,8 @@ export namespace Prisma {
     name: string
     email: string
     role: string
-    img_url: string
+    img_url?: string
+    img_id?: string | null
   }
 
   export type UserUpdateManyMutationInput = {
@@ -4772,6 +4880,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
     img_url?: StringFieldUpdateOperationsInput | string
+    img_id?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -4780,6 +4889,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
     img_url?: StringFieldUpdateOperationsInput | string
+    img_id?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PasswordCreateInput = {
@@ -4825,9 +4935,13 @@ export namespace Prisma {
     note: string
     content: JsonNullValueInput | InputJsonValue
     img1: string
+    img1_id: string
     img2: string
+    img2_id: string
     img3: string
+    img3_id: string
     img4: string
+    img4_id: string
     user: UserCreateNestedOneWithoutCourseInput
   }
 
@@ -4837,9 +4951,13 @@ export namespace Prisma {
     note: string
     content: JsonNullValueInput | InputJsonValue
     img1: string
+    img1_id: string
     img2: string
+    img2_id: string
     img3: string
+    img3_id: string
     img4: string
+    img4_id: string
     user_id: number
   }
 
@@ -4848,9 +4966,13 @@ export namespace Prisma {
     note?: StringFieldUpdateOperationsInput | string
     content?: JsonNullValueInput | InputJsonValue
     img1?: StringFieldUpdateOperationsInput | string
+    img1_id?: StringFieldUpdateOperationsInput | string
     img2?: StringFieldUpdateOperationsInput | string
+    img2_id?: StringFieldUpdateOperationsInput | string
     img3?: StringFieldUpdateOperationsInput | string
+    img3_id?: StringFieldUpdateOperationsInput | string
     img4?: StringFieldUpdateOperationsInput | string
+    img4_id?: StringFieldUpdateOperationsInput | string
     user?: UserUpdateOneRequiredWithoutCourseNestedInput
   }
 
@@ -4860,9 +4982,13 @@ export namespace Prisma {
     note?: StringFieldUpdateOperationsInput | string
     content?: JsonNullValueInput | InputJsonValue
     img1?: StringFieldUpdateOperationsInput | string
+    img1_id?: StringFieldUpdateOperationsInput | string
     img2?: StringFieldUpdateOperationsInput | string
+    img2_id?: StringFieldUpdateOperationsInput | string
     img3?: StringFieldUpdateOperationsInput | string
+    img3_id?: StringFieldUpdateOperationsInput | string
     img4?: StringFieldUpdateOperationsInput | string
+    img4_id?: StringFieldUpdateOperationsInput | string
     user_id?: IntFieldUpdateOperationsInput | number
   }
 
@@ -4872,9 +4998,13 @@ export namespace Prisma {
     note: string
     content: JsonNullValueInput | InputJsonValue
     img1: string
+    img1_id: string
     img2: string
+    img2_id: string
     img3: string
+    img3_id: string
     img4: string
+    img4_id: string
     user_id: number
   }
 
@@ -4883,9 +5013,13 @@ export namespace Prisma {
     note?: StringFieldUpdateOperationsInput | string
     content?: JsonNullValueInput | InputJsonValue
     img1?: StringFieldUpdateOperationsInput | string
+    img1_id?: StringFieldUpdateOperationsInput | string
     img2?: StringFieldUpdateOperationsInput | string
+    img2_id?: StringFieldUpdateOperationsInput | string
     img3?: StringFieldUpdateOperationsInput | string
+    img3_id?: StringFieldUpdateOperationsInput | string
     img4?: StringFieldUpdateOperationsInput | string
+    img4_id?: StringFieldUpdateOperationsInput | string
   }
 
   export type CourseUncheckedUpdateManyInput = {
@@ -4894,9 +5028,13 @@ export namespace Prisma {
     note?: StringFieldUpdateOperationsInput | string
     content?: JsonNullValueInput | InputJsonValue
     img1?: StringFieldUpdateOperationsInput | string
+    img1_id?: StringFieldUpdateOperationsInput | string
     img2?: StringFieldUpdateOperationsInput | string
+    img2_id?: StringFieldUpdateOperationsInput | string
     img3?: StringFieldUpdateOperationsInput | string
+    img3_id?: StringFieldUpdateOperationsInput | string
     img4?: StringFieldUpdateOperationsInput | string
+    img4_id?: StringFieldUpdateOperationsInput | string
     user_id?: IntFieldUpdateOperationsInput | number
   }
 
@@ -4925,6 +5063,20 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type PasswordNullableScalarRelationFilter = {
     is?: PasswordWhereInput | null
     isNot?: PasswordWhereInput | null
@@ -4934,6 +5086,11 @@ export namespace Prisma {
     every?: CourseWhereInput
     some?: CourseWhereInput
     none?: CourseWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type CourseOrderByRelationAggregateInput = {
@@ -4946,6 +5103,7 @@ export namespace Prisma {
     email?: SortOrder
     role?: SortOrder
     img_url?: SortOrder
+    img_id?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -4958,6 +5116,7 @@ export namespace Prisma {
     email?: SortOrder
     role?: SortOrder
     img_url?: SortOrder
+    img_id?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -4966,6 +5125,7 @@ export namespace Prisma {
     email?: SortOrder
     role?: SortOrder
     img_url?: SortOrder
+    img_id?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -5003,6 +5163,23 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type UserScalarRelationFilter = {
@@ -5062,9 +5239,13 @@ export namespace Prisma {
     note?: SortOrder
     content?: SortOrder
     img1?: SortOrder
+    img1_id?: SortOrder
     img2?: SortOrder
+    img2_id?: SortOrder
     img3?: SortOrder
+    img3_id?: SortOrder
     img4?: SortOrder
+    img4_id?: SortOrder
     user_id?: SortOrder
   }
 
@@ -5078,9 +5259,13 @@ export namespace Prisma {
     title?: SortOrder
     note?: SortOrder
     img1?: SortOrder
+    img1_id?: SortOrder
     img2?: SortOrder
+    img2_id?: SortOrder
     img3?: SortOrder
+    img3_id?: SortOrder
     img4?: SortOrder
+    img4_id?: SortOrder
     user_id?: SortOrder
   }
 
@@ -5089,9 +5274,13 @@ export namespace Prisma {
     title?: SortOrder
     note?: SortOrder
     img1?: SortOrder
+    img1_id?: SortOrder
     img2?: SortOrder
+    img2_id?: SortOrder
     img3?: SortOrder
+    img3_id?: SortOrder
     img4?: SortOrder
+    img4_id?: SortOrder
     user_id?: SortOrder
   }
 
@@ -5149,6 +5338,10 @@ export namespace Prisma {
 
   export type StringFieldUpdateOperationsInput = {
     set?: string
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
   }
 
   export type PasswordUpdateOneWithoutUserNestedInput = {
@@ -5260,6 +5453,20 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
@@ -5303,6 +5510,34 @@ export namespace Prisma {
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
   }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
   export type NestedJsonFilter<$PrismaModel = never> =
     | PatchUndefined<
         Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
@@ -5341,9 +5576,13 @@ export namespace Prisma {
     note: string
     content: JsonNullValueInput | InputJsonValue
     img1: string
+    img1_id: string
     img2: string
+    img2_id: string
     img3: string
+    img3_id: string
     img4: string
+    img4_id: string
   }
 
   export type CourseUncheckedCreateWithoutUserInput = {
@@ -5352,9 +5591,13 @@ export namespace Prisma {
     note: string
     content: JsonNullValueInput | InputJsonValue
     img1: string
+    img1_id: string
     img2: string
+    img2_id: string
     img3: string
+    img3_id: string
     img4: string
+    img4_id: string
   }
 
   export type CourseCreateOrConnectWithoutUserInput = {
@@ -5411,9 +5654,13 @@ export namespace Prisma {
     note?: StringFilter<"Course"> | string
     content?: JsonFilter<"Course">
     img1?: StringFilter<"Course"> | string
+    img1_id?: StringFilter<"Course"> | string
     img2?: StringFilter<"Course"> | string
+    img2_id?: StringFilter<"Course"> | string
     img3?: StringFilter<"Course"> | string
+    img3_id?: StringFilter<"Course"> | string
     img4?: StringFilter<"Course"> | string
+    img4_id?: StringFilter<"Course"> | string
     user_id?: IntFilter<"Course"> | number
   }
 
@@ -5421,7 +5668,8 @@ export namespace Prisma {
     name: string
     email: string
     role: string
-    img_url: string
+    img_url?: string
+    img_id?: string | null
     course?: CourseCreateNestedManyWithoutUserInput
   }
 
@@ -5430,7 +5678,8 @@ export namespace Prisma {
     name: string
     email: string
     role: string
-    img_url: string
+    img_url?: string
+    img_id?: string | null
     course?: CourseUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -5455,6 +5704,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
     img_url?: StringFieldUpdateOperationsInput | string
+    img_id?: NullableStringFieldUpdateOperationsInput | string | null
     course?: CourseUpdateManyWithoutUserNestedInput
   }
 
@@ -5464,6 +5714,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
     img_url?: StringFieldUpdateOperationsInput | string
+    img_id?: NullableStringFieldUpdateOperationsInput | string | null
     course?: CourseUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -5471,7 +5722,8 @@ export namespace Prisma {
     name: string
     email: string
     role: string
-    img_url: string
+    img_url?: string
+    img_id?: string | null
     password?: PasswordCreateNestedOneWithoutUserInput
   }
 
@@ -5480,7 +5732,8 @@ export namespace Prisma {
     name: string
     email: string
     role: string
-    img_url: string
+    img_url?: string
+    img_id?: string | null
     password?: PasswordUncheckedCreateNestedOneWithoutUserInput
   }
 
@@ -5505,6 +5758,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
     img_url?: StringFieldUpdateOperationsInput | string
+    img_id?: NullableStringFieldUpdateOperationsInput | string | null
     password?: PasswordUpdateOneWithoutUserNestedInput
   }
 
@@ -5514,6 +5768,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
     img_url?: StringFieldUpdateOperationsInput | string
+    img_id?: NullableStringFieldUpdateOperationsInput | string | null
     password?: PasswordUncheckedUpdateOneWithoutUserNestedInput
   }
 
@@ -5523,9 +5778,13 @@ export namespace Prisma {
     note: string
     content: JsonNullValueInput | InputJsonValue
     img1: string
+    img1_id: string
     img2: string
+    img2_id: string
     img3: string
+    img3_id: string
     img4: string
+    img4_id: string
   }
 
   export type CourseUpdateWithoutUserInput = {
@@ -5533,9 +5792,13 @@ export namespace Prisma {
     note?: StringFieldUpdateOperationsInput | string
     content?: JsonNullValueInput | InputJsonValue
     img1?: StringFieldUpdateOperationsInput | string
+    img1_id?: StringFieldUpdateOperationsInput | string
     img2?: StringFieldUpdateOperationsInput | string
+    img2_id?: StringFieldUpdateOperationsInput | string
     img3?: StringFieldUpdateOperationsInput | string
+    img3_id?: StringFieldUpdateOperationsInput | string
     img4?: StringFieldUpdateOperationsInput | string
+    img4_id?: StringFieldUpdateOperationsInput | string
   }
 
   export type CourseUncheckedUpdateWithoutUserInput = {
@@ -5544,9 +5807,13 @@ export namespace Prisma {
     note?: StringFieldUpdateOperationsInput | string
     content?: JsonNullValueInput | InputJsonValue
     img1?: StringFieldUpdateOperationsInput | string
+    img1_id?: StringFieldUpdateOperationsInput | string
     img2?: StringFieldUpdateOperationsInput | string
+    img2_id?: StringFieldUpdateOperationsInput | string
     img3?: StringFieldUpdateOperationsInput | string
+    img3_id?: StringFieldUpdateOperationsInput | string
     img4?: StringFieldUpdateOperationsInput | string
+    img4_id?: StringFieldUpdateOperationsInput | string
   }
 
   export type CourseUncheckedUpdateManyWithoutUserInput = {
@@ -5555,9 +5822,13 @@ export namespace Prisma {
     note?: StringFieldUpdateOperationsInput | string
     content?: JsonNullValueInput | InputJsonValue
     img1?: StringFieldUpdateOperationsInput | string
+    img1_id?: StringFieldUpdateOperationsInput | string
     img2?: StringFieldUpdateOperationsInput | string
+    img2_id?: StringFieldUpdateOperationsInput | string
     img3?: StringFieldUpdateOperationsInput | string
+    img3_id?: StringFieldUpdateOperationsInput | string
     img4?: StringFieldUpdateOperationsInput | string
+    img4_id?: StringFieldUpdateOperationsInput | string
   }
 
 

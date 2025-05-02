@@ -4,7 +4,7 @@ import { PrismaClient } from "./generated/prisma/index.js";
 import { mainRouter } from "./routes/index.route.js";
 
 const app = new Hono();
-const db = new PrismaClient();
+export const db = new PrismaClient();
 
 app.get("/", (c) => {
   return c.text("Hello Hono!");

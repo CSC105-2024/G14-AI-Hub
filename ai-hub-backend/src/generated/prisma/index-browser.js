@@ -122,7 +122,8 @@ exports.Prisma.UserScalarFieldEnum = {
   name: 'name',
   email: 'email',
   role: 'role',
-  img_url: 'img_url'
+  img_url: 'img_url',
+  img_id: 'img_id'
 };
 
 exports.Prisma.PasswordScalarFieldEnum = {
@@ -137,9 +138,13 @@ exports.Prisma.CourseScalarFieldEnum = {
   note: 'note',
   content: 'content',
   img1: 'img1',
+  img1_id: 'img1_id',
   img2: 'img2',
+  img2_id: 'img2_id',
   img3: 'img3',
+  img3_id: 'img3_id',
   img4: 'img4',
+  img4_id: 'img4_id',
   user_id: 'user_id'
 };
 
@@ -150,6 +155,11 @@ exports.Prisma.SortOrder = {
 
 exports.Prisma.JsonNullValueInput = {
   JsonNull: Prisma.JsonNull
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
 };
 
 exports.Prisma.JsonNullValueFilter = {

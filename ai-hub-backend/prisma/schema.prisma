@@ -19,7 +19,8 @@ model User {
   name  String
   email   String   @unique
   role String
-  img_url String
+  img_url String @default("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png") 
+  img_id String? 
   password Password?
   course Course[]
 }
@@ -36,10 +37,19 @@ model Course {
   title String
   note String
   content Json
+
   img1 String
+  img1_id String
+
   img2 String
+  img2_id String
+
   img3 String
+  img3_id String
+
   img4 String
+  img4_id String
+
   user_id Int
   user User @relation(fields: [user_id],references: [id])
 }
