@@ -1,7 +1,7 @@
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
 import { PrismaClient } from "./generated/prisma/index.js";
-import { mainRouter } from "./routes/index.route.js";
+import { mainRouter } from "./routes/index.route.ts";
 
 const app = new Hono();
 export const db = new PrismaClient();
