@@ -3,10 +3,10 @@ import * as userModel from "../../../models/user.model.ts";
 
 const migrateTempPassword = async (email: string) => {
   const hash = await db.$transaction(async (trx) => {
-    const user = await userModel.FindTempPassword(email, trx);
+    const user = await userModel.findTempPassword(email, trx);
 
     if (user) {
-      await userModel.DeleteTempPassword(email, trx);
+      await userModel.deleteTempPassword(email, trx);
       return user;
     }
   });

@@ -39,7 +39,7 @@ const registerTempPassword = async (hash: string, email: string) => {
 };
 
 //FindTempPassword
-const FindTempPassword = async (email: string, trx: any) => {
+const findTempPassword = async (email: string, trx: any) => {
   const hash = await trx.tempPassword.findUnique({
     where: { email: email },
     select: {
@@ -51,7 +51,7 @@ const FindTempPassword = async (email: string, trx: any) => {
 };
 
 ///DeleteTempPassword
-const DeleteTempPassword = async (email: string, trx: any) => {
+const deleteTempPassword = async (email: string, trx: any) => {
   const hash = await trx.tempPassword.delete({
     where: {
       email: email,
@@ -61,8 +61,8 @@ const DeleteTempPassword = async (email: string, trx: any) => {
   return hash;
 };
 
-//find email
-const findEmail = async (email: string) => {
+//findinfo
+const findInfo = async (email: string) => {
   const user = await db.user.findUnique({
     where: { email: email },
   });
@@ -70,11 +70,19 @@ const findEmail = async (email: string) => {
   return user;
 };
 
+const findPassword = async (user_id: number) => {
+  const hash = await db.password.findUnique({
+    where: { user_id: user_id },
+  });
+  return hash;
+};
+
 export {
   registerUser,
   registerTempPassword,
-  findEmail,
+  findInfo,
   registerPassword,
-  FindTempPassword,
-  DeleteTempPassword,
+  findTempPassword,
+  deleteTempPassword,
+  findPassword,
 };

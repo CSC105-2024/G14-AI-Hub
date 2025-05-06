@@ -1,6 +1,6 @@
 import type { Context } from "hono";
 import * as userModel from "../../../models/user.model.js";
-import * as token from "../../../utils/tokenGenerator.js";
+import { accessTokenGenerator } from "../../../utils/tokenGenerator.js";
 import nodemailer from "nodemailer";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
@@ -21,10 +21,10 @@ const registerUser = async (c: Context) => {
 
     const user = { name, email, role };
 
-    const info = await userModel.findEmail(email);
+    const info = await userModel.findInfo(email);
     if (info) throw new Error("Email already existed!!!");
 
-    const jwtToken = token.accessToken(user);
+    const jwtToken = accessTokenGenerator(user);
 
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -62,6 +62,8 @@ const registerUser = async (c: Context) => {
       console.log("Email Sent Successfully");
       console.log(info);
     });
+
+    return c.json("Email Sent Successfully");
   } catch (error) {
     return c.json(
       {
@@ -79,14 +81,15 @@ const verifyUser = async (c: Context) => {
   try {
     const token = c.req.param("token");
 
-    const decoded = jwt.verify(token, process.env.REFRESH_TOKEN_SECRET_KEY!);
+    const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET_KEY!);
 
     //should be an obj
     if (typeof decoded === "string") {
       throw new Error("Invalid token payload");
     }
 
-    const { name, email, role } = decoded.data;
+    const { name, email, role } = decoded;
+    console.log(decoded);
 
     //migrate password
     const data = await userService.migrateTempPassword(email);
@@ -94,7 +97,7 @@ const verifyUser = async (c: Context) => {
     if (!data) throw error("operation failed");
 
     //register
-    await userService.register(email, name, role, data.hash);
+    await userService.register(name, email, role, data.hash);
 
     return c.text("Email verified successfully");
   } catch (error) {
