@@ -28,6 +28,11 @@ export type Password = $Result.DefaultSelection<Prisma.$PasswordPayload>
  * 
  */
 export type Course = $Result.DefaultSelection<Prisma.$CoursePayload>
+/**
+ * Model TempPassword
+ * 
+ */
+export type TempPassword = $Result.DefaultSelection<Prisma.$TempPasswordPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -183,6 +188,16 @@ export class PrismaClient<
     * ```
     */
   get course(): Prisma.CourseDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.tempPassword`: Exposes CRUD operations for the **TempPassword** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TempPasswords
+    * const tempPasswords = await prisma.tempPassword.findMany()
+    * ```
+    */
+  get tempPassword(): Prisma.TempPasswordDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -625,7 +640,8 @@ export namespace Prisma {
   export const ModelName: {
     User: 'User',
     Password: 'Password',
-    Course: 'Course'
+    Course: 'Course',
+    TempPassword: 'TempPassword'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -644,7 +660,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "password" | "course"
+      modelProps: "user" | "password" | "course" | "tempPassword"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -870,6 +886,80 @@ export namespace Prisma {
           }
         }
       }
+      TempPassword: {
+        payload: Prisma.$TempPasswordPayload<ExtArgs>
+        fields: Prisma.TempPasswordFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TempPasswordFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TempPasswordPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TempPasswordFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TempPasswordPayload>
+          }
+          findFirst: {
+            args: Prisma.TempPasswordFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TempPasswordPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TempPasswordFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TempPasswordPayload>
+          }
+          findMany: {
+            args: Prisma.TempPasswordFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TempPasswordPayload>[]
+          }
+          create: {
+            args: Prisma.TempPasswordCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TempPasswordPayload>
+          }
+          createMany: {
+            args: Prisma.TempPasswordCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TempPasswordCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TempPasswordPayload>[]
+          }
+          delete: {
+            args: Prisma.TempPasswordDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TempPasswordPayload>
+          }
+          update: {
+            args: Prisma.TempPasswordUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TempPasswordPayload>
+          }
+          deleteMany: {
+            args: Prisma.TempPasswordDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TempPasswordUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TempPasswordUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TempPasswordPayload>[]
+          }
+          upsert: {
+            args: Prisma.TempPasswordUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TempPasswordPayload>
+          }
+          aggregate: {
+            args: Prisma.TempPasswordAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTempPassword>
+          }
+          groupBy: {
+            args: Prisma.TempPasswordGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TempPasswordGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TempPasswordCountArgs<ExtArgs>
+            result: $Utils.Optional<TempPasswordCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -957,6 +1047,7 @@ export namespace Prisma {
     user?: UserOmit
     password?: PasswordOmit
     course?: CourseOmit
+    tempPassword?: TempPasswordOmit
   }
 
   /* Types for Logging */
@@ -4482,6 +4573,1007 @@ export namespace Prisma {
 
 
   /**
+   * Model TempPassword
+   */
+
+  export type AggregateTempPassword = {
+    _count: TempPasswordCountAggregateOutputType | null
+    _avg: TempPasswordAvgAggregateOutputType | null
+    _sum: TempPasswordSumAggregateOutputType | null
+    _min: TempPasswordMinAggregateOutputType | null
+    _max: TempPasswordMaxAggregateOutputType | null
+  }
+
+  export type TempPasswordAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type TempPasswordSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type TempPasswordMinAggregateOutputType = {
+    id: number | null
+    email: string | null
+    hash: string | null
+  }
+
+  export type TempPasswordMaxAggregateOutputType = {
+    id: number | null
+    email: string | null
+    hash: string | null
+  }
+
+  export type TempPasswordCountAggregateOutputType = {
+    id: number
+    email: number
+    hash: number
+    _all: number
+  }
+
+
+  export type TempPasswordAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type TempPasswordSumAggregateInputType = {
+    id?: true
+  }
+
+  export type TempPasswordMinAggregateInputType = {
+    id?: true
+    email?: true
+    hash?: true
+  }
+
+  export type TempPasswordMaxAggregateInputType = {
+    id?: true
+    email?: true
+    hash?: true
+  }
+
+  export type TempPasswordCountAggregateInputType = {
+    id?: true
+    email?: true
+    hash?: true
+    _all?: true
+  }
+
+  export type TempPasswordAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TempPassword to aggregate.
+     */
+    where?: TempPasswordWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TempPasswords to fetch.
+     */
+    orderBy?: TempPasswordOrderByWithRelationInput | TempPasswordOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TempPasswordWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TempPasswords from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TempPasswords.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TempPasswords
+    **/
+    _count?: true | TempPasswordCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TempPasswordAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TempPasswordSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TempPasswordMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TempPasswordMaxAggregateInputType
+  }
+
+  export type GetTempPasswordAggregateType<T extends TempPasswordAggregateArgs> = {
+        [P in keyof T & keyof AggregateTempPassword]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTempPassword[P]>
+      : GetScalarType<T[P], AggregateTempPassword[P]>
+  }
+
+
+
+
+  export type TempPasswordGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TempPasswordWhereInput
+    orderBy?: TempPasswordOrderByWithAggregationInput | TempPasswordOrderByWithAggregationInput[]
+    by: TempPasswordScalarFieldEnum[] | TempPasswordScalarFieldEnum
+    having?: TempPasswordScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TempPasswordCountAggregateInputType | true
+    _avg?: TempPasswordAvgAggregateInputType
+    _sum?: TempPasswordSumAggregateInputType
+    _min?: TempPasswordMinAggregateInputType
+    _max?: TempPasswordMaxAggregateInputType
+  }
+
+  export type TempPasswordGroupByOutputType = {
+    id: number
+    email: string
+    hash: string
+    _count: TempPasswordCountAggregateOutputType | null
+    _avg: TempPasswordAvgAggregateOutputType | null
+    _sum: TempPasswordSumAggregateOutputType | null
+    _min: TempPasswordMinAggregateOutputType | null
+    _max: TempPasswordMaxAggregateOutputType | null
+  }
+
+  type GetTempPasswordGroupByPayload<T extends TempPasswordGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TempPasswordGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TempPasswordGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TempPasswordGroupByOutputType[P]>
+            : GetScalarType<T[P], TempPasswordGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TempPasswordSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    email?: boolean
+    hash?: boolean
+  }, ExtArgs["result"]["tempPassword"]>
+
+  export type TempPasswordSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    email?: boolean
+    hash?: boolean
+  }, ExtArgs["result"]["tempPassword"]>
+
+  export type TempPasswordSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    email?: boolean
+    hash?: boolean
+  }, ExtArgs["result"]["tempPassword"]>
+
+  export type TempPasswordSelectScalar = {
+    id?: boolean
+    email?: boolean
+    hash?: boolean
+  }
+
+  export type TempPasswordOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "hash", ExtArgs["result"]["tempPassword"]>
+
+  export type $TempPasswordPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TempPassword"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      email: string
+      hash: string
+    }, ExtArgs["result"]["tempPassword"]>
+    composites: {}
+  }
+
+  type TempPasswordGetPayload<S extends boolean | null | undefined | TempPasswordDefaultArgs> = $Result.GetResult<Prisma.$TempPasswordPayload, S>
+
+  type TempPasswordCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TempPasswordFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TempPasswordCountAggregateInputType | true
+    }
+
+  export interface TempPasswordDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TempPassword'], meta: { name: 'TempPassword' } }
+    /**
+     * Find zero or one TempPassword that matches the filter.
+     * @param {TempPasswordFindUniqueArgs} args - Arguments to find a TempPassword
+     * @example
+     * // Get one TempPassword
+     * const tempPassword = await prisma.tempPassword.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TempPasswordFindUniqueArgs>(args: SelectSubset<T, TempPasswordFindUniqueArgs<ExtArgs>>): Prisma__TempPasswordClient<$Result.GetResult<Prisma.$TempPasswordPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TempPassword that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TempPasswordFindUniqueOrThrowArgs} args - Arguments to find a TempPassword
+     * @example
+     * // Get one TempPassword
+     * const tempPassword = await prisma.tempPassword.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TempPasswordFindUniqueOrThrowArgs>(args: SelectSubset<T, TempPasswordFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TempPasswordClient<$Result.GetResult<Prisma.$TempPasswordPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TempPassword that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TempPasswordFindFirstArgs} args - Arguments to find a TempPassword
+     * @example
+     * // Get one TempPassword
+     * const tempPassword = await prisma.tempPassword.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TempPasswordFindFirstArgs>(args?: SelectSubset<T, TempPasswordFindFirstArgs<ExtArgs>>): Prisma__TempPasswordClient<$Result.GetResult<Prisma.$TempPasswordPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TempPassword that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TempPasswordFindFirstOrThrowArgs} args - Arguments to find a TempPassword
+     * @example
+     * // Get one TempPassword
+     * const tempPassword = await prisma.tempPassword.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TempPasswordFindFirstOrThrowArgs>(args?: SelectSubset<T, TempPasswordFindFirstOrThrowArgs<ExtArgs>>): Prisma__TempPasswordClient<$Result.GetResult<Prisma.$TempPasswordPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TempPasswords that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TempPasswordFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TempPasswords
+     * const tempPasswords = await prisma.tempPassword.findMany()
+     * 
+     * // Get first 10 TempPasswords
+     * const tempPasswords = await prisma.tempPassword.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const tempPasswordWithIdOnly = await prisma.tempPassword.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TempPasswordFindManyArgs>(args?: SelectSubset<T, TempPasswordFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TempPasswordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TempPassword.
+     * @param {TempPasswordCreateArgs} args - Arguments to create a TempPassword.
+     * @example
+     * // Create one TempPassword
+     * const TempPassword = await prisma.tempPassword.create({
+     *   data: {
+     *     // ... data to create a TempPassword
+     *   }
+     * })
+     * 
+     */
+    create<T extends TempPasswordCreateArgs>(args: SelectSubset<T, TempPasswordCreateArgs<ExtArgs>>): Prisma__TempPasswordClient<$Result.GetResult<Prisma.$TempPasswordPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TempPasswords.
+     * @param {TempPasswordCreateManyArgs} args - Arguments to create many TempPasswords.
+     * @example
+     * // Create many TempPasswords
+     * const tempPassword = await prisma.tempPassword.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TempPasswordCreateManyArgs>(args?: SelectSubset<T, TempPasswordCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TempPasswords and returns the data saved in the database.
+     * @param {TempPasswordCreateManyAndReturnArgs} args - Arguments to create many TempPasswords.
+     * @example
+     * // Create many TempPasswords
+     * const tempPassword = await prisma.tempPassword.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TempPasswords and only return the `id`
+     * const tempPasswordWithIdOnly = await prisma.tempPassword.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TempPasswordCreateManyAndReturnArgs>(args?: SelectSubset<T, TempPasswordCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TempPasswordPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TempPassword.
+     * @param {TempPasswordDeleteArgs} args - Arguments to delete one TempPassword.
+     * @example
+     * // Delete one TempPassword
+     * const TempPassword = await prisma.tempPassword.delete({
+     *   where: {
+     *     // ... filter to delete one TempPassword
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TempPasswordDeleteArgs>(args: SelectSubset<T, TempPasswordDeleteArgs<ExtArgs>>): Prisma__TempPasswordClient<$Result.GetResult<Prisma.$TempPasswordPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TempPassword.
+     * @param {TempPasswordUpdateArgs} args - Arguments to update one TempPassword.
+     * @example
+     * // Update one TempPassword
+     * const tempPassword = await prisma.tempPassword.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TempPasswordUpdateArgs>(args: SelectSubset<T, TempPasswordUpdateArgs<ExtArgs>>): Prisma__TempPasswordClient<$Result.GetResult<Prisma.$TempPasswordPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TempPasswords.
+     * @param {TempPasswordDeleteManyArgs} args - Arguments to filter TempPasswords to delete.
+     * @example
+     * // Delete a few TempPasswords
+     * const { count } = await prisma.tempPassword.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TempPasswordDeleteManyArgs>(args?: SelectSubset<T, TempPasswordDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TempPasswords.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TempPasswordUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TempPasswords
+     * const tempPassword = await prisma.tempPassword.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TempPasswordUpdateManyArgs>(args: SelectSubset<T, TempPasswordUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TempPasswords and returns the data updated in the database.
+     * @param {TempPasswordUpdateManyAndReturnArgs} args - Arguments to update many TempPasswords.
+     * @example
+     * // Update many TempPasswords
+     * const tempPassword = await prisma.tempPassword.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TempPasswords and only return the `id`
+     * const tempPasswordWithIdOnly = await prisma.tempPassword.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TempPasswordUpdateManyAndReturnArgs>(args: SelectSubset<T, TempPasswordUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TempPasswordPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TempPassword.
+     * @param {TempPasswordUpsertArgs} args - Arguments to update or create a TempPassword.
+     * @example
+     * // Update or create a TempPassword
+     * const tempPassword = await prisma.tempPassword.upsert({
+     *   create: {
+     *     // ... data to create a TempPassword
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TempPassword we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TempPasswordUpsertArgs>(args: SelectSubset<T, TempPasswordUpsertArgs<ExtArgs>>): Prisma__TempPasswordClient<$Result.GetResult<Prisma.$TempPasswordPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TempPasswords.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TempPasswordCountArgs} args - Arguments to filter TempPasswords to count.
+     * @example
+     * // Count the number of TempPasswords
+     * const count = await prisma.tempPassword.count({
+     *   where: {
+     *     // ... the filter for the TempPasswords we want to count
+     *   }
+     * })
+    **/
+    count<T extends TempPasswordCountArgs>(
+      args?: Subset<T, TempPasswordCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TempPasswordCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TempPassword.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TempPasswordAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TempPasswordAggregateArgs>(args: Subset<T, TempPasswordAggregateArgs>): Prisma.PrismaPromise<GetTempPasswordAggregateType<T>>
+
+    /**
+     * Group by TempPassword.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TempPasswordGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TempPasswordGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TempPasswordGroupByArgs['orderBy'] }
+        : { orderBy?: TempPasswordGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TempPasswordGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTempPasswordGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TempPassword model
+   */
+  readonly fields: TempPasswordFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TempPassword.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TempPasswordClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TempPassword model
+   */
+  interface TempPasswordFieldRefs {
+    readonly id: FieldRef<"TempPassword", 'Int'>
+    readonly email: FieldRef<"TempPassword", 'String'>
+    readonly hash: FieldRef<"TempPassword", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TempPassword findUnique
+   */
+  export type TempPasswordFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TempPassword
+     */
+    select?: TempPasswordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TempPassword
+     */
+    omit?: TempPasswordOmit<ExtArgs> | null
+    /**
+     * Filter, which TempPassword to fetch.
+     */
+    where: TempPasswordWhereUniqueInput
+  }
+
+  /**
+   * TempPassword findUniqueOrThrow
+   */
+  export type TempPasswordFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TempPassword
+     */
+    select?: TempPasswordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TempPassword
+     */
+    omit?: TempPasswordOmit<ExtArgs> | null
+    /**
+     * Filter, which TempPassword to fetch.
+     */
+    where: TempPasswordWhereUniqueInput
+  }
+
+  /**
+   * TempPassword findFirst
+   */
+  export type TempPasswordFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TempPassword
+     */
+    select?: TempPasswordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TempPassword
+     */
+    omit?: TempPasswordOmit<ExtArgs> | null
+    /**
+     * Filter, which TempPassword to fetch.
+     */
+    where?: TempPasswordWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TempPasswords to fetch.
+     */
+    orderBy?: TempPasswordOrderByWithRelationInput | TempPasswordOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TempPasswords.
+     */
+    cursor?: TempPasswordWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TempPasswords from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TempPasswords.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TempPasswords.
+     */
+    distinct?: TempPasswordScalarFieldEnum | TempPasswordScalarFieldEnum[]
+  }
+
+  /**
+   * TempPassword findFirstOrThrow
+   */
+  export type TempPasswordFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TempPassword
+     */
+    select?: TempPasswordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TempPassword
+     */
+    omit?: TempPasswordOmit<ExtArgs> | null
+    /**
+     * Filter, which TempPassword to fetch.
+     */
+    where?: TempPasswordWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TempPasswords to fetch.
+     */
+    orderBy?: TempPasswordOrderByWithRelationInput | TempPasswordOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TempPasswords.
+     */
+    cursor?: TempPasswordWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TempPasswords from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TempPasswords.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TempPasswords.
+     */
+    distinct?: TempPasswordScalarFieldEnum | TempPasswordScalarFieldEnum[]
+  }
+
+  /**
+   * TempPassword findMany
+   */
+  export type TempPasswordFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TempPassword
+     */
+    select?: TempPasswordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TempPassword
+     */
+    omit?: TempPasswordOmit<ExtArgs> | null
+    /**
+     * Filter, which TempPasswords to fetch.
+     */
+    where?: TempPasswordWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TempPasswords to fetch.
+     */
+    orderBy?: TempPasswordOrderByWithRelationInput | TempPasswordOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TempPasswords.
+     */
+    cursor?: TempPasswordWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TempPasswords from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TempPasswords.
+     */
+    skip?: number
+    distinct?: TempPasswordScalarFieldEnum | TempPasswordScalarFieldEnum[]
+  }
+
+  /**
+   * TempPassword create
+   */
+  export type TempPasswordCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TempPassword
+     */
+    select?: TempPasswordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TempPassword
+     */
+    omit?: TempPasswordOmit<ExtArgs> | null
+    /**
+     * The data needed to create a TempPassword.
+     */
+    data: XOR<TempPasswordCreateInput, TempPasswordUncheckedCreateInput>
+  }
+
+  /**
+   * TempPassword createMany
+   */
+  export type TempPasswordCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TempPasswords.
+     */
+    data: TempPasswordCreateManyInput | TempPasswordCreateManyInput[]
+  }
+
+  /**
+   * TempPassword createManyAndReturn
+   */
+  export type TempPasswordCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TempPassword
+     */
+    select?: TempPasswordSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TempPassword
+     */
+    omit?: TempPasswordOmit<ExtArgs> | null
+    /**
+     * The data used to create many TempPasswords.
+     */
+    data: TempPasswordCreateManyInput | TempPasswordCreateManyInput[]
+  }
+
+  /**
+   * TempPassword update
+   */
+  export type TempPasswordUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TempPassword
+     */
+    select?: TempPasswordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TempPassword
+     */
+    omit?: TempPasswordOmit<ExtArgs> | null
+    /**
+     * The data needed to update a TempPassword.
+     */
+    data: XOR<TempPasswordUpdateInput, TempPasswordUncheckedUpdateInput>
+    /**
+     * Choose, which TempPassword to update.
+     */
+    where: TempPasswordWhereUniqueInput
+  }
+
+  /**
+   * TempPassword updateMany
+   */
+  export type TempPasswordUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TempPasswords.
+     */
+    data: XOR<TempPasswordUpdateManyMutationInput, TempPasswordUncheckedUpdateManyInput>
+    /**
+     * Filter which TempPasswords to update
+     */
+    where?: TempPasswordWhereInput
+    /**
+     * Limit how many TempPasswords to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TempPassword updateManyAndReturn
+   */
+  export type TempPasswordUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TempPassword
+     */
+    select?: TempPasswordSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TempPassword
+     */
+    omit?: TempPasswordOmit<ExtArgs> | null
+    /**
+     * The data used to update TempPasswords.
+     */
+    data: XOR<TempPasswordUpdateManyMutationInput, TempPasswordUncheckedUpdateManyInput>
+    /**
+     * Filter which TempPasswords to update
+     */
+    where?: TempPasswordWhereInput
+    /**
+     * Limit how many TempPasswords to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TempPassword upsert
+   */
+  export type TempPasswordUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TempPassword
+     */
+    select?: TempPasswordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TempPassword
+     */
+    omit?: TempPasswordOmit<ExtArgs> | null
+    /**
+     * The filter to search for the TempPassword to update in case it exists.
+     */
+    where: TempPasswordWhereUniqueInput
+    /**
+     * In case the TempPassword found by the `where` argument doesn't exist, create a new TempPassword with this data.
+     */
+    create: XOR<TempPasswordCreateInput, TempPasswordUncheckedCreateInput>
+    /**
+     * In case the TempPassword was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TempPasswordUpdateInput, TempPasswordUncheckedUpdateInput>
+  }
+
+  /**
+   * TempPassword delete
+   */
+  export type TempPasswordDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TempPassword
+     */
+    select?: TempPasswordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TempPassword
+     */
+    omit?: TempPasswordOmit<ExtArgs> | null
+    /**
+     * Filter which TempPassword to delete.
+     */
+    where: TempPasswordWhereUniqueInput
+  }
+
+  /**
+   * TempPassword deleteMany
+   */
+  export type TempPasswordDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TempPasswords to delete
+     */
+    where?: TempPasswordWhereInput
+    /**
+     * Limit how many TempPasswords to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TempPassword without action
+   */
+  export type TempPasswordDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TempPassword
+     */
+    select?: TempPasswordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TempPassword
+     */
+    omit?: TempPasswordOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -4530,6 +5622,15 @@ export namespace Prisma {
   };
 
   export type CourseScalarFieldEnum = (typeof CourseScalarFieldEnum)[keyof typeof CourseScalarFieldEnum]
+
+
+  export const TempPasswordScalarFieldEnum: {
+    id: 'id',
+    email: 'email',
+    hash: 'hash'
+  };
+
+  export type TempPasswordScalarFieldEnum = (typeof TempPasswordScalarFieldEnum)[keyof typeof TempPasswordScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -4824,6 +5925,50 @@ export namespace Prisma {
     user_id?: IntWithAggregatesFilter<"Course"> | number
   }
 
+  export type TempPasswordWhereInput = {
+    AND?: TempPasswordWhereInput | TempPasswordWhereInput[]
+    OR?: TempPasswordWhereInput[]
+    NOT?: TempPasswordWhereInput | TempPasswordWhereInput[]
+    id?: IntFilter<"TempPassword"> | number
+    email?: StringFilter<"TempPassword"> | string
+    hash?: StringFilter<"TempPassword"> | string
+  }
+
+  export type TempPasswordOrderByWithRelationInput = {
+    id?: SortOrder
+    email?: SortOrder
+    hash?: SortOrder
+  }
+
+  export type TempPasswordWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    email?: string
+    AND?: TempPasswordWhereInput | TempPasswordWhereInput[]
+    OR?: TempPasswordWhereInput[]
+    NOT?: TempPasswordWhereInput | TempPasswordWhereInput[]
+    hash?: StringFilter<"TempPassword"> | string
+  }, "id" | "email">
+
+  export type TempPasswordOrderByWithAggregationInput = {
+    id?: SortOrder
+    email?: SortOrder
+    hash?: SortOrder
+    _count?: TempPasswordCountOrderByAggregateInput
+    _avg?: TempPasswordAvgOrderByAggregateInput
+    _max?: TempPasswordMaxOrderByAggregateInput
+    _min?: TempPasswordMinOrderByAggregateInput
+    _sum?: TempPasswordSumOrderByAggregateInput
+  }
+
+  export type TempPasswordScalarWhereWithAggregatesInput = {
+    AND?: TempPasswordScalarWhereWithAggregatesInput | TempPasswordScalarWhereWithAggregatesInput[]
+    OR?: TempPasswordScalarWhereWithAggregatesInput[]
+    NOT?: TempPasswordScalarWhereWithAggregatesInput | TempPasswordScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"TempPassword"> | number
+    email?: StringWithAggregatesFilter<"TempPassword"> | string
+    hash?: StringWithAggregatesFilter<"TempPassword"> | string
+  }
+
   export type UserCreateInput = {
     name: string
     email: string
@@ -5036,6 +6181,45 @@ export namespace Prisma {
     img4?: StringFieldUpdateOperationsInput | string
     img4_id?: StringFieldUpdateOperationsInput | string
     user_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TempPasswordCreateInput = {
+    email: string
+    hash: string
+  }
+
+  export type TempPasswordUncheckedCreateInput = {
+    id?: number
+    email: string
+    hash: string
+  }
+
+  export type TempPasswordUpdateInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    hash?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TempPasswordUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    hash?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TempPasswordCreateManyInput = {
+    id?: number
+    email: string
+    hash: string
+  }
+
+  export type TempPasswordUpdateManyMutationInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    hash?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TempPasswordUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    hash?: StringFieldUpdateOperationsInput | string
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -5308,6 +6492,32 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedJsonFilter<$PrismaModel>
     _max?: NestedJsonFilter<$PrismaModel>
+  }
+
+  export type TempPasswordCountOrderByAggregateInput = {
+    id?: SortOrder
+    email?: SortOrder
+    hash?: SortOrder
+  }
+
+  export type TempPasswordAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type TempPasswordMaxOrderByAggregateInput = {
+    id?: SortOrder
+    email?: SortOrder
+    hash?: SortOrder
+  }
+
+  export type TempPasswordMinOrderByAggregateInput = {
+    id?: SortOrder
+    email?: SortOrder
+    hash?: SortOrder
+  }
+
+  export type TempPasswordSumOrderByAggregateInput = {
+    id?: SortOrder
   }
 
   export type PasswordCreateNestedOneWithoutUserInput = {

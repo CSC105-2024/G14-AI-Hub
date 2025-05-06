@@ -1,9 +1,12 @@
 import { Hono } from "hono";
-import * as userController from "../controllers/user/user.contoller.ts";
+import {
+  registerUser,
+  verifyUser,
+} from "../controllers/user/register/register.ts";
 
 const userRouter = new Hono();
 
-userRouter.post("/register", userController.registerUser);
-userRouter.get("/verify/:token", userController.verifyUser);
+userRouter.post("/register", registerUser);
+userRouter.get("/verify/:token", verifyUser);
 
 export { userRouter };

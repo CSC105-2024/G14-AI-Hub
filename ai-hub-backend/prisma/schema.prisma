@@ -54,3 +54,9 @@ model Course {
   user User @relation(fields: [user_id],references: [id])
 }
 
+model TempPassword {
+  id Int @id @default(autoincrement())
+  email   String   @unique
+  hash String
+}
+

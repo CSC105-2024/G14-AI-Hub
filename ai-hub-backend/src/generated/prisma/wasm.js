@@ -148,6 +148,12 @@ exports.Prisma.CourseScalarFieldEnum = {
   user_id: 'user_id'
 };
 
+exports.Prisma.TempPasswordScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  hash: 'hash'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -177,7 +183,8 @@ exports.Prisma.QueryMode = {
 exports.Prisma.ModelName = {
   User: 'User',
   Password: 'Password',
-  Course: 'Course'
+  Course: 'Course',
+  TempPassword: 'TempPassword'
 };
 
 /**
