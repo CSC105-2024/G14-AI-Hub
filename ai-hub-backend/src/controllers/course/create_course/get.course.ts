@@ -65,42 +65,36 @@ export const getCourseById = async (req: Request, res: Response) => {
       return res.status(500).json({ message: 'Failed to fetch course' });
     }
   };
-// Create a new course
-export const createCourse = async (req: Request, res: Response) => {
+
+
+// Delete course
+// Delete a course
+export const deleteCourse = async (req: Request, res: Response) => {
     try {
+      const { id } = req.params;
       const userId = req.user?.id;
-      const { title, note, content, img1, img1_id, img2, img2_id, img3, img3_id, img4, img4_id } = req.body;
       
-      // Validate required fields
-      if (!title || !content) {
-        return res.status(400).json({ message: 'Title and content are required' });
-      }
-      
-      const newCourse = await prisma.course.create({
-        data: {
-          title,
-          note: note || '',
-          content,
-          img1: img1 || '',
-          img1_id: img1_id || '',
-          img2: img2 || '',
-          img2_id: img2_id || '',
-          img3: img3 || '',
-          img3_id: img3_id || '',
-          img4: img4 || '',
-          img4_id: img4_id || '',
-          user: {
-            connect: {
-              id: userId
-            }
-          }
+      // Check if course exists and belongs to user
+      const existingCourse = await prisma.course.findUnique({
+        where: {
+          id: parseInt(id),
+          user_id: userId
         }
       });
       
-      return res.status(201).json(newCourse);
+      if (!existingCourse) {
+        return res.status(404).json({ message: 'Course not found or unauthorized' });
+      }
+      
+      await prisma.course.delete({
+        where: {
+          id: parseInt(id)
+        }
+      });
+      
+      return res.status(200).json({ message: 'Course deleted successfully' });
     } catch (error) {
-      console.error('Error creating course:', error);
-      return res.status(500).json({ message: 'Failed to create course' });
+      console.error('Error deleting course:', error);
+      return res.status(500).json({ message: 'Failed to delete course' });
     }
   };
-  
