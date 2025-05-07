@@ -3412,6 +3412,7 @@ export namespace Prisma {
     img3_id: string | null
     img4: string | null
     img4_id: string | null
+    created_at: Date | null
     user_id: number | null
   }
 
@@ -3427,6 +3428,7 @@ export namespace Prisma {
     img3_id: string | null
     img4: string | null
     img4_id: string | null
+    created_at: Date | null
     user_id: number | null
   }
 
@@ -3443,6 +3445,7 @@ export namespace Prisma {
     img3_id: number
     img4: number
     img4_id: number
+    created_at: number
     user_id: number
     _all: number
   }
@@ -3470,6 +3473,7 @@ export namespace Prisma {
     img3_id?: true
     img4?: true
     img4_id?: true
+    created_at?: true
     user_id?: true
   }
 
@@ -3485,6 +3489,7 @@ export namespace Prisma {
     img3_id?: true
     img4?: true
     img4_id?: true
+    created_at?: true
     user_id?: true
   }
 
@@ -3501,6 +3506,7 @@ export namespace Prisma {
     img3_id?: true
     img4?: true
     img4_id?: true
+    created_at?: true
     user_id?: true
     _all?: true
   }
@@ -3604,6 +3610,7 @@ export namespace Prisma {
     img3_id: string
     img4: string
     img4_id: string
+    created_at: Date
     user_id: number
     _count: CourseCountAggregateOutputType | null
     _avg: CourseAvgAggregateOutputType | null
@@ -3639,6 +3646,7 @@ export namespace Prisma {
     img3_id?: boolean
     img4?: boolean
     img4_id?: boolean
+    created_at?: boolean
     user_id?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["course"]>
@@ -3656,6 +3664,7 @@ export namespace Prisma {
     img3_id?: boolean
     img4?: boolean
     img4_id?: boolean
+    created_at?: boolean
     user_id?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["course"]>
@@ -3673,6 +3682,7 @@ export namespace Prisma {
     img3_id?: boolean
     img4?: boolean
     img4_id?: boolean
+    created_at?: boolean
     user_id?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["course"]>
@@ -3690,10 +3700,11 @@ export namespace Prisma {
     img3_id?: boolean
     img4?: boolean
     img4_id?: boolean
+    created_at?: boolean
     user_id?: boolean
   }
 
-  export type CourseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "note" | "content" | "img1" | "img1_id" | "img2" | "img2_id" | "img3" | "img3_id" | "img4" | "img4_id" | "user_id", ExtArgs["result"]["course"]>
+  export type CourseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "note" | "content" | "img1" | "img1_id" | "img2" | "img2_id" | "img3" | "img3_id" | "img4" | "img4_id" | "created_at" | "user_id", ExtArgs["result"]["course"]>
   export type CourseInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -3722,6 +3733,7 @@ export namespace Prisma {
       img3_id: string
       img4: string
       img4_id: string
+      created_at: Date
       user_id: number
     }, ExtArgs["result"]["course"]>
     composites: {}
@@ -4159,6 +4171,7 @@ export namespace Prisma {
     readonly img3_id: FieldRef<"Course", 'String'>
     readonly img4: FieldRef<"Course", 'String'>
     readonly img4_id: FieldRef<"Course", 'String'>
+    readonly created_at: FieldRef<"Course", 'DateTime'>
     readonly user_id: FieldRef<"Course", 'Int'>
   }
     
@@ -5618,6 +5631,7 @@ export namespace Prisma {
     img3_id: 'img3_id',
     img4: 'img4',
     img4_id: 'img4_id',
+    created_at: 'created_at',
     user_id: 'user_id'
   };
 
@@ -5703,6 +5717,13 @@ export namespace Prisma {
    * Reference to a field of type 'QueryMode'
    */
   export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
     
 
 
@@ -5844,6 +5865,7 @@ export namespace Prisma {
     img3_id?: StringFilter<"Course"> | string
     img4?: StringFilter<"Course"> | string
     img4_id?: StringFilter<"Course"> | string
+    created_at?: DateTimeFilter<"Course"> | Date | string
     user_id?: IntFilter<"Course"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
@@ -5861,6 +5883,7 @@ export namespace Prisma {
     img3_id?: SortOrder
     img4?: SortOrder
     img4_id?: SortOrder
+    created_at?: SortOrder
     user_id?: SortOrder
     user?: UserOrderByWithRelationInput
   }
@@ -5881,6 +5904,7 @@ export namespace Prisma {
     img3_id?: StringFilter<"Course"> | string
     img4?: StringFilter<"Course"> | string
     img4_id?: StringFilter<"Course"> | string
+    created_at?: DateTimeFilter<"Course"> | Date | string
     user_id?: IntFilter<"Course"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
@@ -5898,6 +5922,7 @@ export namespace Prisma {
     img3_id?: SortOrder
     img4?: SortOrder
     img4_id?: SortOrder
+    created_at?: SortOrder
     user_id?: SortOrder
     _count?: CourseCountOrderByAggregateInput
     _avg?: CourseAvgOrderByAggregateInput
@@ -5922,6 +5947,7 @@ export namespace Prisma {
     img3_id?: StringWithAggregatesFilter<"Course"> | string
     img4?: StringWithAggregatesFilter<"Course"> | string
     img4_id?: StringWithAggregatesFilter<"Course"> | string
+    created_at?: DateTimeWithAggregatesFilter<"Course"> | Date | string
     user_id?: IntWithAggregatesFilter<"Course"> | number
   }
 
@@ -6087,6 +6113,7 @@ export namespace Prisma {
     img3_id: string
     img4: string
     img4_id: string
+    created_at?: Date | string
     user: UserCreateNestedOneWithoutCourseInput
   }
 
@@ -6103,6 +6130,7 @@ export namespace Prisma {
     img3_id: string
     img4: string
     img4_id: string
+    created_at?: Date | string
     user_id: number
   }
 
@@ -6118,6 +6146,7 @@ export namespace Prisma {
     img3_id?: StringFieldUpdateOperationsInput | string
     img4?: StringFieldUpdateOperationsInput | string
     img4_id?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutCourseNestedInput
   }
 
@@ -6134,6 +6163,7 @@ export namespace Prisma {
     img3_id?: StringFieldUpdateOperationsInput | string
     img4?: StringFieldUpdateOperationsInput | string
     img4_id?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user_id?: IntFieldUpdateOperationsInput | number
   }
 
@@ -6150,6 +6180,7 @@ export namespace Prisma {
     img3_id: string
     img4: string
     img4_id: string
+    created_at?: Date | string
     user_id: number
   }
 
@@ -6165,6 +6196,7 @@ export namespace Prisma {
     img3_id?: StringFieldUpdateOperationsInput | string
     img4?: StringFieldUpdateOperationsInput | string
     img4_id?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CourseUncheckedUpdateManyInput = {
@@ -6180,6 +6212,7 @@ export namespace Prisma {
     img3_id?: StringFieldUpdateOperationsInput | string
     img4?: StringFieldUpdateOperationsInput | string
     img4_id?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user_id?: IntFieldUpdateOperationsInput | number
   }
 
@@ -6417,6 +6450,17 @@ export namespace Prisma {
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
   export type CourseCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
@@ -6430,6 +6474,7 @@ export namespace Prisma {
     img3_id?: SortOrder
     img4?: SortOrder
     img4_id?: SortOrder
+    created_at?: SortOrder
     user_id?: SortOrder
   }
 
@@ -6450,6 +6495,7 @@ export namespace Prisma {
     img3_id?: SortOrder
     img4?: SortOrder
     img4_id?: SortOrder
+    created_at?: SortOrder
     user_id?: SortOrder
   }
 
@@ -6465,6 +6511,7 @@ export namespace Prisma {
     img3_id?: SortOrder
     img4?: SortOrder
     img4_id?: SortOrder
+    created_at?: SortOrder
     user_id?: SortOrder
   }
 
@@ -6492,6 +6539,20 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedJsonFilter<$PrismaModel>
     _max?: NestedJsonFilter<$PrismaModel>
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type TempPasswordCountOrderByAggregateInput = {
@@ -6630,6 +6691,10 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
   export type UserUpdateOneRequiredWithoutCourseNestedInput = {
     create?: XOR<UserCreateWithoutCourseInput, UserUncheckedCreateWithoutCourseInput>
     connectOrCreate?: UserCreateOrConnectWithoutCourseInput
@@ -6748,6 +6813,17 @@ export namespace Prisma {
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
   export type NestedJsonFilter<$PrismaModel = never> =
     | PatchUndefined<
         Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
@@ -6765,6 +6841,20 @@ export namespace Prisma {
     array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type PasswordCreateWithoutUserInput = {
@@ -6793,6 +6883,7 @@ export namespace Prisma {
     img3_id: string
     img4: string
     img4_id: string
+    created_at?: Date | string
   }
 
   export type CourseUncheckedCreateWithoutUserInput = {
@@ -6808,6 +6899,7 @@ export namespace Prisma {
     img3_id: string
     img4: string
     img4_id: string
+    created_at?: Date | string
   }
 
   export type CourseCreateOrConnectWithoutUserInput = {
@@ -6871,6 +6963,7 @@ export namespace Prisma {
     img3_id?: StringFilter<"Course"> | string
     img4?: StringFilter<"Course"> | string
     img4_id?: StringFilter<"Course"> | string
+    created_at?: DateTimeFilter<"Course"> | Date | string
     user_id?: IntFilter<"Course"> | number
   }
 
@@ -6995,6 +7088,7 @@ export namespace Prisma {
     img3_id: string
     img4: string
     img4_id: string
+    created_at?: Date | string
   }
 
   export type CourseUpdateWithoutUserInput = {
@@ -7009,6 +7103,7 @@ export namespace Prisma {
     img3_id?: StringFieldUpdateOperationsInput | string
     img4?: StringFieldUpdateOperationsInput | string
     img4_id?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CourseUncheckedUpdateWithoutUserInput = {
@@ -7024,6 +7119,7 @@ export namespace Prisma {
     img3_id?: StringFieldUpdateOperationsInput | string
     img4?: StringFieldUpdateOperationsInput | string
     img4_id?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CourseUncheckedUpdateManyWithoutUserInput = {
@@ -7039,6 +7135,7 @@ export namespace Prisma {
     img3_id?: StringFieldUpdateOperationsInput | string
     img4?: StringFieldUpdateOperationsInput | string
     img4_id?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

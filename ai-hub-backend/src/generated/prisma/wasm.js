@@ -145,6 +145,7 @@ exports.Prisma.CourseScalarFieldEnum = {
   img3_id: 'img3_id',
   img4: 'img4',
   img4_id: 'img4_id',
+  created_at: 'created_at',
   user_id: 'user_id'
 };
 

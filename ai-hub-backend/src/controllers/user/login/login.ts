@@ -6,7 +6,7 @@ import {
   accessTokenGenerator,
   refreshTokenGenerator,
 } from "../../../utils/tokenGenerator.ts";
-import { setCookie, setSignedCookie } from "hono/cookie";
+import { setSignedCookie } from "hono/cookie";
 
 const loginUser = async (c: Context) => {
   const { email, password }: Login = await c.req.json();

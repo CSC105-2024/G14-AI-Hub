@@ -50,6 +50,8 @@ model Course {
   img4 String
   img4_id String
 
+  created_at DateTime   @default(now())
+
   user_id Int
   user User @relation(fields: [user_id],references: [id])
 }
