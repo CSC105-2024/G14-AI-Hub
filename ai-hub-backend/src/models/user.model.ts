@@ -78,7 +78,7 @@ const findPassword = async (user_id: number) => {
   return hash;
 };
 
-//Upadate Info
+//Update Info
 const updateInfo = async (user_id: number, name: string, email: string) => {
   const info = await db.user.update({
     where: { id: user_id },
@@ -90,6 +90,16 @@ const updateInfo = async (user_id: number, name: string, email: string) => {
   return info;
 };
 
+//Update Pass
+const updatePassword = async (user_id: number, hash: string) => {
+  await db.password.update({
+    where: { user_id: user_id },
+    data: {
+      hash: hash,
+    },
+  });
+};
+
 export {
   registerUser,
   registerTempPassword,
@@ -99,4 +109,5 @@ export {
   deleteTempPassword,
   findPassword,
   updateInfo,
+  updatePassword,
 };

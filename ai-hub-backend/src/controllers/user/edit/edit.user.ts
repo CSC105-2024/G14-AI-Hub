@@ -1,7 +1,8 @@
 import type { Context } from "hono";
 import type { EditUser } from "../../../types/todo.types.ts";
-import { updateInfo } from "../../../models/user.model.ts";
+import { updateInfo, updatePassword } from "../../../models/user.model.ts";
 import { compareHash, generateHash } from "../../../utils/hash.ts";
+import { accessTokenGenerator } from "../../../utils/tokenGenerator.ts";
 
 const editUser = async (c: Context) => {
   const { name, email, password, newPassword }: EditUser = await c.req.json();
@@ -11,19 +12,33 @@ const editUser = async (c: Context) => {
 
   try {
     //if user does not change password
-    const data = await updateInfo(id, name, email);
+    const info = await updateInfo(id, name, email);
 
     //if user changes password
     if (password && newPassword) {
       const valid = await compareHash(password, id);
-      console.log(valid);
+
+      if (!valid) throw new Error("Password is incorrect!!!");
 
       //salt
       const newHash = await generateHash(newPassword);
-      console.log(newHash);
+
+      await updatePassword(id, newHash);
     }
 
-    return c.json(data);
+    //gen new Token
+    const accessToken = accessTokenGenerator({ id: info.id });
+
+    const data = { ...info, accessToken };
+
+    return c.json(
+      {
+        success: true,
+        data: data,
+        msg: `successful`,
+      },
+      200
+    );
   } catch (error) {
     return c.json(
       {
