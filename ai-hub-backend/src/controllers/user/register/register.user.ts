@@ -4,8 +4,9 @@ import { accessTokenGenerator } from "../../../utils/tokenGenerator.js";
 import nodemailer from "nodemailer";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-import * as userService from "./service.ts";
+import * as userService from "./register.service.ts";
 import { error } from "console";
+import { generateHash } from "../../../utils/hash.ts";
 
 type createUser = {
   name: string;
@@ -51,8 +52,7 @@ const registerUser = async (c: Context) => {
     };
 
     //salt
-    const salt = await bcrypt.genSalt();
-    const hash = await bcrypt.hash(password, salt);
+    const hash = await generateHash(password);
 
     //store pass tempor
     await userModel.registerTempPassword(hash, email);

@@ -17,4 +17,11 @@ type UserData =
       id: number | null;
     };
 
-export type { Login, Hash, UserData };
+type EditUser = {
+  name: string;
+  email: string;
+  password: string | null;
+  newPassword: string | null;
+};
+
+export type { Login, Hash, UserData, EditUser };

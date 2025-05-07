@@ -17,7 +17,6 @@ const loginUser = async (c: Context) => {
     if (!info) throw new Error("Invalid email");
 
     const { hash } = (await userModel.findPassword(info.id)) as Hash;
-
     const valid = await bcrypt.compare(password, hash);
 
     if (!valid) throw new Error("Password is Incorrect");
@@ -25,8 +24,6 @@ const loginUser = async (c: Context) => {
     //tokens
     const accessToken = accessTokenGenerator({ id: info.id });
     const refreshToken = refreshTokenGenerator(info.id);
-
-    console.log(refreshToken);
 
     //TODO:
     await setSignedCookie(
