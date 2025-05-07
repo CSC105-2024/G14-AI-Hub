@@ -5,6 +5,28 @@ import type { Request, Response } from "express";
 const prisma = new PrismaClient();
 
 
+// Get all courses
+export const getCourses = async (req: Request, res: Response) => {
+  try {
+    const userId = req.user?.id; // Assuming you have user auth middleware
+    
+    const courses = await prisma.course.findMany({
+      where: {
+        user_id: userId
+      },
+      orderBy: {
+        created_at: 'desc'
+      }
+    });
+    
+    return res.status(200).json(courses);
+  } catch (error) {
+    console.error('Error fetching courses:', error);
+    return res.status(500).json({ message: 'Failed to fetch courses' });
+  }
+};
+
+
 
 
 
