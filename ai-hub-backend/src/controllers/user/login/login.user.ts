@@ -1,12 +1,12 @@
 import type { Context } from "hono";
-import type { Login, Hash } from "../../../types/todo.types.ts";
+import type { Login } from "../../../types/todo.types.ts";
 import * as userModel from "../../../models/user.model.js";
-import bcrypt from "bcrypt";
 import {
   accessTokenGenerator,
   refreshTokenGenerator,
 } from "../../../utils/tokenGenerator.ts";
 import { setSignedCookie } from "hono/cookie";
+import { compareHash } from "../../../utils/hash.ts";
 
 const loginUser = async (c: Context) => {
   const { email, password }: Login = await c.req.json();
@@ -16,8 +16,7 @@ const loginUser = async (c: Context) => {
 
     if (!info) throw new Error("Invalid email");
 
-    const { hash } = (await userModel.findPassword(info.id)) as Hash;
-    const valid = await bcrypt.compare(password, hash);
+    const valid = await compareHash(password, info.id);
 
     if (!valid) throw new Error("Password is Incorrect");
 

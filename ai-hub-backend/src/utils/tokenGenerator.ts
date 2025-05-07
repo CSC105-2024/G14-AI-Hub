@@ -15,3 +15,11 @@ const refreshTokenGenerator = (id: number) => {
 };
 
 export { accessTokenGenerator, refreshTokenGenerator };
+
+export function findPassword(
+  id: string
+):
+  | import("../types/todo.types.ts").Hash
+  | PromiseLike<import("../types/todo.types.ts").Hash> {
+  throw new Error("Function not implemented.");
+}

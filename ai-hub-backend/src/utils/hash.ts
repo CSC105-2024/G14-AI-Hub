@@ -1,4 +1,6 @@
 import bcrypt from "bcrypt";
+import type { Hash } from "../types/todo.types.ts";
+import * as userModel from "../models/user.model.ts";
 
 const generateHash = async (password: string) => {
   const salt = await bcrypt.genSalt();
@@ -7,6 +9,11 @@ const generateHash = async (password: string) => {
   return newHash;
 };
 
-const compareHash = async (password: string, hash: string) => {};
+const compareHash = async (password: string, id: number) => {
+  const { hash } = (await userModel.findPassword(id)) as Hash;
+  const valid = await bcrypt.compare(password, hash);
 
-export { generateHash };
+  return valid;
+};
+
+export { generateHash, compareHash };

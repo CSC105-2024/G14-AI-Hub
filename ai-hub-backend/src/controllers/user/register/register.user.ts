@@ -3,7 +3,6 @@ import * as userModel from "../../../models/user.model.js";
 import { accessTokenGenerator } from "../../../utils/tokenGenerator.js";
 import nodemailer from "nodemailer";
 import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt";
 import * as userService from "./register.service.ts";
 import { error } from "console";
 import { generateHash } from "../../../utils/hash.ts";

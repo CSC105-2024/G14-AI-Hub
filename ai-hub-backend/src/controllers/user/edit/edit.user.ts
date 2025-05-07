@@ -1,12 +1,13 @@
 import type { Context } from "hono";
-import type { EditUser, Hash } from "../../../types/todo.types.ts";
-import { findPassword, updateInfo } from "../../../models/user.model.ts";
-import { generateHash } from "../../../utils/hash.ts";
+import type { EditUser } from "../../../types/todo.types.ts";
+import { updateInfo } from "../../../models/user.model.ts";
+import { compareHash, generateHash } from "../../../utils/hash.ts";
 
 const editUser = async (c: Context) => {
   const { name, email, password, newPassword }: EditUser = await c.req.json();
 
-  const id = 1;
+  //TODO: hard coded
+  const id = 2;
 
   try {
     //if user does not change password
@@ -14,7 +15,8 @@ const editUser = async (c: Context) => {
 
     //if user changes password
     if (password && newPassword) {
-      const { hash } = (await findPassword(id)) as Hash;
+      const valid = await compareHash(password, id);
+      console.log(valid);
 
       //salt
       const newHash = await generateHash(newPassword);
