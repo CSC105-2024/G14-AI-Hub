@@ -171,7 +171,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/saizayarhein/Desktop/G14-AI-Hub/ai-hub-backend/src/generated/prisma",
+      "value": "/Users/albertzawsam/G14-AI-Hub/ai-hub-backend/src/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -185,12 +185,11 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/saizayarhein/Desktop/G14-AI-Hub/ai-hub-backend/prisma/schema.prisma",
+    "sourceFilePath": "/Users/albertzawsam/G14-AI-Hub/ai-hub-backend/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null,
-    "schemaEnvPath": "../../../.env"
+    "rootEnvPath": null
   },
   "relativePath": "../../../prisma",
   "clientVersion": "6.7.0",
@@ -199,11 +198,12 @@ const config = {
     "db"
   ],
   "activeProvider": "sqlite",
+  "postinstall": true,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "file:./dev.db"
+        "value": null
       }
     }
   },

@@ -1,0 +1,51 @@
+import type {Context} from "hono";
+import { PrismaClient } from '@prisma/client';
+import type { Request, Response } from "express";
+
+const prisma = new PrismaClient();
+
+
+
+
+
+
+// Extend the Request type to include the user property
+declare global {
+  namespace Express {
+    interface Request {
+      user?: { id: number };
+    }
+  }
+}
+
+
+const getCourse = async (c: Context) => {
+  const courseId = c.req.param("courseId");   
+  console.log(courseId);
+  return c.text("success");
+};
+export {getCourse};
+
+export const getCourseById = async (req: Request, res: Response) => {
+    try {
+      const { id } = req.params;
+      const userId = req.user?.id;
+      
+      const course = await prisma.course.findUnique({
+        where: {
+          id: parseInt(id),
+          user_id: userId
+        }
+      });
+      
+      if (!course) {
+        return res.status(404).json({ message: 'Course not found' });
+      }
+      
+      return res.status(200).json(course);
+    } catch (error) {
+      console.error('Error fetching course:', error);
+      return res.status(500).json({ message: 'Failed to fetch course' });
+    }
+  };
+  
