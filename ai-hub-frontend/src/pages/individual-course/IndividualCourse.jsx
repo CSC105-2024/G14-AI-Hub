@@ -46,21 +46,23 @@ const IndividualCourse = () => {
           </div>
         )}
       </header>
-      <div className="image-container bg-black md:bg-white w-full pt-5 md:py-20 flex flex-col md:flex-row justify-around items-center gap-5">
+      <div className="image-container bg-black md:bg-white w-full pt-5 md:py-20 flex flex-col md:flex-row justify-around items-center gap-5 cursor-pointer">
         {data.images.map((image) => (
           <div className="h-50 w-full flex items-center justify-center rounded-2xl bg-white">
             <img src={image} className="w-full h-full object-scale-down" />
           </div>
         ))}
       </div>
-      <div className="text-container bg-white w-full p-5 md:p-10 flex justify-around rounded-lg">
+      <div className="text-container bg-white w-full p-5 md:p-10 flex justify-around rounded-lg cursor-pointer">
         <p>{data.content}</p>
       </div>
-      <h2 className="text-2xl text-white font-bold self-start">Note</h2>
-      <div className="note-container bg-white w-full p-5 md:p-10 flex justify-around rounded-lg">
+      <h2 className="text-2xl text-white font-bold self-start cursor-pointer">
+        Note
+      </h2>
+      <div className="note-container bg-white w-full p-5 md:p-10 flex justify-around rounded-lg cursor-pointer">
         <p>{data.note}</p>
       </div>
-      <h2 className="text-right text-lg md:text-xl text-white font-semibold self-end">
+      <h2 className="text-right text-lg md:text-xl text-white font-semibold self-end cursor-pointer">
         {data.instructor}
       </h2>
       {user.role === "Teacher" && width > 768 && (
@@ -70,7 +72,7 @@ const IndividualCourse = () => {
               "w-30 bg-white text-black text-lg hover:text-[var(--primary-color)] hover:bg-[#E5E7EB]"
             }
             btnName={"Delete"}
-            title={"Are you sure you want to log out ?"}
+            title={"Are you sure you want to delete this course ?"}
           />
           <Button
             onClick={handleEdit}

@@ -8,7 +8,7 @@ const EditProfile = ({ img_url }) => {
 
   return (
     <>
-      <div className="relative w-24 h-24 md:mt-0 mt-10">
+      <div className="relative w-24 h-24 md:mt-0 mt-10 ">
         <Avatar className="w-full h-full">
           <AvatarImage src={img_url} alt="@shadcn" />
           <AvatarFallback>CN</AvatarFallback>

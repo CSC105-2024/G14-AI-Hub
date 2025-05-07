@@ -8,6 +8,7 @@ import AlertBox from "../alert-box/AlertBox";
 import { useNavigate } from "react-router-dom";
 import Profile from "./Profile";
 import { useAuthContext } from "@/hooks/useAuthContext";
+import { IoSearchSharp } from "react-icons/io5";
 
 //TODO: will add later
 const btns = [
@@ -17,12 +18,11 @@ const btns = [
   { name: "Course Overview" },
 ];
 
-const Sidebar = () => {
+const Sidebar = ({ setSelectedCourses, courses, activePage, setIsSearch }) => {
   const drawerRef = useRef();
   const navigate = useNavigate();
 
   const { user } = useAuthContext();
-  console.log(user);
 
   const handleClick = (name) => {
     if (name === "Course Overview") {
@@ -30,11 +30,14 @@ const Sidebar = () => {
       drawerRef.current.checked = false;
       //navigate
       navigate("/courses");
+    } else if (name === "Profile Setting") {
+      drawerRef.current.checked = false;
+      navigate("/settings");
     }
   };
 
   return (
-    <div className="drawer drawer-end p-3">
+    <div className="drawer drawer-end p-3 sticky top-0 z-50 bg-white shadow">
       <input
         id="my-drawer-4"
         type="checkbox"
@@ -48,11 +51,19 @@ const Sidebar = () => {
         <h2 className="text-[var(--primary-color)] text-2xl font-bold">
           AI HUB
         </h2>
-        {/* Page content here */}
+
         {/* TODO: need to do conditional rendering */}
-        <label htmlFor="my-drawer-4" className="text-4xl">
-          <IoReorderThreeSharp />
-        </label>
+        <div className="flex items-center gap-2">
+          <IoSearchSharp
+            className={`text-2xl ${
+              activePage !== "courseoverview" ? "hidden" : ""
+            }`}
+            onClick={() => setIsSearch((s) => !s)}
+          />
+          <label htmlFor="my-drawer-4" className="text-4xl">
+            <IoReorderThreeSharp />
+          </label>
+        </div>
       </div>
       <div className="drawer-side">
         <label
@@ -86,12 +97,18 @@ const Sidebar = () => {
               </li>
             ))}
 
-            <li className="flex justify-center">
-              <SortBtn name={"Sort"} />
+            <li className="flex justify-center mb-40">
+              <SortBtn
+                name={"Sort"}
+                setSelectedCourses={setSelectedCourses}
+                //temp
+                courses={courses}
+                onClick={() => (drawerRef.current.checked = false)}
+              />
             </li>
           </div>
 
-          <li className="flex justify-center mt-47">
+          <li className="flex justify-center">
             <AlertBox
               btnName={"Log out"}
               title={"Are you sure you want to log out?"}
