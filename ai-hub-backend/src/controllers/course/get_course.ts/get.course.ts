@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 // Get all courses
 export const getCourses = async (c: Context) => {
   try {
-    const userId = c.get('userId'); // Assuming you set userId in auth middleware
+    const userId = c.get('userId'); 
     
     const courses = await prisma.course.findMany({
       where: {
