@@ -100,6 +100,34 @@ const updatePassword = async (user_id: number, hash: string) => {
   });
 };
 
+//Insert url link and id
+const uploadProfileAndId = async (
+  id: number,
+  img_url: string,
+  img_id: string
+) => {
+  const info = await db.user.update({
+    where: { id },
+    data: {
+      img_url,
+      img_id,
+    },
+  });
+
+  return info;
+};
+
+const findImgId = async (id: number) => {
+  const info = await db.user.findUnique({
+    where: { id },
+    select: {
+      img_id: true,
+    },
+  });
+
+  return info;
+};
+
 export {
   registerUser,
   registerTempPassword,
@@ -110,4 +138,6 @@ export {
   findPassword,
   updateInfo,
   updatePassword,
+  uploadProfileAndId,
+  findImgId,
 };

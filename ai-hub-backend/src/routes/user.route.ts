@@ -14,6 +14,6 @@ userRouter.post("/register", registerUser);
 userRouter.get("/verify/:token", verifyUser);
 userRouter.post("/login", loginUser);
 userRouter.post("/edit", verify, editUser); //TODO: need to add middleware
-userRouter.post("/upload", uploadProfile);
+userRouter.post("/upload", verify, uploadProfile);
 
 export { userRouter };
