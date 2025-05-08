@@ -24,4 +24,8 @@ type EditUser = {
   newPassword: string | null;
 };
 
-export type { Login, Hash, UserData, EditUser };
+type Id = {
+  id: number;
+};
+
+export type { Login, Hash, UserData, EditUser, Id };
