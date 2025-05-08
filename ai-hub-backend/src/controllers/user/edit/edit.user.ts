@@ -7,8 +7,7 @@ import { accessTokenGenerator } from "../../../utils/tokenGenerator.ts";
 const editUser = async (c: Context) => {
   const { name, email, password, newPassword }: EditUser = await c.req.json();
 
-  //TODO: hard coded
-  const id = 2;
+  const id = c.get("id");
 
   try {
     //if user does not change password
