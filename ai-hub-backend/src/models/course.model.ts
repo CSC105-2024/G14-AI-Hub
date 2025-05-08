@@ -1,7 +1,7 @@
 import type { InputJsonValue } from "@prisma/client/runtime/library";
 import { db } from "../index.ts";
 
-const createCouse = async (
+const createCourse = async (
     title: string,
     content: InputJsonValue,
     note: string,
@@ -20,18 +20,18 @@ const createCouse = async (
             title: title,
             content: content,
             note: note,
-            img1: "imageurl",
-            img1_id: "imageid",
-            img2: "imageurl",
-            img2_id: "imageid",
-            img3: "imageurl",
-            img3_id: "imageid",
-            img4: "imageurl",
-            img4_id: "imageid",
+            img1: img1,
+            img1_id: img1_id,
+            img2: img2,
+            img2_id: img2_id,
+            img3: img3,
+            img3_id: img3_id,
+            img4: img4,
+            img4_id: img4_id,
             user_id: 2,
         }
     })
     return course;
 }
 
-export { createCouse }
+export { createCourse }
