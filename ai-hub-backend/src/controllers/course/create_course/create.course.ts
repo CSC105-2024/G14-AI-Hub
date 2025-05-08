@@ -73,7 +73,7 @@ const createCourse = async (c: Context) => {
       })
     }
 
-    const newCourse = await courseModel.createCourse(title,content,note,uploadedImages[0].url,uploadedImages[0].id, uploadedImages[1].url,uploadedImages[1].id, uploadedImages[2].url,uploadedImages[2].id, uploadedImages[3].url,uploadedImages[3].id);
+    const newCourse = await courseModel.createCourse(title,content,note,uploadedImages[0].url,uploadedImages[0].id, uploadedImages[1].url,uploadedImages[1].id, uploadedImages[2].url,uploadedImages[2].id, uploadedImages[3].url,uploadedImages[3].id)
 
     return c.json ({
       message: "course created",
