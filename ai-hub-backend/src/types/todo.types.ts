@@ -1,5 +1,5 @@
 type Login = {
-  email: string;
+  newEmail: string;
   password: string;
 };
 

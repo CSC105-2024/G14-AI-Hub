@@ -86,6 +86,10 @@ const updateInfo = async (user_id: number, name: string, email: string) => {
       email: email,
       name: name,
     },
+    select: {
+      email: true,
+      name: true,
+    },
   });
   return info;
 };
@@ -111,6 +115,10 @@ const uploadProfileAndId = async (
     data: {
       img_url,
       img_id,
+    },
+    select: {
+      img_url: true,
+      img_id: true,
     },
   });
 
