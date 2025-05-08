@@ -19,6 +19,9 @@ const uploadProfile = async (c: Context) => {
       console.log("deleted");
     }
 
+    if (!(img instanceof File))
+      throw new Error("Expected a File, but got something else.");
+
     const buffer = Buffer.from(await img?.arrayBuffer());
     const base64 = `data:${img?.type};base64,${buffer.toString("base64")}`;
 
