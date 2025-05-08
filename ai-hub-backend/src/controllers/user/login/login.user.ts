@@ -54,7 +54,7 @@ const loginUser = async (c: Context) => {
       {
         success: false,
         data: null,
-        msg: `${error}`,
+        msg: `${(error as Error).message}`,
       },
       400
     );
