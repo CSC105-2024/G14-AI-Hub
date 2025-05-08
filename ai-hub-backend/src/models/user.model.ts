@@ -62,9 +62,12 @@ const deleteTempPassword = async (email: string, trx: any) => {
 };
 
 //findInfo
-const findInfo = async (email: string) => {
+const findInfo = async (identifier: string | number) => {
   const user = await db.user.findUnique({
-    where: { email: email },
+    where:
+      typeof identifier === "string"
+        ? { email: identifier }
+        : { id: identifier },
   });
 
   return user;
@@ -125,6 +128,7 @@ const uploadProfileAndId = async (
   return info;
 };
 
+//Find Img id
 const findImgId = async (id: number) => {
   const info = await db.user.findUnique({
     where: { id },
