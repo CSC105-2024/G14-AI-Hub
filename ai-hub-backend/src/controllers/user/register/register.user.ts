@@ -62,6 +62,11 @@ const registerUser = async (c: Context) => {
       console.log(info);
     });
 
+    //auto delete
+    setTimeout(async () => {
+      await userService.migrateTempPassword(email);
+    }, 15 * 60 * 1000); //15min
+
     return c.json("Email Sent Successfully");
   } catch (error) {
     return c.json(
