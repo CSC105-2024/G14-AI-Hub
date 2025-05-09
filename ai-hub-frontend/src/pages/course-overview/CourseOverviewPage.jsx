@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavBar from "@/components/navbar/NavBar";
 import Footer from "@/components/footer/Footer";
 import Courses from "@/components/courses/Courses";
@@ -80,7 +80,6 @@ const CourseOverviewPage = () => {
   ];
 
   const [selectedCourses, setSelectedCourses] = useState(courses);
-  console.log(selectedCourses.length);
 
   return (
     <>

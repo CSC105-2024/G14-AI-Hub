@@ -12,14 +12,10 @@ export const useLogin = () => {
 
   const login = async (email, password) => {
     try {
-      const { data } = await axiosInstance.post(
-        "user/login",
-        {
-          newEmail: email,
-          password: password,
-        },
-        { headers: { "Content-Type": "application/json" } }
-      );
+      const { data } = await axiosInstance.post("user/login", {
+        newEmail: email,
+        password: password,
+      });
 
       localStorage.setItem("user", JSON.stringify(data.data));
 
