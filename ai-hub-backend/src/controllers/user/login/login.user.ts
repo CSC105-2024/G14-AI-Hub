@@ -9,10 +9,10 @@ import { setSignedCookie } from "hono/cookie";
 import { compareHash } from "../../../utils/hash.ts";
 
 const loginUser = async (c: Context) => {
-  const { email, password }: Login = await c.req.json();
+  const { newEmail, password }: Login = await c.req.json();
 
   try {
-    const info = await userModel.findInfo(email);
+    const info = await userModel.findInfo(newEmail);
 
     if (!info) throw new Error("Invalid email");
 
@@ -37,7 +37,9 @@ const loginUser = async (c: Context) => {
       }
     );
 
-    const data = { ...info, accessToken };
+    const { name, email, role, img_url, img_id } = info;
+
+    const data = { name, email, role, img_url, img_id, accessToken };
 
     return c.json(
       {
@@ -52,7 +54,7 @@ const loginUser = async (c: Context) => {
       {
         success: false,
         data: null,
-        msg: `${error}`,
+        msg: `${(error as Error).message}`,
       },
       400
     );

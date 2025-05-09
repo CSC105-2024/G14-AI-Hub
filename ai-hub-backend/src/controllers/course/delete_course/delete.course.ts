@@ -10,7 +10,7 @@ export const deleteCourse = async (c: Context) => {
     const userId = c.get('userId');
     
     // Check if course exists and belongs to user
-    const existingCourse = await prisma.course.findUnique({
+    const existingCourse = await prisma.course.findUnique({     
       where: {
         id: parseInt(id),
         user_id: userId
@@ -27,7 +27,7 @@ export const deleteCourse = async (c: Context) => {
       }
     });
     
-    return c.json({ message: 'Course deleted successfully' }, 200);
+    return c.json({ message: 'Course deleted successfully' }, 200);   
   } catch (error) {
     console.error('Error deleting course:', error);
     return c.json({ message: 'Failed to delete course' }, 500);
