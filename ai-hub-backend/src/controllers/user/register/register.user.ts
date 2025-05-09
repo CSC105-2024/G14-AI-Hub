@@ -6,6 +6,9 @@ import jwt from "jsonwebtoken";
 import * as userService from "./register.service.ts";
 import { error } from "console";
 import { generateHash } from "../../../utils/hash.ts";
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 type createUser = {
   name: string;

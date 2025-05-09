@@ -2,16 +2,16 @@ import { useState } from "react";
 import FormInput from "../signup-page/Forminput";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import Button from "../signup-page/Button";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useLogin } from "@/hooks/useLogin";
 
 const Left = () => {
   const [showPassword, setShowPassword] = useState(false);
 
-  //navigage
-  const navigate = useNavigate();
+  const { login, loginError, setLoginError } = useLogin();
 
   //zod
   const signupSchema = z.object({
@@ -34,10 +34,13 @@ const Left = () => {
   });
 
   //onSubmit
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log("Form data:", data);
-    navigate("/courses");
+
+    await login(data.email, data.password);
   };
+
+  console.log(loginError);
 
   return (
     <>
@@ -66,6 +69,11 @@ const Left = () => {
           {errors.password && (
             <p className="text-red-500 text-sm mb-1">
               {errors.password.message}
+            </p>
+          )}
+          {loginError && (
+            <p className="text-red-500 text-md text-center mb-1 mt-3">
+              {loginError}
             </p>
           )}
 

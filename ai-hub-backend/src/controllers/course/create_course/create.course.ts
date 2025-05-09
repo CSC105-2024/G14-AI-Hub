@@ -57,7 +57,11 @@ const createCourse = async (c: Context) => {
       const imageFile = formData.get(field);
 
       if (!(imageFile instanceof File)) {
-        throw new Error(`Expected a ${field} File, but got something else`);
+        return c.json({
+        success: false,
+        msg: `Missing or invalid image for ${field}`,
+        data: null
+       }, 400);
       }
 
       const buffer = Buffer.from(await imageFile?.arrayBuffer());
@@ -73,9 +77,12 @@ const createCourse = async (c: Context) => {
       })
     }
 
-    const newCourse = await courseModel.createCourse(title,content,note,uploadedImages[0].url,uploadedImages[0].id, uploadedImages[1].url,uploadedImages[1].id, uploadedImages[2].url,uploadedImages[2].id, uploadedImages[3].url,uploadedImages[3].id)
+    const id = c.get("id");
+
+    const newCourse = await courseModel.createCourse(title,parsedContent,note,uploadedImages[0].url,uploadedImages[0].id, uploadedImages[1].url,uploadedImages[1].id, uploadedImages[2].url,uploadedImages[2].id, uploadedImages[3].url,uploadedImages[3].id, id)
 
     return c.json ({
+      success: true,
       message: "course created",
       course: newCourse,
     })
