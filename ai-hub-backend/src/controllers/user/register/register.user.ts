@@ -46,7 +46,7 @@ const registerUser = async (c: Context) => {
       text: `Hi! There, You have recently visited 
              our website and entered your email.
              Please follow the given link to verify your email
-             http://localhost:3000/user/verify/${jwtToken} 
+             http://localhost:${process.env.PORT!}/user/verify/${jwtToken} 
              Thanks`,
     };
 
@@ -93,7 +93,6 @@ const verifyUser = async (c: Context) => {
     }
 
     const { name, email, role } = decoded;
-    console.log(decoded);
 
     //migrate password
     const data = await userService.migrateTempPassword(email);
