@@ -15,7 +15,8 @@ import CreatePage from "./pages/create-page/CreatePage";
 import EditPage from "./pages/edit-page/EditPage";
 import SettingsPage from "./pages/settings-page/SettingsPage";
 import NotFoundPage from "./pages/notfound-page/NotFoundPage";
-import { useAuthContext } from "./hooks/useAuthContext";
+import ProtecedRoute from "./components/protected-route/ProtectedRoute";
+import PublicRoute from "./components/protected-route/PublicRoute";
 
 //TODO: protect the routes
 const router = createBrowserRouter([
@@ -26,15 +27,29 @@ const router = createBrowserRouter([
 
   {
     path: "/login",
-    element: <LoginPage />,
+
+    element: (
+      <PublicRoute>
+        <LoginPage />
+      </PublicRoute>
+    ),
   },
   {
     path: "/signup",
-    element: <SignUpPage />,
+    element: (
+      <PublicRoute>
+        <SignUpPage />
+      </PublicRoute>
+    ),
   },
   {
     path: "/courses",
-    element: <CourseOverviewPage />,
+
+    element: (
+      <ProtecedRoute>
+        <CourseOverviewPage />
+      </ProtecedRoute>
+    ),
   },
   {
     path: "/dashboard",
@@ -46,13 +61,31 @@ const router = createBrowserRouter([
         element: <IndividualCourse />,
       },
       { path: "course/:id", element: <IndividualCourse /> },
-      { path: "create", element: <CreatePage /> },
-      { path: "edit/:id", element: <EditPage /> },
+      {
+        path: "create",
+        element: (
+          <ProtecedRoute role={"Teacher"}>
+            <CreatePage />
+          </ProtecedRoute>
+        ),
+      },
+      {
+        path: "edit/:id",
+        element: (
+          <ProtecedRoute role={"Teacher"}>
+            <EditPage />
+          </ProtecedRoute>
+        ),
+      },
     ],
   },
   {
     path: "/settings",
-    element: <SettingsPage />,
+    element: (
+      <ProtecedRoute>
+        <SettingsPage />
+      </ProtecedRoute>
+    ),
   },
   {
     path: "*",
