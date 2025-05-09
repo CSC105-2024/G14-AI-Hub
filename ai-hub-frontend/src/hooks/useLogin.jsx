@@ -17,7 +17,7 @@ export const useLogin = () => {
         password: password,
       });
 
-      localStorage.setItem("user", JSON.stringify(data.data));
+      localStorage.setItem("aihub_user", JSON.stringify(data.data));
 
       dispatch({ type: "LOGIN", payload: data.data });
       navigate("/courses");

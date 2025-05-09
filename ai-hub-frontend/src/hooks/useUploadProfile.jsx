@@ -2,8 +2,6 @@ import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
 import axiosInstance from "../../axiosInstance";
 
-
-
 export const useUploadProfile = () => {
   const [profileError, setProfileError] = useState(null);
   const { dispatch } = useAuthContext();
@@ -19,11 +17,11 @@ export const useUploadProfile = () => {
         },
       });
 
-      const user = JSON.parse(localStorage.getItem("user"));
+      const user = JSON.parse(localStorage.getItem("aihub_user"));
 
       const newUser = { ...user, ...data.data };
       console.log(newUser);
-      localStorage.setItem("user", JSON.stringify(newUser));
+      localStorage.setItem("aihub_user", JSON.stringify(newUser));
 
       dispatch({ type: "LOGIN", payload: newUser });
     } catch (error) {

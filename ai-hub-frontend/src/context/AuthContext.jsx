@@ -26,7 +26,7 @@ export const AuthContextProvider = ({ children }) => {
 
   useEffect(() => {
     //get items from localStorage
-    const user = JSON.parse(localStorage.getItem("user"));
+    const user = JSON.parse(localStorage.getItem("aihub_user"));
 
     dispatch({ type: "LOGIN", payload: user });
   }, []);

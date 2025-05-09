@@ -5,7 +5,7 @@ export const useInterceptor = (dispatch) => {
   useEffect(() => {
     const requestIntercept = axiosInstance.interceptors.request.use(
       (config) => {
-        const oldUser = JSON?.parse(localStorage.getItem("user"));
+        const oldUser = JSON?.parse(localStorage.getItem("aihub_user"));
 
         config.headers["Authorization"] = `Bearer ${oldUser?.accessToken}`;
 
@@ -28,12 +28,12 @@ export const useInterceptor = (dispatch) => {
           try {
             const { data } = await axiosInstance.post("/user/refresh");
 
-            const oldData = JSON?.parse(localStorage.getItem("user"));
+            const oldData = JSON?.parse(localStorage.getItem("aihub_user"));
 
             const newUser = { ...oldData, accessToken: data.data.accessToken };
             console.log(newUser);
 
-            localStorage.setItem("user", JSON.stringify(newUser));
+            localStorage.setItem("aihub_user", JSON.stringify(newUser));
             dispatch({ type: "LOGIN", payload: newUser });
 
             original.headers["Authorization"] = `Bearer ${data.accessToken}`;
@@ -45,7 +45,7 @@ export const useInterceptor = (dispatch) => {
 
             setTimeout(() => {
               dispatch({ type: "LOGOUT" });
-              localStorage.removeItem("user");
+              localStorage.removeItem("aihub_user");
             }, 3000);
 
             return Promise.reject(refreshError);
