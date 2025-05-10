@@ -2,24 +2,35 @@ import AlertBox from "@/components/alert-box/AlertBox";
 import EditProfile from "@/components/edit-profile/EditProfile";
 import Footer from "@/components/footer/Footer";
 import NavBar from "@/components/navbar/NavBar";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useAuthContext } from "@/hooks/useAuthContext";
 import { useWidth } from "@/hooks/useWidth";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Toaster } from "sonner";
 
 const SettingsPage = () => {
   const navigate = useNavigate();
   const { user } = useAuthContext();
   const { width } = useWidth();
 
+  //useState renders first before useEffect
   const [form, setForm] = useState({
-    name: user.name,
-    email: user.email,
+    name: "",
+    email: "",
     oldPassword: "",
     newPassword: "",
   });
+
+  useEffect(() => {
+    if (user) {
+      setForm((prev) => ({
+        ...prev,
+        name: user.name,
+        email: user.email,
+      }));
+    }
+  }, [user]);
 
   return (
     <>
@@ -36,7 +47,7 @@ const SettingsPage = () => {
           </div>
         )}
 
-        <EditProfile img_url={user.img_url} />
+        <EditProfile img_url={user?.img_url} />
 
         <div className="bg-black flex flex-col items-start gap-2 justify-center mt-10">
           <h1 className="font-bold text-2xl self-center cursor-pointer">
@@ -94,6 +105,7 @@ const SettingsPage = () => {
         </div>
       </div>
       <Footer />
+      <Toaster richColors />
     </>
   );
 };

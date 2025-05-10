@@ -3,17 +3,18 @@ import FormInput from "./Forminput";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import Button from "./Button";
 import RoleSelection from "./RoleSelection";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRegister } from "@/hooks/useRegister";
+import ErrorBox from "../error-box/ErrorBox";
 
 const Left = () => {
   const [role, setRole] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  //navigage
-  const navigate = useNavigate();
+  const { registerUser, registerError, setRegisterError } = useRegister();
 
   //zod
   const signupSchema = z.object({
@@ -46,14 +47,14 @@ const Left = () => {
   });
 
   //onSubmit
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     if (data.password !== data.confirmPassword) {
       console.log(data);
-      alert("Both Passwords must be the same");
+      setRegisterError("Both Passwords must be the same");
       return;
     } else {
       console.log("Form data:", data);
-      navigate("/login");
+      await registerUser(data.username, data.email, data.role, data.password);
     }
   };
 
@@ -153,6 +154,13 @@ const Left = () => {
           </div>
         </form>
       </div>
+      {registerError && (
+        <ErrorBox
+          title={"Error"}
+          description={registerError}
+          setError={setRegisterError}
+        />
+      )}
     </>
   );
 };
