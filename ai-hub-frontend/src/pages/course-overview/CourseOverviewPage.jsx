@@ -123,7 +123,7 @@ const CourseOverviewPage = () => {
                     </div>
                   )}
                 </div>
-                {user.role === "Teacher" && width > 768 && (
+                {user?.role === "Teacher" && width > 768 && (
                   <div className="flex justify-center">
                     <Button
                       className={
