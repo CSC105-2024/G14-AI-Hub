@@ -1,5 +1,5 @@
 type Login = {
-  email: string;
+  newEmail: string;
   password: string;
 };
 
@@ -28,4 +28,8 @@ type Id = {
   id: number;
 };
 
-export type { Login, Hash, UserData, EditUser, Id };
+type ImgId = {
+  img_id: string;
+};
+
+export type { Login, Hash, UserData, EditUser, Id, ImgId };

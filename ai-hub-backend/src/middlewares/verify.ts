@@ -1,5 +1,5 @@
 import type { Context, Next } from "hono";
-import json from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import type { Id } from "../types/todo.types.ts";
 
 const verify = async (c: Context, next: Next) => {
@@ -12,7 +12,7 @@ const verify = async (c: Context, next: Next) => {
 
   try {
     //verify that jwt is valid or not
-    const { id } = json.verify(
+    const { id } = jwt.verify(
       bearerToken,
       process.env.ACCESS_TOKEN_SECRET_KEY!
     ) as Id;

@@ -7,13 +7,15 @@ import { loginUser } from "../controllers/user/login/login.user.ts";
 import { editUser } from "../controllers/user/edit/edit.user.ts";
 import { uploadProfile } from "../controllers/user/upload-profile/upload.profile.ts";
 import { verify } from "../middlewares/verify.ts";
+import { refreshToken } from "../controllers/user/refresh-token/refresh.token.ts";
 
 const userRouter = new Hono();
 
 userRouter.post("/register", registerUser);
 userRouter.get("/verify/:token", verifyUser);
 userRouter.post("/login", loginUser);
-userRouter.post("/edit", verify, editUser); //TODO: need to add middleware
-userRouter.post("/upload", uploadProfile);
+userRouter.post("/refresh", refreshToken);
+userRouter.put("/edit", verify, editUser); //TODO: need to add middleware
+userRouter.post("/upload", verify, uploadProfile);
 
 export { userRouter };

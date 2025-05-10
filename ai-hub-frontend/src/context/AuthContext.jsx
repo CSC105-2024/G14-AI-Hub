@@ -18,23 +18,15 @@ export const authReducer = (state, action) => {
 
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, {
-    //user: null,
-
-    //fake datas
-    user: {
-      name: "Sai",
-      img_url:
-        "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
-      email: "okok@gmail.com",
-      role: "Teacher",
-    },
+    user: null,
   });
 
-  // useEffect(() => {
-  //   //get items from localStorage
-  //   const user = JSON.parse(localStorage.getItem("user"));
-  //   dispatch({ type: "LOGIN", payload: user });
-  // }, []);
+  useEffect(() => {
+    //get items from localStorage
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    dispatch({ type: "LOGIN", payload: user });
+  }, []);
 
   return (
     <AuthContext.Provider value={{ ...state, dispatch }}>

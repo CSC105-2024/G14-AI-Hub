@@ -62,9 +62,12 @@ const deleteTempPassword = async (email: string, trx: any) => {
 };
 
 //findInfo
-const findInfo = async (email: string) => {
+const findInfo = async (identifier: string | number) => {
   const user = await db.user.findUnique({
-    where: { email: email },
+    where:
+      typeof identifier === "string"
+        ? { email: identifier }
+        : { id: identifier },
   });
 
   return user;
@@ -86,6 +89,10 @@ const updateInfo = async (user_id: number, name: string, email: string) => {
       email: email,
       name: name,
     },
+    select: {
+      email: true,
+      name: true,
+    },
   });
   return info;
 };
@@ -100,6 +107,39 @@ const updatePassword = async (user_id: number, hash: string) => {
   });
 };
 
+//Insert url link and id
+const uploadProfileAndId = async (
+  id: number,
+  img_url: string,
+  img_id: string
+) => {
+  const info = await db.user.update({
+    where: { id },
+    data: {
+      img_url,
+      img_id,
+    },
+    select: {
+      img_url: true,
+      img_id: true,
+    },
+  });
+
+  return info;
+};
+
+//Find Img id
+const findImgId = async (id: number) => {
+  const info = await db.user.findUnique({
+    where: { id },
+    select: {
+      img_id: true,
+    },
+  });
+
+  return info;
+};
+
 export {
   registerUser,
   registerTempPassword,
@@ -110,4 +150,6 @@ export {
   findPassword,
   updateInfo,
   updatePassword,
+  uploadProfileAndId,
+  findImgId,
 };

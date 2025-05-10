@@ -79,7 +79,7 @@ const NavBar = ({ activePage, setSelectedCourses, courses }) => {
                 activePage === "setting" ? "hidden" : ""
               }`}
             >
-              <AvatarImage src={user.img_url} />
+              <AvatarImage src={user?.img_url} />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
             {/* condtional rendering */}
@@ -88,7 +88,7 @@ const NavBar = ({ activePage, setSelectedCourses, courses }) => {
                 activePage === "setting" ? "text-xl" : ""
               } cursor-pointer`}
             >
-              {user.role}
+              {user?.role}
             </div>
           </div>
         </>
