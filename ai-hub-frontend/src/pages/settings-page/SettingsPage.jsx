@@ -9,8 +9,10 @@ import { useEdit } from "@/hooks/useEdit";
 import { useLogout } from "@/hooks/useLogout";
 import { useWidth } from "@/hooks/useWidth";
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Toaster } from "sonner";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const SettingsPage = () => {
   const { user } = useAuthContext();
@@ -18,6 +20,7 @@ const SettingsPage = () => {
 
   const { logout, logoutError, setLogtoutError } = useLogout();
   const { edit, editError, setEditError } = useEdit();
+  const [showPassword, setShowPassword] = useState(false);
 
   //useState renders first before useEffect
   const [form, setForm] = useState({
@@ -97,14 +100,23 @@ const SettingsPage = () => {
             onChange={(e) => setForm({ ...form, oldPassword: e.target.value })}
           />
           <h2 className="font-bold text-xl cursor-pointer">New Password</h2>
-          <Input
-            type="password"
-            placeholder="New password"
-            className={
-              "bg-white text-black max-w-90 hover:text-[var(--primary-color)]"
-            }
-            onChange={(e) => setForm({ ...form, newPassword: e.target.value })}
-          />
+
+          <div className="relative w-80">
+            <Input
+              type={showPassword ? "text" : "password"}
+              placeholder="New password"
+              className="bg-white text-black w-full pr-10 hover:text-[var(--primary-color)]"
+              onChange={(e) =>
+                setForm({ ...form, newPassword: e.target.value })
+              }
+            />
+            <FontAwesomeIcon
+              icon={showPassword ? faEye : faEyeSlash}
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-500 hover:text-[var(--primary-color)]"
+              onClick={() => setShowPassword((s) => !s)}
+            />
+          </div>
+
           <div className="buttons mt-5 flex justify-center gap-5 w-full">
             <AlertBox
               btnName={"Save Changes"}
