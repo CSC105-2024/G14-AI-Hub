@@ -1,6 +1,7 @@
 import type { Context } from "hono";
 import * as courseModel from "../../../models/course.model.ts"
 import { cloudinary } from "../../../cloudinary/cloudinary.ts";
+import { findInfo } from "../../../models/user.model.ts";
 
 const createCourse = async (c: Context) => {
   try {
@@ -9,8 +10,11 @@ const createCourse = async (c: Context) => {
     const title = formData.get("title");
     const content = formData.get("content");
     const note = formData.get("note");
+    const id = c.get("id");
+    const user = await findInfo(id);
+    const userName = user?.name;
 
-    if (typeof title !== "string" || typeof note !== "string" || typeof content !== "string" ) {
+    if (typeof title !== "string" || typeof note !== "string" || typeof content !== "string" || typeof userName !== "string") {
       return c.json(
         {
             success: false,
@@ -62,9 +66,7 @@ const createCourse = async (c: Context) => {
       })
     }
 
-    const id = c.get("id");
-
-    const newCourse = await courseModel.createCourse(title,parsedContent,note,uploadedImages[0].url,uploadedImages[0].id, uploadedImages[1].url,uploadedImages[1].id, uploadedImages[2].url,uploadedImages[2].id, uploadedImages[3].url,uploadedImages[3].id, id)
+    const newCourse = await courseModel.createCourse(title,parsedContent,note,uploadedImages[0].url,uploadedImages[0].id, uploadedImages[1].url,uploadedImages[1].id, uploadedImages[2].url,uploadedImages[2].id, uploadedImages[3].url,uploadedImages[3].id, id, userName)
 
     return c.json ({
       success: true,

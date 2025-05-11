@@ -14,7 +14,7 @@ const createCourse = async (
     img4: string,
     img4_id: string,
     user_id: number,
-
+    created_by: string,
 ) => {
     const course = await db.course.create({
         data: {
@@ -30,6 +30,7 @@ const createCourse = async (
             img4: img4,
             img4_id: img4_id,
             user_id: user_id,
+            created_by: created_by,
         }
     })
     return course;
