@@ -12,7 +12,7 @@ export const useLogin = () => {
 
   const login = async (email, password) => {
     try {
-      const { data } = await axiosInstance.post("user/login", {
+      const { data } = await axiosInstance.post("/user/login", {
         newEmail: email,
         password: password,
       });

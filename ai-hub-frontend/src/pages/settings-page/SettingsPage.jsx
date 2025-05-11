@@ -1,9 +1,11 @@
 import AlertBox from "@/components/alert-box/AlertBox";
 import EditProfile from "@/components/edit-profile/EditProfile";
+import ErrorBox from "@/components/error-box/ErrorBox";
 import Footer from "@/components/footer/Footer";
 import NavBar from "@/components/navbar/NavBar";
 import { Input } from "@/components/ui/input";
 import { useAuthContext } from "@/hooks/useAuthContext";
+import { useEdit } from "@/hooks/useEdit";
 import { useLogout } from "@/hooks/useLogout";
 import { useWidth } from "@/hooks/useWidth";
 import React, { useEffect, useState } from "react";
@@ -15,6 +17,7 @@ const SettingsPage = () => {
   const { width } = useWidth();
 
   const { logout, logoutError, setLogtoutError } = useLogout();
+  const { edit, editError, setEditError } = useEdit();
 
   //useState renders first before useEffect
   const [form, setForm] = useState({
@@ -36,6 +39,17 @@ const SettingsPage = () => {
 
   const onClick = async () => {
     await logout();
+  };
+
+  const onEditInfo = async () => {
+    await edit(
+      form.name,
+      form.email,
+      form.oldPassword,
+      form.newPassword,
+      user.name,
+      user.email
+    );
   };
 
   return (
@@ -77,14 +91,14 @@ const SettingsPage = () => {
           />
           <h2 className="font-bold text-xl cursor-pointer">Password</h2>
           <Input
-            type="text"
+            type="password"
             placeholder="Previous password"
             className={"bg-white text-black max-w-90"}
             onChange={(e) => setForm({ ...form, oldPassword: e.target.value })}
           />
           <h2 className="font-bold text-xl cursor-pointer">New Password</h2>
           <Input
-            type="text"
+            type="password"
             placeholder="New password"
             className={
               "bg-white text-black max-w-90 hover:text-[var(--primary-color)]"
@@ -98,6 +112,7 @@ const SettingsPage = () => {
                 "w-35 bg-white text-black text-md hover:text-[var(--primary-color)] hover:bg-white"
               }
               title={"Are you sure you want to update your profile?"}
+              onClick={onEditInfo}
             />
             <AlertBox
               btnName={"Log out"}
@@ -110,6 +125,13 @@ const SettingsPage = () => {
           </div>
         </div>
       </div>
+      {(editError || logoutError) && (
+        <ErrorBox
+          setError={editError ? setEditError : setLogtoutError}
+          title={"Error"}
+          description={editError ? editError : logoutError}
+        />
+      )}
       <Footer />
       <Toaster richColors />
     </>
