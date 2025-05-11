@@ -2,21 +2,6 @@ import type { Context } from "hono";
 import * as courseModel from "../../../models/course.model.ts"
 import { cloudinary } from "../../../cloudinary/cloudinary.ts";
 
-// const createCourse = async (c: Context) => {
-//   const formData = await c.req.formData();
-
-//   //example
-//   const name = formData.get("name");
-//   console.log(name);
-
-//   const files = formData.getAll("file");
-
-//   console.log(files);
-//   return c.text("success");
-// };
-
-// export { createCourse };
-
 const createCourse = async (c: Context) => {
   try {
     const formData = await c.req.formData();
