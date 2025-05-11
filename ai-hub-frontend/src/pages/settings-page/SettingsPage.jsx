@@ -4,15 +4,17 @@ import Footer from "@/components/footer/Footer";
 import NavBar from "@/components/navbar/NavBar";
 import { Input } from "@/components/ui/input";
 import { useAuthContext } from "@/hooks/useAuthContext";
+import { useLogout } from "@/hooks/useLogout";
 import { useWidth } from "@/hooks/useWidth";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Toaster } from "sonner";
 
 const SettingsPage = () => {
-  const navigate = useNavigate();
   const { user } = useAuthContext();
   const { width } = useWidth();
+
+  const { logout, logoutError, setLogtoutError } = useLogout();
 
   //useState renders first before useEffect
   const [form, setForm] = useState({
@@ -31,6 +33,10 @@ const SettingsPage = () => {
       }));
     }
   }, [user]);
+
+  const onClick = async () => {
+    await logout();
+  };
 
   return (
     <>
@@ -99,7 +105,7 @@ const SettingsPage = () => {
                 "w-35 bg-[var(--primary-color)]  text-white text-md hover:bg-[#4D179A]"
               }
               title={"Are you sure you want to log out?"}
-              onClick={() => navigate("/login")}
+              onClick={onClick}
             />
           </div>
         </div>

@@ -35,12 +35,8 @@ const Left = () => {
 
   //onSubmit
   const onSubmit = async (data) => {
-    console.log("Form data:", data);
-
     await login(data.email, data.password);
   };
-
-  console.log(loginError);
 
   return (
     <>
