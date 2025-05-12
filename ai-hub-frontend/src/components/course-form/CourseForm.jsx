@@ -9,7 +9,7 @@ import { useCreate } from "@/hooks/useCreate";
 import { useEdit } from "@/hooks/useEdit";
 import Popup from "../Popup";
 
-const CourseForm = ({ mode, oldForm }) => {
+const CourseForm = ({ mode, oldForm, setSelectedCourses }) => {
   //main data
   //TODO: need to do imgs and content
   const [form, setForm] = useState({
@@ -19,7 +19,7 @@ const CourseForm = ({ mode, oldForm }) => {
     note: oldForm?.note || "",
   });
 
-  const { create, formError, setFormError } = useCreate();
+  const { create, formError, setFormError } = useCreate(setSelectedCourses);
   const { edit, editError, setEditError } = useEdit();
 
   const [showPopup, setShowPopup] = useState(false);

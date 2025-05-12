@@ -1,7 +1,7 @@
 import axiosInstance from "../../axiosInstance";
 import React, { useState } from "react";
 
-export const useCreate = () => {
+export const useCreate = (setCourses) => {
   const [formError, setFormError] = useState(null);
 
   const create = async (course) => {
@@ -45,6 +45,7 @@ export const useCreate = () => {
         },
       });
 
+      setCourses((courses) => [...courses, data]);
       return data;
     } catch (e) {
       console.log(e);
