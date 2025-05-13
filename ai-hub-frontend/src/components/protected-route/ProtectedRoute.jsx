@@ -3,7 +3,7 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 
 export default function ProtectedRoute({ children, role }) {
-  const user = useAuthContext();
+  const { user } = useAuthContext();
 
   if (!user) {
     return <Navigate to="/login" />;
