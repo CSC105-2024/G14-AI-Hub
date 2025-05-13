@@ -1,5 +1,8 @@
 import type { InputJsonValue } from "@prisma/client/runtime/library";
 import { db } from "../index.ts";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
 
 const createCourse = async (
     title: string,
@@ -35,5 +38,22 @@ const createCourse = async (
     })
     return course;
 }
+
+
+const edit(id: number, data: CourseUpdateInput) {
+    
+    const filteredData = Object.entries(data).reduce((acc, [key, value]) => {
+      if (value !== undefined) {
+        acc[key] = value;
+      }
+      return acc;
+    }, {} as Record<string, any>);
+
+    return prisma.course.update({
+      where: { id },
+      data: filteredData
+    });
+  }
+
 
 export { createCourse }

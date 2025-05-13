@@ -4,7 +4,7 @@ import type { Context } from 'hono';
 const prisma = new PrismaClient();
 
 // Delete a course
-export const deleteCourse = async (c: Context) => {
+const deleteCourse = async (c: Context) => {
   try {
     const id = c.req.param('id');
     const userId = c.get('userId');
@@ -33,3 +33,5 @@ export const deleteCourse = async (c: Context) => {
     return c.json({ message: 'Failed to delete course' }, 500);
   }
 };
+
+export { deleteCourse };
