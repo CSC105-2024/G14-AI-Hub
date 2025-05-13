@@ -31,6 +31,7 @@ const UploadImage = ({ setForm, length }) => {
 
     if (type !== "url") {
       datas = {
+        file: file,
         url: URL.createObjectURL(file), //temp url
         name: file.name.split(" ")[0],
         size: (file.size / 1024).toFixed(0), //KB

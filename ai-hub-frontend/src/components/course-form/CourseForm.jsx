@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import TextEditor from "./TextEditor";
 import UploadImage from "./UploadImage";
@@ -7,34 +7,44 @@ import { Button } from "../ui/button";
 import ErrorBox from "../error-box/ErrorBox";
 import { useCreate } from "@/hooks/useCreate";
 import { useEdit } from "@/hooks/useEdit";
+import Popup from "../Popup";
 
-const CourseForm = ({ mode, oldForm }) => {
+const CourseForm = ({ mode, oldForm, setSelectedCourses }) => {
   //main data
   //TODO: need to do imgs and content
   const [form, setForm] = useState({
     title: oldForm?.title || "",
-    imgs: "",
+    imgs: [],
     content: "",
     note: oldForm?.note || "",
   });
 
-  const { create, formError, setFormError } = useCreate();
+  const { create, formError, setFormError } = useCreate(setSelectedCourses);
   const { edit, editError, setEditError } = useEdit();
+
+  const [showPopup, setShowPopup] = useState(false);
+  const navigate = useNavigate();
 
   console.log(form);
 
-  const onSubmit = async () => {
+  const handleSubmit = async () => {
     //create
     if (oldForm) {
       await edit(form, oldForm);
     } else {
       await create(form);
     }
+    setShowPopup(false);
+    navigate("/courses");
   };
 
   return (
     <>
-      <div className="text-white w-[90%] mx-auto">
+      <div
+        className={`text-white w-[90%] mx-auto relative ${
+          showPopup ? "opacity-50" : ""
+        }`} //check if consistent with other pages
+      >
         <div className="font-bold flex justify-end text-xl">
           <Link
             to={"/courses"}
@@ -74,12 +84,23 @@ const CourseForm = ({ mode, oldForm }) => {
         <div className="flex justify-center mt-5">
           <Button
             className={"bg-[var(--primary-color)] hover:bg-violet-800 p-6 mb-5"}
-            onClick={onSubmit}
+            onClick={() => setShowPopup(true)}
           >
             {mode === "create" ? "Create Course" : "Save Changes"}
           </Button>
         </div>
       </div>
+      {showPopup && (
+        <Popup
+          message={
+            mode === "create"
+              ? "Are you sure you want to create this course?"
+              : "Are you sure you want to update this course?"
+          }
+          onConfirm={handleSubmit}
+          onCancel={() => setShowPopup(false)}
+        />
+      )}
       {formError && (
         <ErrorBox
           setError={formError ? setFormError : setEditError}
