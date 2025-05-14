@@ -3,8 +3,6 @@ import { db } from "../index.ts";
 import { PrismaClient } from "@prisma/client";
 import type { Context } from "hono";
 
-
-
 const createCourse = async (
     title: string,
     content: InputJsonValue,

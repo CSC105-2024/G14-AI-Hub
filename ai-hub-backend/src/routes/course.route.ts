@@ -5,24 +5,13 @@ import { deleteCourse } from "../controllers/course/delete_course/delete.course.
 import { editCourse } from "../controllers/course/edit_course/edit.course.ts";
 import { verify } from "../middlewares/verify.ts";
 
-
-
-
 const courseRouter = new Hono();
 
 courseRouter.post("/create", verify, createCourse);
+
 courseRouter.get("/get",fetchCourses);
 courseRouter.delete("/delete",deleteCourse);
 courseRouter.patch("/edit",verify, editCourse);
 
 
 export { courseRouter };
-
-
-
-
-
-
-
-
-
