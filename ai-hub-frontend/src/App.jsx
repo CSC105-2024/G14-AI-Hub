@@ -12,6 +12,7 @@ import EditPage from "./pages/edit-page/EditPage";
 import SettingsPage from "./pages/settings-page/SettingsPage";
 import NotFoundPage from "./pages/notfound-page/NotFoundPage";
 import { useWidth } from "./hooks/useWidth";
+import { FourSquare } from "react-loading-indicators";
 
 const App = () => {
   const { user, loading } = useAuthContext();
@@ -20,7 +21,16 @@ const App = () => {
   return (
     <div>
       {loading ? (
-        <div>Loading...</div>
+        <div className="flex justify-center items-center h-screen">
+          <FourSquare
+            color={[
+              "var(--primary-color)",
+              "black",
+              "var(--primary-color)",
+              "black",
+            ]}
+          />
+        </div>
       ) : (
         <Routes>
           <Route path="/" element={<LandingPage />} />
