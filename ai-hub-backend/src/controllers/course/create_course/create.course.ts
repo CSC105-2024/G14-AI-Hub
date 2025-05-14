@@ -2,7 +2,6 @@ import type { Context } from "hono";
 import * as courseModel from "../../../models/course.model.ts";
 import { cloudinary } from "../../../cloudinary/cloudinary.ts";
 import { findInfo } from "../../../models/user.model.ts";
-import type { Course } from "../../../types/types.ts";
 
 const createCourse = async (c: Context) => {
   try {

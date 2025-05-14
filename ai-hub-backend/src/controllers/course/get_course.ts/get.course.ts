@@ -1,7 +1,7 @@
 import type { Context } from "hono";
 import * as courseModel from "../../../models/course.model.ts";
 
-async function fetchCourses(c: Context) {
+const fetchCourses = async (c: Context) => {
   try {
     const userId = c.get("id");
     const courses = await courseModel.getCourses(userId);
@@ -21,6 +21,6 @@ async function fetchCourses(c: Context) {
       message: "Failed to fetch courses",
     });
   }
-}
+};
 
 export { fetchCourses };

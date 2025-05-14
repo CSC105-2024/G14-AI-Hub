@@ -1,3 +1,4 @@
+import { Prisma } from "@prisma/client/extension";
 import { db } from "../index.ts";
 
 const createCourse = async (
@@ -35,26 +36,23 @@ const createCourse = async (
   return course;
 };
 
-async function getCourses(id: number) {
+const getCourses = async (id: number) => {
   return db.course.findMany({
     where: {
       user_id: id,
     },
-    orderBy: {
-      created_at: "desc",
-    },
   });
-}
-async function deleteCourse(id: number) {
+};
+
+const deleteCourse = async (id: number) => {
   return db.course.delete({
     where: {
       id: id,
     },
   });
-}
+};
 
-async function editCourse(
-  id: number,
+const editCourse = async (
   title: string,
   content: any,
   note: string,
@@ -65,8 +63,9 @@ async function editCourse(
   img3: string,
   img3_id: string,
   img4: string,
-  img4_id: string
-) {
+  img4_id: string,
+  id: number
+) => {
   const course = await db.course.update({
     where: {
       id: id,
@@ -86,6 +85,17 @@ async function editCourse(
     },
   });
   return course;
-}
+};
 
-export { createCourse, getCourses, deleteCourse, editCourse };
+const getCourse = async (id: number, user_id: number) => {
+  const course = await db.course.findUnique({
+    where: {
+      id: id,
+      user_id: user_id,
+    },
+  });
+
+  return course;
+};
+
+export { createCourse, getCourses, deleteCourse, editCourse, getCourse };
