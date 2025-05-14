@@ -7,7 +7,7 @@ const Profile = () => {
 
   return (
     <Avatar className="w-15 h-15">
-      <AvatarImage src={user.img_url} />
+      <AvatarImage src={user?.img_url} />
       <AvatarFallback>CN</AvatarFallback>
     </Avatar>
   );

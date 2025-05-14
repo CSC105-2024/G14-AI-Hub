@@ -65,7 +65,7 @@ const IndividualCourse = () => {
       <h2 className="text-right text-lg md:text-xl text-white font-semibold self-end cursor-pointer">
         {data.instructor}
       </h2>
-      {user.role === "Teacher" && width > 768 && (
+      {user?.role === "Teacher" && width > 768 && (
         <div className="buttons justify-center gap-3 hidden md:flex">
           <AlertBox
             css={

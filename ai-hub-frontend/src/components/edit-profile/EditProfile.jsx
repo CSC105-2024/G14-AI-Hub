@@ -2,9 +2,28 @@ import React, { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
+import { useUploadProfile } from "@/hooks/useUploadProfile";
+import { toast } from "sonner";
+import ErrorBox from "../error-box/ErrorBox";
 
 const EditProfile = ({ img_url }) => {
   //will add custom hook
+  const { uploadProfile, profileError, setProfileError } = useUploadProfile();
+
+  const onUpload = async (e) => {
+    const promise = async () => {
+      return await uploadProfile(e.target.files[0]);
+    };
+
+    toast.promise(promise(), {
+      //promise not func that's why
+      loading: "Uploading...",
+      success: (data) => {
+        return `Your profile has been changed`;
+      },
+      error: "Error",
+    });
+  };
 
   return (
     <>
@@ -23,9 +42,16 @@ const EditProfile = ({ img_url }) => {
           type="file"
           id="avatarUpload"
           className="hidden"
-          onChange={(e) => console.log(e.target.files[0])}
+          onChange={(e) => onUpload(e)}
         />
       </div>
+      {profileError && (
+        <ErrorBox
+          setError={setProfileError}
+          title={"Error"}
+          description={profileError}
+        />
+      )}
     </>
   );
 };

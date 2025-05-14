@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavBar from "@/components/navbar/NavBar";
 import Footer from "@/components/footer/Footer";
 import Courses from "@/components/courses/Courses";
@@ -12,6 +12,7 @@ import { SearchResults } from "@/components/search-results/SearchResults";
 //Albert
 const CourseOverviewPage = () => {
   const { user } = useAuthContext();
+
   const { width } = useWidth();
   const navigate = useNavigate();
   const [isSearch, setIsSearch] = useState(false);
@@ -80,7 +81,6 @@ const CourseOverviewPage = () => {
   ];
 
   const [selectedCourses, setSelectedCourses] = useState(courses);
-  console.log(selectedCourses.length);
 
   return (
     <>

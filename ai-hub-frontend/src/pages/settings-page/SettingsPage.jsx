@@ -1,25 +1,59 @@
 import AlertBox from "@/components/alert-box/AlertBox";
 import EditProfile from "@/components/edit-profile/EditProfile";
+import ErrorBox from "@/components/error-box/ErrorBox";
 import Footer from "@/components/footer/Footer";
 import NavBar from "@/components/navbar/NavBar";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useAuthContext } from "@/hooks/useAuthContext";
+import { useEdit } from "@/hooks/useEdit";
+import { useLogout } from "@/hooks/useLogout";
 import { useWidth } from "@/hooks/useWidth";
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { Toaster } from "sonner";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const SettingsPage = () => {
-  const navigate = useNavigate();
   const { user } = useAuthContext();
   const { width } = useWidth();
 
+  const { logout, logoutError, setLogtoutError } = useLogout();
+  const { edit, editError, setEditError } = useEdit();
+  const [showPassword, setShowPassword] = useState(false);
+
+  //useState renders first before useEffect
   const [form, setForm] = useState({
-    name: user.name,
-    email: user.email,
+    name: "",
+    email: "",
     oldPassword: "",
     newPassword: "",
   });
+
+  useEffect(() => {
+    if (user) {
+      setForm((prev) => ({
+        ...prev,
+        name: user.name,
+        email: user.email,
+      }));
+    }
+  }, [user]);
+
+  const onClick = async () => {
+    await logout();
+  };
+
+  const onEditInfo = async () => {
+    await edit(
+      form.name,
+      form.email,
+      form.oldPassword,
+      form.newPassword,
+      user.name,
+      user.email
+    );
+  };
 
   return (
     <>
@@ -36,7 +70,7 @@ const SettingsPage = () => {
           </div>
         )}
 
-        <EditProfile img_url={user.img_url} />
+        <EditProfile img_url={user?.img_url} />
 
         <div className="bg-black flex flex-col items-start gap-2 justify-center mt-10">
           <h1 className="font-bold text-2xl self-center cursor-pointer">
@@ -60,20 +94,29 @@ const SettingsPage = () => {
           />
           <h2 className="font-bold text-xl cursor-pointer">Password</h2>
           <Input
-            type="text"
+            type="password"
             placeholder="Previous password"
             className={"bg-white text-black max-w-90"}
             onChange={(e) => setForm({ ...form, oldPassword: e.target.value })}
           />
           <h2 className="font-bold text-xl cursor-pointer">New Password</h2>
-          <Input
-            type="text"
-            placeholder="New password"
-            className={
-              "bg-white text-black max-w-90 hover:text-[var(--primary-color)]"
-            }
-            onChange={(e) => setForm({ ...form, newPassword: e.target.value })}
-          />
+
+          <div className="relative w-80">
+            <Input
+              type={showPassword ? "text" : "password"}
+              placeholder="New password"
+              className="bg-white text-black w-full pr-10 hover:text-[var(--primary-color)]"
+              onChange={(e) =>
+                setForm({ ...form, newPassword: e.target.value })
+              }
+            />
+            <FontAwesomeIcon
+              icon={showPassword ? faEye : faEyeSlash}
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-500 hover:text-[var(--primary-color)]"
+              onClick={() => setShowPassword((s) => !s)}
+            />
+          </div>
+
           <div className="buttons mt-5 flex justify-center gap-5 w-full">
             <AlertBox
               btnName={"Save Changes"}
@@ -81,6 +124,7 @@ const SettingsPage = () => {
                 "w-35 bg-white text-black text-md hover:text-[var(--primary-color)] hover:bg-white"
               }
               title={"Are you sure you want to update your profile?"}
+              onClick={onEditInfo}
             />
             <AlertBox
               btnName={"Log out"}
@@ -88,12 +132,20 @@ const SettingsPage = () => {
                 "w-35 bg-[var(--primary-color)]  text-white text-md hover:bg-[#4D179A]"
               }
               title={"Are you sure you want to log out?"}
-              onClick={() => navigate("/login")}
+              onClick={onClick}
             />
           </div>
         </div>
       </div>
+      {(editError || logoutError) && (
+        <ErrorBox
+          setError={editError ? setEditError : setLogtoutError}
+          title={"Error"}
+          description={editError ? editError : logoutError}
+        />
+      )}
       <Footer />
+      <Toaster richColors />
     </>
   );
 };

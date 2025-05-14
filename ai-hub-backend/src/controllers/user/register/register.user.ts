@@ -46,10 +46,10 @@ const registerUser = async (c: Context) => {
       subject: "Email Verification",
 
       // This would be the text of email body
-      text: `Hi! There, You have recently visited 
+      text: `Hi There! You have recently visited 
              our website and entered your email.
              Please follow the given link to verify your email
-             http://localhost:3000/user/verify/${jwtToken} 
+             http://localhost:${process.env.PORT!}/user/verify/${jwtToken} 
              Thanks`,
     };
 
@@ -65,13 +65,18 @@ const registerUser = async (c: Context) => {
       console.log(info);
     });
 
+    //auto delete
+    setTimeout(async () => {
+      await userService.migrateTempPassword(email);
+    }, 15 * 60 * 1000); //15min
+
     return c.json("Email Sent Successfully");
   } catch (error) {
     return c.json(
       {
         success: false,
         data: null,
-        msg: `${error}`,
+        msg: `${(error as Error).message}`,
       },
       400
     );
@@ -91,7 +96,6 @@ const verifyUser = async (c: Context) => {
     }
 
     const { name, email, role } = decoded;
-    console.log(decoded);
 
     //migrate password
     const data = await userService.migrateTempPassword(email);

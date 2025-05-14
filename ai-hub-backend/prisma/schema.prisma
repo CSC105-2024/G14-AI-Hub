@@ -15,12 +15,12 @@ datasource db {
 }
 
 model User {
-  id       Int       @id @default(autoincrement())
-  name     String
-  email    String    @unique
-  role     String
-  img_url  String    @default("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png")
-  img_id   String?
+  id    Int    @id @default(autoincrement())
+  name  String
+  email   String   @unique
+  role String //TODO: need to change enum
+  img_url String @default("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png") 
+  img_id String? 
   password Password?
   course   Course[]
 }

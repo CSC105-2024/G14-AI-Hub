@@ -1,4 +1,5 @@
-import { createContext, useEffect, useReducer } from "react";
+import { useInterceptor } from "@/hooks/useInterceptor";
+import { createContext, useEffect, useReducer, useState } from "react";
 
 export const AuthContext = createContext();
 
@@ -21,15 +22,20 @@ export const AuthContextProvider = ({ children }) => {
     user: null,
   });
 
+  const [loading, setLoaing] = useState(true);
+
+  useInterceptor(dispatch);
+
   useEffect(() => {
     //get items from localStorage
-    const user = JSON.parse(localStorage.getItem("user"));
+    const user = JSON.parse(localStorage.getItem("aihub_user"));
 
     dispatch({ type: "LOGIN", payload: user });
+    setLoaing(false);
   }, []);
 
   return (
-    <AuthContext.Provider value={{ ...state, dispatch }}>
+    <AuthContext.Provider value={{ ...state, dispatch, loading }}>
       {children}
     </AuthContext.Provider>
   );
