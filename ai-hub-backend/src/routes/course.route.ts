@@ -13,7 +13,7 @@ const courseRouter = new Hono();
 courseRouter.post("/create", verify, createCourse);
 courseRouter.get("/get",fetchCourses);
 courseRouter.delete("/delete",deleteCourse);
-courseRouter.patch("/edit", editCourse);
+courseRouter.patch("/edit",verify, editCourse);
 
 
 export { courseRouter };
