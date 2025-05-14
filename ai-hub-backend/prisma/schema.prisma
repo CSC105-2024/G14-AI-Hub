@@ -36,7 +36,7 @@ model Password {
 model Course {
   id      Int    @id @default(autoincrement())
   title   String
-  note    String
+  note    String?
   content Json
 
   img1    String
