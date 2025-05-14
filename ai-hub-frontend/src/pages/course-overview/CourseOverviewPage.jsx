@@ -12,6 +12,7 @@ import { SearchResults } from "@/components/search-results/SearchResults";
 //Albert
 const CourseOverviewPage = () => {
   const { user } = useAuthContext();
+
   const { width } = useWidth();
   const navigate = useNavigate();
   const [isSearch, setIsSearch] = useState(false);
