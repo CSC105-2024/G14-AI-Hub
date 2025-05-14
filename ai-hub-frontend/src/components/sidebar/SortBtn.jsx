@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Select,
   SelectContent,
@@ -10,7 +10,6 @@ import {
 
 const SortBtn = ({ name, className, setSelectedCourses, courses, onClick }) => {
   const [value, setValue] = useState("default");
-  const [tempCourse, setTempCourse] = useState(courses);
 
   const handleChange = (data) => {
     setValue(data);
@@ -21,10 +20,23 @@ const SortBtn = ({ name, className, setSelectedCourses, courses, onClick }) => {
         break;
       case "alpha":
         setSelectedCourses(
-          tempCourse.sort((a, b) => a.title.localeCompare(b.title)) //localeCompare is for alphabatical sorting
+          [...courses].sort((a, b) => a.title.localeCompare(b.title)) //localeCompare is for alphabatical sorting
         );
         break;
-      //TODO: will implement latest and newest later
+      case "earl":
+        setSelectedCourses(
+          [...courses].sort(
+            (a, b) => new Date(a.created_at) - new Date(b.created_at)
+          )
+        );
+        break;
+      case "new":
+        setSelectedCourses(
+          [...courses].sort(
+            (a, b) => new Date(b.created_at) - new Date(a.created_at)
+          )
+        );
+        break;
     }
   };
 
