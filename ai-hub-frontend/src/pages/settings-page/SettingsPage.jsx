@@ -144,7 +144,7 @@ const SettingsPage = () => {
           description={editError ? editError : logoutError}
         />
       )}
-      <Footer />
+
       <Toaster richColors />
     </>
   );

@@ -8,6 +8,8 @@ import { useWidth } from "@/hooks/useWidth";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "@/components/sidebar/Sidebar";
 import { SearchResults } from "@/components/search-results/SearchResults";
+import { useFetch } from "@/hooks/useFetch";
+import { useDataContext } from "@/hooks/useDataContext";
 
 //Albert
 const CourseOverviewPage = () => {
@@ -80,7 +82,20 @@ const CourseOverviewPage = () => {
     },
   ];
 
-  const [selectedCourses, setSelectedCourses] = useState(courses);
+  const { fetchCourse, fetchError, setFetchError } = useFetch();
+  const { data, setData } = useDataContext();
+  const [selectedCourses, setSelectedCourses] = useState(null);
+
+  useEffect(() => {
+    const fun = async () => {
+      await fetchCourse();
+    };
+    fun();
+  }, []);
+
+  useEffect(() => {
+    setSelectedCourses(data);
+  }, [data]);
 
   return (
     <>
@@ -90,13 +105,13 @@ const CourseOverviewPage = () => {
             activePage={"courseoverview"}
             setSelectedCourses={setSelectedCourses}
             //temp
-            courses={courses}
+            courses={data}
           />
         ) : (
           <Sidebar
             setSelectedCourses={setSelectedCourses}
             //temp
-            courses={courses}
+            courses={data}
             activePage={"courseoverview"}
             setIsSearch={setIsSearch}
           />
@@ -113,7 +128,7 @@ const CourseOverviewPage = () => {
                 </h2>
 
                 <div className="grid md:grid-cols-4 rounded-lg gap-4 md:gap-y-7 mb-10 ">
-                  {selectedCourses.length > 0 ? (
+                  {selectedCourses?.length > 0 ? (
                     selectedCourses.map((course, index) => (
                       <Courses course={course} index={index} key={index} />
                     ))
