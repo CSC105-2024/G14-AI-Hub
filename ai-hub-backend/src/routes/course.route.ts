@@ -11,9 +11,9 @@ import { verify } from "../middlewares/verify.ts";
 const courseRouter = new Hono();
 
 courseRouter.post("/create", verify, createCourse);
-courseRouter.get("/get", verify,fetchCourses);
-courseRouter.delete("/delete", verify, deleteCourse);
-courseRouter.patch("/edit", verify, editCourse);
+courseRouter.get("/get",fetchCourses);
+courseRouter.delete("/delete",deleteCourse);
+courseRouter.patch("/edit", editCourse);
 
 
 export { courseRouter };

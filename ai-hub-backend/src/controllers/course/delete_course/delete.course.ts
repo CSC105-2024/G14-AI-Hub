@@ -8,7 +8,7 @@ async  function deleteCourse(c: Context) {
       if (isNaN(id)) {
         return c.json({
             success: false,
-             message: 'Invalid course ID' 
+            message: 'Invalid course ID' 
         });
       }
     }
