@@ -1,4 +1,3 @@
-import { useInterceptor } from "@/hooks/useInterceptor";
 import { createContext, useEffect, useReducer, useState } from "react";
 
 export const AuthContext = createContext();
@@ -23,8 +22,6 @@ export const AuthContextProvider = ({ children }) => {
   });
 
   const [loading, setLoaing] = useState(true);
-
-  useInterceptor(dispatch);
 
   useEffect(() => {
     //get items from localStorage

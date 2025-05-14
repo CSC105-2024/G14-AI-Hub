@@ -25,17 +25,8 @@ const CourseOverviewPage = () => {
   const [selectedCourses, setSelectedCourses] = useState(null);
 
   useEffect(() => {
-    const fun = async () => {
-      await fetchCourse();
-    };
-    fun();
-  }, []);
-
-  useEffect(() => {
     setSelectedCourses(data);
   }, [data]);
-
-  console.log(selectedCourses);
 
   return (
     <>

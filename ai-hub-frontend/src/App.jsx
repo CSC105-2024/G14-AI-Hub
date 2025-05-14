@@ -13,10 +13,13 @@ import SettingsPage from "./pages/settings-page/SettingsPage";
 import NotFoundPage from "./pages/notfound-page/NotFoundPage";
 import { useWidth } from "./hooks/useWidth";
 import Loading from "./components/loading/Loading";
+import { useInterceptor } from "./hooks/useInterceptor";
 
 const App = () => {
-  const { user, loading } = useAuthContext();
+  const { user, dispatch, loading } = useAuthContext();
   const { width } = useWidth();
+
+  useInterceptor(dispatch);
 
   return (
     <div>
