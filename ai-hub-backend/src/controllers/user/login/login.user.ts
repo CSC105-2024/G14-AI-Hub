@@ -7,6 +7,9 @@ import {
 } from "../../../utils/tokenGenerator.ts";
 import { setSignedCookie } from "hono/cookie";
 import { compareHash } from "../../../utils/hash.ts";
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const loginUser = async (c: Context) => {
   const { newEmail, password }: Login = await c.req.json();
