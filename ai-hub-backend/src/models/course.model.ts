@@ -1,5 +1,7 @@
 import type { InputJsonValue } from "@prisma/client/runtime/library";
 import { db } from "../index.ts";
+import { PrismaClient } from "@prisma/client";
+import type { Context } from "hono";
 
 const createCourse = async (
     title: string,
@@ -36,4 +38,58 @@ const createCourse = async (
     return course;
 }
 
-export { createCourse }
+async function getCourses(id: number) {
+    return db.course.findMany({
+      where: {
+        user_id: id
+      },
+      orderBy: {
+        created_at: 'desc'
+      }
+    });
+  }
+async function deleteCourse(id:number){
+    return db.course.delete({
+        where: {
+            id: id
+        }
+    })  
+}
+
+async function editCourse(
+    id: number,
+    title: string,
+    content: InputJsonValue,
+    note: string,
+    img1: string,
+    img1_id: string,
+    img2: string,
+    img2_id: string,
+    img3: string,
+    img3_id: string,
+    img4: string,
+    img4_id: string
+) {
+    const course = await db.course.update({
+        where: {
+            id: id
+        },
+        data: {
+            title: title,
+            content: content,
+            note: note,
+            img1: img1,
+            img1_id: img1_id,
+            img2: img2,
+            img2_id: img2_id,
+            img3: img3,
+            img3_id: img3_id,
+            img4: img4,
+            img4_id: img4_id,
+        }
+    });
+    return course;
+}
+
+  
+export { createCourse, getCourses ,deleteCourse , editCourse}
