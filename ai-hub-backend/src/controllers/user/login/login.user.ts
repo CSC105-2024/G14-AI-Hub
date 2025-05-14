@@ -1,5 +1,5 @@
 import type { Context } from "hono";
-import type { Login } from "../../../types/todo.types.ts";
+import type { Login } from "../../../types/types.ts";
 import * as userModel from "../../../models/user.model.js";
 import {
   accessTokenGenerator,
@@ -7,7 +7,7 @@ import {
 } from "../../../utils/tokenGenerator.ts";
 import { setSignedCookie } from "hono/cookie";
 import { compareHash } from "../../../utils/hash.ts";
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 
 dotenv.config();
 

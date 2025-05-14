@@ -1,7 +1,7 @@
 import type { Context } from "hono";
 import { cloudinary } from "../../../cloudinary/cloudinary.ts";
 import { findImgId, uploadProfileAndId } from "../../../models/user.model.ts";
-import type { ImgId } from "../../../types/todo.types.ts";
+import type { ImgId } from "../../../types/types.ts";
 
 const uploadProfile = async (c: Context) => {
   const formData = await c.req.formData();

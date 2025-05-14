@@ -2,6 +2,7 @@ import type { Context } from "hono";
 import * as courseModel from "../../../models/course.model.ts";
 import { cloudinary } from "../../../cloudinary/cloudinary.ts";
 import { findInfo } from "../../../models/user.model.ts";
+import type { Course } from "../../../types/types.ts";
 
 const createCourse = async (c: Context) => {
   try {
@@ -17,7 +18,8 @@ const createCourse = async (c: Context) => {
     if (
       typeof title !== "string" ||
       typeof content !== "string" ||
-      typeof userName !== "string"
+      typeof userName !== "string" ||
+      typeof note !== "string"
     ) {
       return c.json(
         {
@@ -91,11 +93,14 @@ const createCourse = async (c: Context) => {
       userName
     );
 
-    return c.json({
-      success: true,
-      message: "course created",
-      course: newCourse,
-    });
+    return c.json(
+      {
+        success: true,
+        message: "course created",
+        course: newCourse,
+      },
+      200
+    );
   } catch (e) {
     return c.json(
       {

@@ -1,7 +1,7 @@
 import type { Context } from "hono";
 import { getSignedCookie } from "hono/cookie";
 import jwt from "jsonwebtoken";
-import type { Id } from "../../../types/todo.types.ts";
+import type { Id } from "../../../types/types.ts";
 import { findInfo } from "../../../models/user.model.ts";
 import { accessTokenGenerator } from "../../../utils/tokenGenerator.ts";
 

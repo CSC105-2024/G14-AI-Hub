@@ -1,6 +1,6 @@
 import type { Context, Next } from "hono";
 import jwt from "jsonwebtoken";
-import type { Id } from "../types/todo.types.ts";
+import type { Id } from "../types/types.ts";
 
 const verify = async (c: Context, next: Next) => {
   const token = c.req.header("authorization");

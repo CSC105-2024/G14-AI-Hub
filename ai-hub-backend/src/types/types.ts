@@ -32,4 +32,20 @@ type ImgId = {
   img_id: string;
 };
 
-export type { Login, Hash, UserData, EditUser, Id, ImgId };
+type Course = {
+  title: string;
+  content: any;
+  note: string;
+  img1: string;
+  img1_id: string;
+  img2: string;
+  img2_id: string;
+  img3: string;
+  img3_id: string;
+  img4: string;
+  img4_id: string;
+  user_id: number;
+  created_by: string;
+};
+
+export type { Login, Hash, UserData, EditUser, Id, ImgId, Course };

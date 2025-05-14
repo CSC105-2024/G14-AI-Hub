@@ -1,5 +1,5 @@
 import type { Context } from "hono";
-import type { EditUser } from "../../../types/todo.types.ts";
+import type { EditUser } from "../../../types/types.ts";
 import { updateInfo, updatePassword } from "../../../models/user.model.ts";
 import { compareHash, generateHash } from "../../../utils/hash.ts";
 import { accessTokenGenerator } from "../../../utils/tokenGenerator.ts";

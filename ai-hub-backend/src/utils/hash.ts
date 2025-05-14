@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import type { Hash } from "../types/todo.types.ts";
+import type { Hash } from "../types/types.ts";
 import * as userModel from "../models/user.model.ts";
 
 const generateHash = async (password: string) => {

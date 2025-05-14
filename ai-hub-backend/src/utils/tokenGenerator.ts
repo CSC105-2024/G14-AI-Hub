@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import type { UserData } from "../types/todo.types.ts";
+import type { UserData } from "../types/types.ts";
 
 const accessTokenGenerator = (data: UserData) => {
   const payload = "id" in data ? { id: data.id } : data;

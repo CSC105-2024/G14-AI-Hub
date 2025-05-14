@@ -1,9 +1,8 @@
-import type { InputJsonValue } from "@prisma/client/runtime/library";
 import { db } from "../index.ts";
 
 const createCourse = async (
   title: string,
-  content: InputJsonValue,
+  content: any,
   note: string,
   img1: string,
   img1_id: string,
@@ -57,7 +56,7 @@ async function deleteCourse(id: number) {
 async function editCourse(
   id: number,
   title: string,
-  content: InputJsonValue,
+  content: any,
   note: string,
   img1: string,
   img1_id: string,
