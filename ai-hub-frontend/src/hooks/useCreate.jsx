@@ -1,8 +1,12 @@
 import axiosInstance from "../../axiosInstance";
 import React, { useState } from "react";
+import { useDataContext } from "./useDataContext";
+import { useNavigate } from "react-router-dom";
 
-export const useCreate = (setCourses) => {
+export const useCreate = () => {
   const [formError, setFormError] = useState(null);
+  const { setData } = useDataContext();
+  const navigate = useNavigate();
 
   const create = async (course) => {
     //obj.val changes obj into arr
@@ -44,8 +48,12 @@ export const useCreate = (setCourses) => {
           Authorization: `Bearer ${token}`,
         },
       });
+      console.log(data);
 
-      setCourses((courses) => [...courses, data]);
+      if (data) {
+        navigate("/courses");
+      }
+      setData((d) => [...d, data]);
       return data;
     } catch (e) {
       console.log(e);

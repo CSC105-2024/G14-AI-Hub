@@ -7,25 +7,29 @@ import { Button } from "../ui/button";
 import ErrorBox from "../error-box/ErrorBox";
 import { useCreate } from "@/hooks/useCreate";
 import { useEdit } from "@/hooks/useEdit";
-import Popup from "../Popup";
+import AlertBox from "../alert-box/AlertBox";
 
 const CourseForm = ({ mode, oldForm, setSelectedCourses }) => {
   //main data
   //TODO: need to do imgs and content
   const [form, setForm] = useState({
-    title: oldForm?.title || "",
+    title: "",
     imgs: [],
     content: "",
-    note: oldForm?.note || "",
+    note: "",
   });
 
-  const { create, formError, setFormError } = useCreate(setSelectedCourses);
+  useEffect(() => {
+    if (oldForm) {
+      setForm({
+        title: oldForm.title,
+        note: oldForm.note,
+      });
+    }
+  }, [oldForm]);
+
+  const { create, formError, setFormError } = useCreate();
   const { edit, editError, setEditError } = useEdit();
-
-  const [showPopup, setShowPopup] = useState(false);
-  const navigate = useNavigate();
-
-  console.log(form);
 
   const handleSubmit = async () => {
     //create
@@ -34,16 +38,12 @@ const CourseForm = ({ mode, oldForm, setSelectedCourses }) => {
     } else {
       await create(form);
     }
-    setShowPopup(false);
-    navigate("/courses");
   };
 
   return (
     <>
       <div
-        className={`text-white w-[90%] mx-auto relative ${
-          showPopup ? "opacity-50" : ""
-        }`} //check if consistent with other pages
+        className={`text-white w-[90%] mx-auto relative`} //check if consistent with other pages
       >
         <div className="font-bold flex justify-end text-xl">
           <Link
@@ -81,26 +81,18 @@ const CourseForm = ({ mode, oldForm, setSelectedCourses }) => {
             onChange={(e) => setForm((f) => ({ ...f, note: e.target.value }))}
           />
         </div>
-        <div className="flex justify-center mt-5">
-          <Button
-            className={"bg-[var(--primary-color)] hover:bg-violet-800 p-6 mb-5"}
-            onClick={() => setShowPopup(true)}
-          >
-            {mode === "create" ? "Create Course" : "Save Changes"}
-          </Button>
-        </div>
       </div>
-      {showPopup && (
-        <Popup
-          message={
-            mode === "create"
-              ? "Are you sure you want to create this course?"
-              : "Are you sure you want to update this course?"
+      <div className="flex justify-center mt-5">
+        <AlertBox
+          btnName={mode === "create" ? "Create Course" : "Save Changes"}
+          css={
+            "w-35 bg-[var(--primary-color)]  text-white text-md hover:bg-[#4D179A] p-6"
           }
-          onConfirm={handleSubmit}
-          onCancel={() => setShowPopup(false)}
+          title={"Are you sure you want to create?"}
+          onClick={handleSubmit}
         />
-      )}
+      </div>
+
       {formError && (
         <ErrorBox
           setError={formError ? setFormError : setEditError}

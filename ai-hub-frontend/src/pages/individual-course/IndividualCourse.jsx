@@ -2,12 +2,12 @@ import Popup from "@/components/Popup";
 import { Button } from "@/components/ui/button";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { courses } from "@/services/data";
 import { useAuthContext } from "@/hooks/useAuthContext";
 import { useWidth } from "@/hooks/useWidth";
 import AlertBox from "@/components/alert-box/AlertBox";
 import { useDataContext } from "@/hooks/useDataContext";
 import Loading from "@/components/loading/Loading";
+import Content from "@/components/content/Content";
 
 //Nadi
 const IndividualCourse = () => {
@@ -19,7 +19,6 @@ const IndividualCourse = () => {
   const { data, setData } = useDataContext();
 
   const [info, setInfo] = useState(null);
-  console.log(info);
 
   useEffect(() => {
     if (data) {
@@ -80,8 +79,10 @@ const IndividualCourse = () => {
               />
             </div>
           </div>
-          <div className="text-container bg-white w-full p-5 md:p-10 flex justify-around rounded-lg cursor-pointer">
-            {/* <p>{info?.content}</p>  TODO: will do tmw*/}
+          <div className="text-container bg-white w-full p-5 md:p-10 rounded-lg cursor-pointer">
+            <p>
+              <Content content={info?.content} />
+            </p>
           </div>
           <h2 className="text-2xl text-white font-bold self-start cursor-pointer">
             Note

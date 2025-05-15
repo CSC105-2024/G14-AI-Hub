@@ -215,8 +215,6 @@ const TextEditor = ({ setForm }) => {
     setForm((f) => ({ ...f, content: editorContent }));
   }, [editorContent]);
 
-  //const [htmlContent, setHtmlContent] = useState("");
-
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
@@ -238,10 +236,6 @@ const TextEditor = ({ setForm }) => {
     onUpdate: ({ editor }) => {
       // Capture the updated content as JSON
       setEditorContent(editor.getJSON());
-
-      //render
-      //   const html = editor.getHTML();
-      //   setHtmlContent(html);
     },
   });
 

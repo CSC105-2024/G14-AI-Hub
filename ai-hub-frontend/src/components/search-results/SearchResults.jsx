@@ -1,4 +1,4 @@
-import { courses } from "@/services/data";
+import { useDataContext } from "@/hooks/useDataContext";
 import React, { useState } from "react";
 import { IoSearchSharp } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 export const SearchResults = ({ setIsSearch }) => {
   const [searchCourses, setSearchCourses] = useState([]);
+  const { data } = useDataContext();
 
   //TODO: need to replace with real data
   const onSearchChange = (e) => {
@@ -14,7 +15,7 @@ export const SearchResults = ({ setIsSearch }) => {
     if (!course) return setSearchCourses([]);
 
     setSearchCourses(
-      courses.filter((c) => c.title.toLowerCase().includes(course))
+      data.filter((c) => c.title.toLowerCase().includes(course))
     );
   };
 
