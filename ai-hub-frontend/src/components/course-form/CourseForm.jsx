@@ -8,8 +8,9 @@ import ErrorBox from "../error-box/ErrorBox";
 import { useCreate } from "@/hooks/useCreate";
 import { useEdit } from "@/hooks/useEdit";
 import AlertBox from "../alert-box/AlertBox";
+import { toast } from "sonner";
 
-const CourseForm = ({ mode, oldForm, setSelectedCourses }) => {
+const CourseForm = ({ mode, oldForm }) => {
   //main data
   //TODO: need to do imgs and content
   const [form, setForm] = useState({
@@ -31,13 +32,25 @@ const CourseForm = ({ mode, oldForm, setSelectedCourses }) => {
   const { create, formError, setFormError } = useCreate();
   const { edit, editError, setEditError } = useEdit();
 
-  const handleSubmit = async () => {
-    //create
-    if (oldForm) {
-      await edit(form, oldForm);
-    } else {
-      await create(form);
-    }
+  const handleSubmit = () => {
+    const promise = async () => {
+      if (oldForm) {
+        await edit(form, oldForm);
+      } else {
+        await create(form);
+      }
+    };
+
+    toast.promise(promise(), {
+      //promise is not a func
+      loading: oldForm ? "Updataing..." : "Creating...",
+      success: (data) => {
+        return oldForm
+          ? "You course has been updated"
+          : "New Course has been created";
+      },
+      error: "Error",
+    });
   };
 
   return (

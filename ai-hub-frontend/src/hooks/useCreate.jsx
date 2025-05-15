@@ -2,6 +2,7 @@ import axiosInstance from "../../axiosInstance";
 import React, { useState } from "react";
 import { useDataContext } from "./useDataContext";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 export const useCreate = () => {
   const [formError, setFormError] = useState(null);
@@ -16,7 +17,8 @@ export const useCreate = () => {
       setFormError(
         "Fill in all the required fields to establish a new course. Make sure the course name, content, images, and notes are clearly provided before submitting."
       );
-      return;
+
+      throw new Error("Form Required!");
     }
 
     //to be continued
@@ -25,8 +27,6 @@ export const useCreate = () => {
     formData.append("title", course.title);
     formData.append("content", JSON.stringify(course.content));
     formData.append("note", course.note);
-
-    console.log("Images: ", course.imgs);
 
     course.imgs.forEach((image, index) => {
       if (image.local) {
@@ -39,8 +39,6 @@ export const useCreate = () => {
     const user = JSON.parse(localStorage.getItem("user"));
     const token = user?.accessToken;
 
-    console.log("FormData before sending:", formData);
-
     try {
       const { data } = await axiosInstance.post("course/create", formData, {
         headers: {
@@ -48,12 +46,13 @@ export const useCreate = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(data);
 
-      if (data) {
-        navigate("/courses");
-      }
-      setData((d) => [...d, data]);
+      if (data)
+        setTimeout(() => {
+          navigate("/courses");
+        }, 3000);
+
+      setData((d) => [...d, data.course]);
       return data;
     } catch (e) {
       console.log(e);

@@ -19,6 +19,7 @@ const IndividualCourse = () => {
   const { data, setData } = useDataContext();
 
   const [info, setInfo] = useState(null);
+  console.log(data);
 
   useEffect(() => {
     if (data) {
