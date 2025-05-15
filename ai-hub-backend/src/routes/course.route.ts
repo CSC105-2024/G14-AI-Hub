@@ -12,6 +12,6 @@ courseRouter.use(verify);
 courseRouter.post("/create", createCourse);
 courseRouter.get("/get", fetchCourses);
 courseRouter.delete("/delete", deleteCourse);
-courseRouter.patch("/edit", editCourse);
+courseRouter.patch("/edit/:id", editCourse);
 
 export { courseRouter };
