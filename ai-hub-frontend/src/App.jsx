@@ -21,63 +21,61 @@ const App = () => {
 
   useInterceptor(dispatch);
 
+  if (loading) return <Loading />;
+
   return (
     <div>
-      {loading ? (
-        <Loading />
-      ) : (
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
 
+        <Route
+          path="/login"
+          element={!user ? <LoginPage /> : <Navigate to="/courses" />}
+        />
+        <Route
+          path="/signup"
+          element={!user ? <SignUpPage /> : <Navigate to="/courses" />}
+        />
+
+        <Route
+          path="/courses"
+          element={user ? <CourseOverviewPage /> : <Navigate to="/login" />}
+        />
+
+        <Route
+          path="/dashboard"
+          element={user ? <DashBoardLayout /> : <Navigate to="/login" />}
+        >
+          <Route path="course/:id" element={<IndividualCourse />} />
           <Route
-            path="/login"
-            element={!user ? <LoginPage /> : <Navigate to="/courses" />}
+            path="create"
+            element={
+              user?.role === "Teacher" && width > 768 ? (
+                <CreatePage />
+              ) : (
+                <Navigate to="/courses" />
+              )
+            }
           />
           <Route
-            path="/signup"
-            element={!user ? <SignUpPage /> : <Navigate to="/courses" />}
+            path="edit/:id"
+            element={
+              user?.role === "Teacher" && width > 768 ? (
+                <EditPage />
+              ) : (
+                <Navigate to="/courses" />
+              )
+            }
           />
+        </Route>
 
-          <Route
-            path="/courses"
-            element={user ? <CourseOverviewPage /> : <Navigate to="/login" />}
-          />
+        <Route
+          path="/settings"
+          element={user ? <SettingsPage /> : <Navigate to="/login" />}
+        />
 
-          <Route
-            path="/dashboard"
-            element={user ? <DashBoardLayout /> : <Navigate to="/login" />}
-          >
-            <Route path="course/:id" element={<IndividualCourse />} />
-            <Route
-              path="create"
-              element={
-                user?.role === "Teacher" && width > 768 ? (
-                  <CreatePage />
-                ) : (
-                  <Navigate to="/courses" />
-                )
-              }
-            />
-            <Route
-              path="edit/:id"
-              element={
-                user?.role === "Teacher" && width > 768 ? (
-                  <EditPage />
-                ) : (
-                  <Navigate to="/courses" />
-                )
-              }
-            />
-          </Route>
-
-          <Route
-            path="/settings"
-            element={user ? <SettingsPage /> : <Navigate to="/login" />}
-          />
-
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      )}
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
     </div>
   );
 };
