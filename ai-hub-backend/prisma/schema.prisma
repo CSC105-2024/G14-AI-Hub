@@ -19,7 +19,7 @@ model User {
   id       Int       @id @default(autoincrement())
   name     String
   email    String    @unique
-  role     String
+  role     Role
   img_url  String    @default("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png")
   img_id   String?
   password Password?
@@ -62,4 +62,9 @@ model TempPassword {
   id    Int    @id @default(autoincrement())
   email String @unique
   hash  String
+}
+
+enum Role {
+  Teacher
+  Student
 }

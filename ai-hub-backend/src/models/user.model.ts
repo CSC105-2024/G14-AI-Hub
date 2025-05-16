@@ -1,10 +1,11 @@
+import type { $Enums } from "../generated/prisma/index.js";
 import { db } from "../index.js";
 
 //Register
 const registerUser = async (
   name: string,
   email: string,
-  role: string,
+  role: $Enums.Role,
   trx: any
 ) => {
   const user = await trx.user.create({
