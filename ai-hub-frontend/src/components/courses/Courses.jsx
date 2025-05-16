@@ -16,7 +16,7 @@ const Courses = ({ course, index }) => {
     >
       <img src={course.img1} className="md:w-full h-full w-[35%]" />
 
-      <h2 className="text-center text-xl md:w-auto md:h-20 w-[80%] p-3 font-bold  flex justify-center items-center ">
+      <h2 className="text-center text-xl md:w-auto md:h-20 w-[80%] p-3 font-bold  flex justify-center items-center border-t-1 border-black">
         {course.title}
       </h2>
     </div>

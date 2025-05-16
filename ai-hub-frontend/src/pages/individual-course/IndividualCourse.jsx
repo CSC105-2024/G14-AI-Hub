@@ -11,6 +11,7 @@ import Content from "@/components/content/Content";
 import { useDelete } from "@/hooks/useDelete";
 import { toast } from "sonner";
 import { Toaster } from "sonner";
+import ErrorBox from "@/components/error-box/ErrorBox";
 
 //Nadi
 const IndividualCourse = () => {
@@ -20,6 +21,7 @@ const IndividualCourse = () => {
   const { user } = useAuthContext();
   const { width } = useWidth();
   const { data, setData } = useDataContext();
+
   const { deleteCouse, deleteError, setDeleteError } = useDelete();
 
   const [info, setInfo] = useState(null);
@@ -93,23 +95,32 @@ const IndividualCourse = () => {
       <h2 className="text-right text-lg md:text-xl text-white font-semibold self-end cursor-pointer">
         {info?.created_by}
       </h2>
-      {user?.role === "Teacher" && width > 768 && (
-        <div className="buttons justify-center gap-3 hidden md:flex">
-          <AlertBox
-            css={
-              "w-30 bg-white text-black text-lg hover:text-[var(--primary-color)] hover:bg-[#E5E7EB]"
-            }
-            btnName={"Delete"}
-            title={"Are you sure you want to delete this course ?"}
-            onClick={confirmDelete}
-          />
-          <Button
-            onClick={handleEdit}
-            className="w-30 bg-[var(--primary-color)] text-white text-lg hover:bg-[#4D179A]"
-          >
-            Edit
-          </Button>
-        </div>
+      {user?.role === "Teacher" &&
+        width > 768 &&
+        user?.email === info?.created_by_email && (
+          <div className="buttons justify-center gap-3 hidden md:flex">
+            <AlertBox
+              css={
+                "w-30 bg-white text-black text-lg hover:text-[var(--primary-color)] hover:bg-[#E5E7EB]"
+              }
+              btnName={"Delete"}
+              title={"Are you sure you want to delete this course ?"}
+              onClick={confirmDelete}
+            />
+            <Button
+              onClick={handleEdit}
+              className="w-30 bg-[var(--primary-color)] text-white text-lg hover:bg-[#4D179A]"
+            >
+              Edit
+            </Button>
+          </div>
+        )}
+      {deleteError && (
+        <ErrorBox
+          setError={deleteError ? setDeleteError : ""}
+          title={"Error"}
+          description={deleteError ? deleteError : ""}
+        />
       )}
       <Toaster richColors />
     </div>

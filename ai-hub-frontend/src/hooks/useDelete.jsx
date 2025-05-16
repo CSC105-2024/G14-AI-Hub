@@ -22,6 +22,7 @@ export const useDelete = () => {
     } catch (error) {
       console.error(error);
       setDeleteError(error.response.data.message);
+      throw new Error("Error");
     }
   };
 
