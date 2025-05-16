@@ -44,7 +44,7 @@ const getCourses = async (id: number) => {
   });
 };
 
-const deleteCourse = async (id: number) => {
+const deleteAnExistingCourse = async (id: number) => {
   return db.course.delete({
     where: {
       id: id,
@@ -98,4 +98,10 @@ const getCourse = async (id: number, user_id: number) => {
   return course;
 };
 
-export { createCourse, getCourses, deleteCourse, editCourse, getCourse };
+export {
+  createCourse,
+  getCourses,
+  deleteAnExistingCourse,
+  editCourse,
+  getCourse,
+};

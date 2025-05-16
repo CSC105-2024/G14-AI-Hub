@@ -14,6 +14,7 @@ const uploadProfile = async (c: Context) => {
     //to avoid redundancy
     const { img_id } = (await findImgId(id)) as ImgId;
     console.log(img_id);
+
     if (img_id) {
       await cloudinary.uploader.destroy(img_id);
       console.log("deleted");
