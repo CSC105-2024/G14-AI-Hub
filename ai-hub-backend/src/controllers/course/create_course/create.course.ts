@@ -12,7 +12,8 @@ const createCourse = async (c: Context) => {
     const note = formData.get("note");
     const id = c.get("id");
     const user = await findInfo(id);
-    const userName = user?.name;
+    const userName = user?.name as string;
+    const email = user?.email as string;
 
     if (
       typeof title !== "string" ||
@@ -85,7 +86,8 @@ const createCourse = async (c: Context) => {
       uploadedImages[3].url,
       uploadedImages[3].id,
       id,
-      userName
+      userName,
+      email
     );
 
     return c.json(

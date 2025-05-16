@@ -53,6 +53,7 @@ model Course {
 
   created_at DateTime @default(now())
   created_by String @default("")
+  created_by_email String
 
   user_id Int
   user    User @relation(fields: [user_id], references: [id])
