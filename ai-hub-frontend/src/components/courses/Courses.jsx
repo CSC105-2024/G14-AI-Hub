@@ -14,7 +14,8 @@ const Courses = ({ course, index }) => {
       id={index}
       onClick={() => redirect(course.id)}
     >
-      <img src={course.img1} className="md:h-60 md:w-full h-full w-[35%]" />
+      <img src={course.img1} className="md:w-full h-full w-[35%]" />
+
       <h2 className="text-center text-xl md:w-auto md:h-20 w-[80%] p-3 font-bold  flex justify-center items-center ">
         {course.title}
       </h2>

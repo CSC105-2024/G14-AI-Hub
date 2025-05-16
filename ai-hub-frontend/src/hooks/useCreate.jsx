@@ -57,6 +57,7 @@ export const useCreate = () => {
     } catch (e) {
       console.log(e);
       setFormError(e?.response?.data?.error);
+      throw new Error("Error");
     }
   };
   return { create, formError, setFormError };
