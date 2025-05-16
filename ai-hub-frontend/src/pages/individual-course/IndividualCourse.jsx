@@ -8,6 +8,9 @@ import AlertBox from "@/components/alert-box/AlertBox";
 import { useDataContext } from "@/hooks/useDataContext";
 import Loading from "@/components/loading/Loading";
 import Content from "@/components/content/Content";
+import { useDelete } from "@/hooks/useDelete";
+import { toast } from "sonner";
+import { Toaster } from "sonner";
 
 //Nadi
 const IndividualCourse = () => {
@@ -17,9 +20,9 @@ const IndividualCourse = () => {
   const { user } = useAuthContext();
   const { width } = useWidth();
   const { data, setData } = useDataContext();
+  const { deleteCouse, deleteError, setDeleteError } = useDelete();
 
   const [info, setInfo] = useState(null);
-  console.log(data);
 
   useEffect(() => {
     if (data) {
@@ -29,17 +32,24 @@ const IndividualCourse = () => {
 
   const navigate = useNavigate();
 
-  function confirmDelete() {
-    navigate("/");
-  }
+  const confirmDelete = () => {
+    const promise = async () => {
+      await deleteCouse(id);
+    };
 
-  function cancelDelete() {
-    setShowPopup(false);
-  }
+    toast.promise(promise(), {
+      //promise is not a func
+      loading: "Deleting...",
+      success: (data) => {
+        return `Your course has been deleted`;
+      },
+      error: "Error",
+    });
+  };
 
-  function handleEdit() {
+  const handleEdit = () => {
     navigate(`/dashboard/edit/${id}`);
-  }
+  };
 
   if (!data) return <Loading />;
 
@@ -91,6 +101,7 @@ const IndividualCourse = () => {
             }
             btnName={"Delete"}
             title={"Are you sure you want to delete this course ?"}
+            onClick={confirmDelete}
           />
           <Button
             onClick={handleEdit}
@@ -100,6 +111,7 @@ const IndividualCourse = () => {
           </Button>
         </div>
       )}
+      <Toaster richColors />
     </div>
   );
 };

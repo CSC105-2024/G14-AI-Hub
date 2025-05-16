@@ -31,7 +31,6 @@ export const useInterceptor = (dispatch) => {
             const oldData = JSON?.parse(localStorage.getItem("aihub_user"));
 
             const newUser = { ...oldData, accessToken: data.data.accessToken };
-            console.log(newUser);
 
             localStorage.setItem("aihub_user", JSON.stringify(newUser));
             dispatch({ type: "LOGIN", payload: newUser });
