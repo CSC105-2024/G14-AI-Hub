@@ -38,7 +38,7 @@ const deleteCourse = async (c: Context) => {
     return c.json(
       {
         success: true,
-        data: deletedCourse,
+        course: deletedCourse,
         msg: `successful`,
       },
       200
