@@ -3,8 +3,7 @@ import * as courseModel from "../../../models/course.model.ts";
 
 const fetchCourses = async (c: Context) => {
   try {
-    const userId = c.get("id");
-    const courses = await courseModel.getCourses(userId);
+    const courses = await courseModel.getCourses();
 
     return c.json(
       {

@@ -40,16 +40,16 @@ model Course {
   content Json
 
   img1    String
-  img1_id String
+  img1_id String?
 
   img2    String
-  img2_id String
+  img2_id String?
 
   img3    String
-  img3_id String
+  img3_id String?
 
   img4    String
-  img4_id String
+  img4_id String?
 
   created_at DateTime @default(now())
   created_by String @default("")

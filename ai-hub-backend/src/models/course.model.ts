@@ -6,13 +6,13 @@ const createCourse = async (
   content: any,
   note: string,
   img1: string,
-  img1_id: string,
+  img1_id: string | null,
   img2: string,
-  img2_id: string,
+  img2_id: string | null,
   img3: string,
-  img3_id: string,
+  img3_id: string | null,
   img4: string,
-  img4_id: string,
+  img4_id: string | null,
   user_id: number,
   created_by: string
 ) => {
@@ -36,12 +36,8 @@ const createCourse = async (
   return course;
 };
 
-const getCourses = async (id: number) => {
-  return db.course.findMany({
-    where: {
-      user_id: id,
-    },
-  });
+const getCourses = async () => {
+  return db.course.findMany();
 };
 
 const deleteAnExistingCourse = async (id: number) => {

@@ -45,35 +45,31 @@ const createCourse = async (c: Context) => {
     }
 
     const images = ["img1", "img2", "img3", "img4"];
-    const uploadedImages: { url: string; id: string }[] = [];
+    const uploadedImages: { url: string; id: string | null }[] = [];
 
     for (const field of images) {
       const imageFile = formData.get(field);
 
       if (!(imageFile instanceof File)) {
-        return c.json(
-          {
-            success: false,
-            msg: `Missing or invalid image for ${field}`,
-            data: null,
-          },
-          400
-        );
+        console.log(imageFile);
+        uploadedImages.push({
+          url: imageFile as string,
+          id: null,
+        });
+      } else {
+        const buffer = Buffer.from(await imageFile?.arrayBuffer());
+        const base64 = `data:${imageFile?.type};base64,${buffer.toString(
+          "base64"
+        )}`;
+
+        const result = await cloudinary.uploader.upload(base64, {
+          folder: "AI-Hub/Course",
+        });
+        uploadedImages.push({
+          url: result.secure_url,
+          id: result.public_id,
+        });
       }
-
-      const buffer = Buffer.from(await imageFile?.arrayBuffer());
-      const base64 = `data:${imageFile?.type};base64,${buffer.toString(
-        "base64"
-      )}`;
-
-      const result = await cloudinary.uploader.upload(base64, {
-        folder: "AI-Hub/Course",
-      });
-
-      uploadedImages.push({
-        url: result.secure_url,
-        id: result.public_id,
-      });
     }
 
     const newCourse = await courseModel.createCourse(
