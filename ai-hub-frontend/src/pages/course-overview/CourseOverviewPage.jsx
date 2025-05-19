@@ -25,6 +25,14 @@ const CourseOverviewPage = () => {
   const [selectedCourses, setSelectedCourses] = useState(null);
 
   useEffect(() => {
+    const fun = async () => {
+      const courses = await fetchCourse();
+      setData(courses);
+    };
+    fun();
+  }, []);
+
+  useEffect(() => {
     setSelectedCourses(data);
   }, [data]);
 
@@ -85,6 +93,13 @@ const CourseOverviewPage = () => {
             </div>
           </div>
           <Footer />
+          {fetchError && (
+            <ErrorBox
+              setError={setFetchError}
+              title={"Error"}
+              description={fetchError}
+            />
+          )}
         </>
       )}
     </div>

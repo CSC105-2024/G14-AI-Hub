@@ -13,9 +13,11 @@ const EditPage = () => {
     setForm(data?.find((d) => d.id === Number(id)));
   }, [data]);
 
+  if (!data) return <Loading />;
+
   return (
     <div className="bg-black md:h-270 ">
-      {!data ? <Loading /> : <CourseForm mode={"edit"} oldForm={form} />}
+      <CourseForm mode={"edit"} oldForm={form} />
     </div>
   );
 };
