@@ -64,19 +64,6 @@ const editCourse = async (c: Context) => {
             editedFields[field] = result.secure_url;
             editedFields[`${field}_id`] = result.public_id;
           }
-      // if (imageFile instanceof File) {
-      //     const buffer = Buffer.from(await imageFile?.arrayBuffer());
-      //     const base64 = `data:${imageFile?.type};base64,${buffer.toString(
-      //       "base64"
-      //     )}`;
-    
-      //     const result = await cloudinary.uploader.upload(base64, {
-      //       folder: "AI-Hub/Course",
-      //     });
-
-      //     editedFields[field] = result.secure_url;
-      //     editedFields[`${field}_id`] = result.public_id;
-      // }
     }
 
     const editedCourse = await courseModel.editCourse(courseId, editedFields);
