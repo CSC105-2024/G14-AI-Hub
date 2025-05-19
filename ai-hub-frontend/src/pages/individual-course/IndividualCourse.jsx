@@ -1,4 +1,3 @@
-import Popup from "@/components/Popup";
 import { Button } from "@/components/ui/button";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
