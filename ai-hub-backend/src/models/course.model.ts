@@ -51,6 +51,8 @@ const deleteAnExistingCourse = async (id: number) => {
 };
 
 const editCourse = async (
+  id: number, 
+  editedFields: Partial<{
   title: string,
   content: any,
   note: string,
@@ -62,24 +64,14 @@ const editCourse = async (
   img3_id: string,
   img4: string,
   img4_id: string,
-  id: number
+  }>
 ) => {
   const course = await db.course.update({
     where: {
       id: id,
     },
     data: {
-      title: title,
-      content: content,
-      note: note,
-      img1: img1,
-      img1_id: img1_id,
-      img2: img2,
-      img2_id: img2_id,
-      img3: img3,
-      img3_id: img3_id,
-      img4: img4,
-      img4_id: img4_id,
+      ...editedFields,
     },
   });
   return course;
