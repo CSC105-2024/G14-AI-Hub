@@ -50,7 +50,7 @@ export const useCreate = () => {
       if (data)
         setTimeout(() => {
           navigate("/courses");
-        }, 3000);
+        }, 2000);
 
       setData((d) => [...d, data.course]);
       return data;
