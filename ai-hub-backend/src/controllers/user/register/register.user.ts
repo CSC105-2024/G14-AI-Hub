@@ -6,14 +6,12 @@ import jwt from "jsonwebtoken";
 import * as userService from "./register.service.ts";
 import { error } from "console";
 import { generateHash } from "../../../utils/hash.ts";
-import dotenv from 'dotenv';
-
-dotenv.config();
+import type { $Enums } from "../../../generated/prisma/index.js";
 
 type createUser = {
   name: string;
   email: string;
-  role: string;
+  role: $Enums.Role;
   password: string;
 };
 

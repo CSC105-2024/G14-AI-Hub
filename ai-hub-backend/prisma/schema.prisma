@@ -15,7 +15,6 @@ datasource db {
 }
 
 model User {
-
   id       Int       @id @default(autoincrement())
   name     String
   email    String    @unique
@@ -24,6 +23,7 @@ model User {
   img_id   String?
   password Password?
   course   Course[]
+  token Token?
 }
 
 model Password {
@@ -31,6 +31,13 @@ model Password {
   user    User   @relation(fields: [user_id], references: [id])
   hash    String
   user_id Int    @unique
+}
+
+model Token {
+  id Int @id @default(autoincrement())
+  token String
+  user User @relation(fields: [user_id],references: [id])
+  user_id Int @unique
 }
 
 model Course {

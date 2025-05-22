@@ -11,6 +11,7 @@ import { SearchResults } from "@/components/search-results/SearchResults";
 import { useFetch } from "@/hooks/useFetch";
 import { useDataContext } from "@/hooks/useDataContext";
 import Loading from "@/components/loading/Loading";
+import { Toaster } from "sonner";
 
 //Albert
 const CourseOverviewPage = () => {
@@ -36,7 +37,13 @@ const CourseOverviewPage = () => {
     setSelectedCourses(data);
   }, [data]);
 
-  if (!data) return <Loading />;
+  if (!data)
+    return (
+      <>
+        <Loading />
+        <Toaster richColors />
+      </>
+    );
 
   return (
     <div>
