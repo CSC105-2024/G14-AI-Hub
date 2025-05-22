@@ -48,4 +48,8 @@ type Course = {
   created_by: string;
 };
 
-export type { Login, Hash, UserData, EditUser, Id, ImgId, Course };
+type Token = {
+  token: string;
+};
+
+export type { Login, Hash, UserData, EditUser, Id, ImgId, Course, Token };

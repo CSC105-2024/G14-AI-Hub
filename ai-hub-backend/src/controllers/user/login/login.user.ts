@@ -41,6 +41,7 @@ const loginUser = async (c: Context) => {
     );
 
     const { id, ...rest } = info;
+    await userModel.insertAccessToken(id, accessToken);
 
     return c.json(
       {

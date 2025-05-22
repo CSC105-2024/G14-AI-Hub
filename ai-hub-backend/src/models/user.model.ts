@@ -143,10 +143,14 @@ const findImgId = async (id: number) => {
 
 //Insert AccessToken
 const insertAccessToken = async (user_id: number, token: string) => {
-  await db.token.create({
-    data: {
-      user_id: user_id,
+  await db.token.upsert({
+    where: { user_id: user_id },
+    update: {
       token: token,
+    },
+    create: {
+      token: token,
+      user_id: user_id,
     },
   });
 };
