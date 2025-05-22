@@ -40,14 +40,12 @@ const loginUser = async (c: Context) => {
       }
     );
 
-    const { name, email, role, img_url, img_id } = info;
-
-    const data = { name, email, role, img_url, img_id, accessToken };
+    const { id, ...rest } = info;
 
     return c.json(
       {
         success: true,
-        data: data,
+        data: { ...rest },
         msg: `successful`,
       },
       200
