@@ -32,6 +32,7 @@ const logout = async (c: Context) => {
       201
     );
   } catch (error) {
+    console.log(error);
     deleteCookie(c, "jwt");
     return c.json(
       {
