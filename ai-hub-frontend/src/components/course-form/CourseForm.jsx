@@ -44,7 +44,7 @@ const CourseForm = ({ mode, oldForm }) => {
 
     toast.promise(promise(), {
       //promise is not a func
-      loading: oldForm ? "Updataing..." : "Creating...",
+      loading: oldForm ? "Updating..." : "Creating...",
       success: (data) => {
         return oldForm
           ? "You course has been updated"
@@ -102,7 +102,11 @@ const CourseForm = ({ mode, oldForm }) => {
           css={
             "w-35 bg-[var(--primary-color)]  text-white text-md hover:bg-[#4D179A] p-6"
           }
-          title={"Are you sure you want to create?"}
+          title={
+            mode === "create"
+              ? "Are you sure you want to create?"
+              : "Are you sure you want to update this course?"
+          }
           onClick={handleSubmit}
         />
       </div>
