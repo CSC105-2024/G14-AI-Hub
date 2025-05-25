@@ -26,24 +26,8 @@ const CourseOverviewPage = () => {
   const [selectedCourses, setSelectedCourses] = useState(null);
 
   useEffect(() => {
-    const fun = async () => {
-      const courses = await fetchCourse();
-      setData(courses);
-    };
-    fun();
-  }, []);
-
-  useEffect(() => {
     setSelectedCourses(data);
   }, [data]);
-
-  if (!data)
-    return (
-      <>
-        <Loading />
-        <Toaster richColors />
-      </>
-    );
 
   return (
     <div>

@@ -23,7 +23,6 @@ const Left = () => {
   const {
     register,
     handleSubmit,
-
     formState: { errors },
   } = useForm({
     resolver: zodResolver(signupSchema),

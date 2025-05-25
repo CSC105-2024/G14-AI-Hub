@@ -5,11 +5,9 @@ import { useAuthContext } from "@/hooks/useAuthContext";
 import { useWidth } from "@/hooks/useWidth";
 import AlertBox from "@/components/alert-box/AlertBox";
 import { useDataContext } from "@/hooks/useDataContext";
-import Loading from "@/components/loading/Loading";
 import Content from "@/components/content/Content";
 import { useDelete } from "@/hooks/useDelete";
 import { toast } from "sonner";
-import { Toaster } from "sonner";
 import ErrorBox from "@/components/error-box/ErrorBox";
 
 //Nadi
@@ -51,8 +49,6 @@ const IndividualCourse = () => {
   const handleEdit = () => {
     navigate(`/dashboard/edit/${id}`);
   };
-
-  if (!data) return <Loading />;
 
   return (
     <div className="flex flex-col gap-5 justify-center items-center dark bg-[var(--background)] py-7 px-7 md:px-10">
@@ -121,7 +117,6 @@ const IndividualCourse = () => {
           description={deleteError ? deleteError : ""}
         />
       )}
-      <Toaster richColors />
     </div>
   );
 };
