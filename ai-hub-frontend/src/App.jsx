@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useAuthContext } from "./hooks/useAuthContext";
 import { Route, Routes, Navigate } from "react-router-dom";
 import CourseOverviewPage from "./pages/course-overview/CourseOverviewPage";
@@ -14,14 +14,27 @@ import NotFoundPage from "./pages/notfound-page/NotFoundPage";
 import { useWidth } from "./hooks/useWidth";
 import Loading from "./components/loading/Loading";
 import { useInterceptor } from "./hooks/useInterceptor";
+import { Toaster } from "sonner";
+import { useDataContext } from "./hooks/useDataContext";
+import { useFetch } from "./hooks/useFetch";
 
 const App = () => {
   const { user, dispatch, loading } = useAuthContext();
   const { width } = useWidth();
+  const { fetchCourse, fetchError, setFetchError } = useFetch();
+  const { data, setData } = useDataContext();
 
   useInterceptor(dispatch);
 
-  if (loading) return <Loading />;
+  useEffect(() => {
+    const fun = async () => {
+      const courses = await fetchCourse();
+      setData(courses);
+    };
+    fun();
+  }, []);
+
+  if (loading && !data) return <Loading />;
 
   return (
     <div>
@@ -76,6 +89,7 @@ const App = () => {
 
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <Toaster richColors />
     </div>
   );
 };

@@ -10,7 +10,7 @@ export const useFetch = () => {
       return data.data;
     } catch (error) {
       console.error(error);
-      setFetchError(error.response.data.message);
+      setFetchError(error.response.data.msg);
     }
   };
 

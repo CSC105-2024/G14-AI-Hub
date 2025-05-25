@@ -1,35 +1,76 @@
 import type { Context, Next } from "hono";
 import jwt from "jsonwebtoken";
-import type { Id } from "../types/types.ts";
+import type { Id, Token } from "../types/types.ts";
+import * as userModel from "../models/user.model.ts";
+import { getSignedCookie } from "hono/cookie";
+import { accessTokenGenerator } from "../utils/tokenGenerator.ts";
 
 const verify = async (c: Context, next: Next) => {
-  const token = c.req.header("authorization");
-  if (!token) throw new Error("Token is required");
-
-  const bearerToken = token.split(" ")[1];
-
-  if (!bearerToken) throw new Error("Bearer token is missing");
+  let info: Id | null = null;
 
   try {
+    const cookie = await getSignedCookie(
+      c,
+      process.env.COOKIE_SECRET_KEY!,
+      "jwt"
+    );
+
+    if (typeof cookie !== "string") throw new Error("Invalid or missing token");
+
     //verify that jwt is valid or not
-    const { id } = jwt.verify(
-      bearerToken,
+    const refreshToken = jwt.verify(
+      cookie,
+      process.env.REFRESH_TOKEN_SECRET_KEY!
+    ) as Id;
+
+    info = await userModel.findInfo(refreshToken.id);
+
+    if (!info) throw new Error("User not found");
+
+    const { token } = (await userModel.findAccessToken(
+      refreshToken.id
+    )) as Token;
+    if (!token) throw new Error("Token is required");
+
+    const accessToken = jwt.verify(
+      token,
       process.env.ACCESS_TOKEN_SECRET_KEY!
     ) as Id;
 
-    c.set("id", id);
+    c.set("id", accessToken.id);
 
     await next();
   } catch (error) {
-    console.error(error);
-    return c.json(
-      {
-        success: false,
-        data: null,
-        msg: `Access token is not authorized`,
-      },
-      401
-    );
+    if (error instanceof jwt.TokenExpiredError) {
+      if (!info)
+        return c.json(
+          {
+            success: false,
+            data: null,
+            msg: `Refresh token expired. Please log in again.`,
+          },
+          401
+        );
+
+      //gen  new accessToken
+      const accessToken = accessTokenGenerator({ id: info!.id });
+      await userModel.insertAccessToken(info.id, accessToken);
+
+      c.set("id", info!.id);
+
+      await next();
+    } else {
+      console.error(error);
+
+      return c.json(
+        {
+          success: false,
+          data: null,
+          msg: `${(error as Error).message}. Please log in again.`,
+        },
+        401
+      );
+    }
   }
 };
 

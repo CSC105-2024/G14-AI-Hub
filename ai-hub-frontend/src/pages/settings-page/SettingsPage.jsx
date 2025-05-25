@@ -1,7 +1,6 @@
 import AlertBox from "@/components/alert-box/AlertBox";
 import EditProfile from "@/components/edit-profile/EditProfile";
 import ErrorBox from "@/components/error-box/ErrorBox";
-import Footer from "@/components/footer/Footer";
 import NavBar from "@/components/navbar/NavBar";
 import { Input } from "@/components/ui/input";
 import { useAuthContext } from "@/hooks/useAuthContext";
@@ -10,7 +9,6 @@ import { useLogout } from "@/hooks/useLogout";
 import { useWidth } from "@/hooks/useWidth";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Toaster } from "sonner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
@@ -144,8 +142,6 @@ const SettingsPage = () => {
           description={editError ? editError : logoutError}
         />
       )}
-
-      <Toaster richColors />
     </>
   );
 };

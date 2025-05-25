@@ -11,6 +11,7 @@ import { SearchResults } from "@/components/search-results/SearchResults";
 import { useFetch } from "@/hooks/useFetch";
 import { useDataContext } from "@/hooks/useDataContext";
 import Loading from "@/components/loading/Loading";
+import { Toaster } from "sonner";
 
 //Albert
 const CourseOverviewPage = () => {
@@ -27,8 +28,6 @@ const CourseOverviewPage = () => {
   useEffect(() => {
     setSelectedCourses(data);
   }, [data]);
-
-  if (!data) return <Loading />;
 
   return (
     <div>
@@ -85,6 +84,13 @@ const CourseOverviewPage = () => {
             </div>
           </div>
           <Footer />
+          {fetchError && (
+            <ErrorBox
+              setError={setFetchError}
+              title={"Error"}
+              description={fetchError}
+            />
+          )}
         </>
       )}
     </div>

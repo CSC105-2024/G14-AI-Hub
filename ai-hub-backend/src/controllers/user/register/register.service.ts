@@ -1,3 +1,4 @@
+import type { $Enums } from "../../../generated/prisma/index.js";
 import { db } from "../../../index.ts";
 import * as userModel from "../../../models/user.model.ts";
 
@@ -16,7 +17,7 @@ const migrateTempPassword = async (email: string) => {
 const register = async (
   email: string,
   name: string,
-  role: string,
+  role: $Enums.Role,
   hash: string
 ) => {
   const info = await db.$transaction(async (trx) => {

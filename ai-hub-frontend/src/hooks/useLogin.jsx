@@ -18,8 +18,8 @@ export const useLogin = () => {
       });
 
       localStorage.setItem("aihub_user", JSON.stringify(data.data));
-
       dispatch({ type: "LOGIN", payload: data.data });
+
       navigate("/courses");
     } catch (error) {
       console.error(error);

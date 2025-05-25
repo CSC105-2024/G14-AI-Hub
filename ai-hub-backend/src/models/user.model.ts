@@ -141,6 +141,42 @@ const findImgId = async (id: number) => {
   return info;
 };
 
+//Insert AccessToken
+const insertAccessToken = async (user_id: number, token: string) => {
+  await db.token.upsert({
+    where: { user_id: user_id },
+    update: {
+      token: token,
+    },
+    create: {
+      token: token,
+      user_id: user_id,
+    },
+  });
+};
+
+//delete AccessToken
+const deleteAccessToken = async (user_id: number) => {
+  const token = await db.token.delete({
+    where: {
+      user_id: user_id,
+    },
+  });
+
+  return token;
+};
+
+//find AccessToken
+const findAccessToken = async (user_id: number) => {
+  const token = await db.token.findUnique({
+    where: {
+      user_id: user_id,
+    },
+  });
+
+  return token;
+};
+
 export {
   registerUser,
   registerTempPassword,
@@ -153,4 +189,7 @@ export {
   updatePassword,
   uploadProfileAndId,
   findImgId,
+  insertAccessToken,
+  deleteAccessToken,
+  findAccessToken,
 };
