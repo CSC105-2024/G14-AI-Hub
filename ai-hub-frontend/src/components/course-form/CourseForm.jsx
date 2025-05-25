@@ -9,6 +9,7 @@ import { useCreate } from "@/hooks/useCreate";
 import { useEdit } from "@/hooks/useEdit";
 import AlertBox from "../alert-box/AlertBox";
 import { toast } from "sonner";
+import { useEditCourse } from "@/hooks/useEditCourse";
 
 const CourseForm = ({ mode, oldForm }) => {
   //main data
@@ -30,12 +31,12 @@ const CourseForm = ({ mode, oldForm }) => {
   }, [oldForm]);
 
   const { create, formError, setFormError } = useCreate();
-  const { edit, editError, setEditError } = useEdit();
+  const { editCourse, editError, setEditError } = useEditCourse();
 
   const handleSubmit = () => {
     const promise = async () => {
-      if (oldForm) {
-        await edit(form, oldForm);
+      if (mode === "edit" && oldForm) {
+        await editCourse(form, oldForm);
       } else {
         await create(form);
       }
