@@ -4,6 +4,7 @@ import { updateInfo, updatePassword } from "../../../models/user.model.ts";
 import { compareHash, generateHash } from "../../../utils/hash.ts";
 import { accessTokenGenerator } from "../../../utils/tokenGenerator.ts";
 import { deleteCookie } from "hono/cookie";
+import * as userModel from "../../../models/user.model.ts";
 
 const editUser = async (c: Context) => {
   const { name, email, password, newPassword }: EditUser = await c.req.json();
@@ -30,13 +31,12 @@ const editUser = async (c: Context) => {
 
     //gen new Token
     const accessToken = accessTokenGenerator({ id });
-
-    const data = { ...info, accessToken };
+    await userModel.insertAccessToken(id, accessToken);
 
     return c.json(
       {
         success: true,
-        data: data,
+        data: info,
         msg: `successful`,
       },
       200

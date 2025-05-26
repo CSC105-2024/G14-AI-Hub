@@ -31,8 +31,10 @@ const App = () => {
       const courses = await fetchCourse();
       setData(courses);
     };
-    fun();
-  }, []);
+    if (user && !data) {
+      fun();
+    }
+  }, [user]);
 
   if (loading && !data) return <Loading />;
 
