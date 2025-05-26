@@ -9,6 +9,7 @@ import { useCreate } from "@/hooks/useCreate";
 import { useEdit } from "@/hooks/useEdit";
 import AlertBox from "../alert-box/AlertBox";
 import { toast } from "sonner";
+import { useEditCourse } from "@/hooks/useEditCourse";
 
 const CourseForm = ({ mode, oldForm }) => {
   //main data
@@ -30,12 +31,12 @@ const CourseForm = ({ mode, oldForm }) => {
   }, [oldForm]);
 
   const { create, formError, setFormError } = useCreate();
-  const { edit, editError, setEditError } = useEdit();
+  const { editCourse, editError, setEditError } = useEditCourse();
 
   const handleSubmit = () => {
     const promise = async () => {
-      if (oldForm) {
-        await edit(form, oldForm);
+      if (mode === "edit" && oldForm) {
+        await editCourse(form, oldForm);
       } else {
         await create(form);
       }
@@ -43,7 +44,7 @@ const CourseForm = ({ mode, oldForm }) => {
 
     toast.promise(promise(), {
       //promise is not a func
-      loading: oldForm ? "Updataing..." : "Creating...",
+      loading: oldForm ? "Updating..." : "Creating...",
       success: (data) => {
         return oldForm
           ? "You course has been updated"
@@ -101,7 +102,11 @@ const CourseForm = ({ mode, oldForm }) => {
           css={
             "w-35 bg-[var(--primary-color)]  text-white text-md hover:bg-[#4D179A] p-6"
           }
-          title={"Are you sure you want to create?"}
+          title={
+            mode === "create"
+              ? "Are you sure you want to create?"
+              : "Are you sure you want to update this course?"
+          }
           onClick={handleSubmit}
         />
       </div>
