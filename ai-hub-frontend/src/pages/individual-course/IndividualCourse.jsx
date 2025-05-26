@@ -67,10 +67,10 @@ const IndividualCourse = () => {
       </header>
       <div className="image-container bg-black md:bg-white w-full pt-5 md:py-20 flex flex-col md:flex-row justify-around items-center gap-5 cursor-pointer">
         <div className="h-50 w-full flex items-center justify-center rounded-2xl bg-white">
-          <img src={info?.img2} className="w-full h-full object-scale-down" />
+          <img src={info?.img1} className="w-full h-full object-scale-down" />
         </div>
         <div className="h-50 w-full flex items-center justify-center rounded-2xl bg-white">
-          <img src={info?.img3} className="w-full h-full object-scale-down" />
+          <img src={info?.img2} className="w-full h-full object-scale-down" />
         </div>
         <div className="h-50 w-full flex items-center justify-center rounded-2xl bg-white">
           <img src={info?.img3} className="w-full h-full object-scale-down" />
