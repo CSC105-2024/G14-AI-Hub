@@ -1,7 +1,7 @@
 import React from "react";
 import { GiCancel } from "react-icons/gi";
 
-const ImgLists = ({ data, index, setFile }) => {
+const ImgLists = ({ data, index, setFile, mode }) => {
   const handleDelete = (index) => {
     setFile((files) => files.filter((f, i) => i !== index));
   };
@@ -15,7 +15,7 @@ const ImgLists = ({ data, index, setFile }) => {
         <img src={data.url} alt="no img" className="text-black h-10 w-16" />
         <div>
           <div>{data.name}</div>
-          {data.size !== 0 ? (
+          {data.size !== 0 && mode !== "edit" ? (
             <div className="text-gray-500">{data.size}KB</div>
           ) : (
             <div className="text-gray-500">.....</div>
