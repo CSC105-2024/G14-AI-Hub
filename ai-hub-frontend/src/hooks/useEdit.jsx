@@ -35,7 +35,7 @@ export const useEdit = () => {
         newPassword: newPassword,
       });
 
-      if (data.changePassword) {
+      if (data && oldPassword && newPassword) {
         setTimeout(() => {
           localStorage.removeItem("aihub_user");
           dispatch({ type: "LOGOUT" });
@@ -47,8 +47,6 @@ export const useEdit = () => {
       dispatch({ type: "LOGIN", payload: info });
 
       toast.success("Successfully changed");
-
-      console.log(info);
     } catch (error) {
       console.log(error);
       setEditError(error.response.data.msg);
