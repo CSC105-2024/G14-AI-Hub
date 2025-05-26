@@ -1,54 +1,99 @@
 # AI Hub 🚀
 
-**AI Hub** is a modern e-learning platform built to help users learn and explore Artificial Intelligence concepts in an easy, structured, and interactive way.  
-It is designed for both **students** and **instructors**, providing a space to create, manage, and participate in AI-related courses.
+## Project Overview
 
-## Features ✨
+**AI Hub** is a modern e-learning platform built to help users learn and explore Artificial Intelligence concepts in an easy, structured, and interactive way. It is designed for both **students** 🎓 and **instructors** 👨‍🏫, providing a space to create, manage, and participate in AI-related courses.
 
-- 📝 User account registration
-- 📚 Create, edit, and delete courses
-- 🔍 Search for courses
-- 📈 Sort courses by A-Z, earliest, and latest
-- ✏️ Edit user information
+### Objectives
 
-## Tech Stack 🛠️
+- 🎯 Provide a platform for AI education and learning
+- 👩‍🏫 Enable instructors to create and manage AI courses
+- 🔍 Allow students to discover and participate in courses
+- 🛠️ Offer structured course management tools
+- 💡 Support interactive learning experiences
 
-- **Frontend**: React ⚛️
-- **Backend**: Express 🚂, PostgreSQL 🐘
-- **Database ORM**: Prisma 🌱
-- **Authentication**: JWT 🔒
+## Key Features
 
-# Contributing to AI-HUB
+- **Authentication** 🔐: Secure login and sign-up functionality using **JWT (JSON Web Tokens)** for token-based user sessions.
+- **Course Management** 📚: Create, edit, and delete courses with full CRUD operations.
+- **Course Discovery** 🔎: Search for courses with advanced filtering options.
+- **Course Sorting** 📊: Sort courses by:
+- A-Z alphabetical order
+- Earliest created
+- Latest created
+- **User Profile** 👤: Edit user information and upload profile pictures.
+- **User Verification** ✅: Email verification system for new accounts.
 
-## Branching Strategy
+---
 
-- main → Stable production code
-- dev → Active development branch
-- feature-xxx → New features (e.g., feature-auth, feature-api)
+## Getting Started
 
-## 🔄 Contribution Workflow
+### Clone the Repository
 
-1. git clone `https://github.com/CSC105-2024/G14-AI-Hub.git`
-2. _Create a feature branch_: git checkout -b feature-xxx
-3. _Commit your changes_:
+```bash
+git clone https://github.com/CSC105-2024/G14-AI-Hub.git
+cd G14-AI-Hub
+```
 
-   ```sh
-   git add .
-   git commit -m "Added new feature"
-   ```
+---
 
-4. _Push to GitHub_: git push origin feature-xxx
-5. _Create a Pull Request_ to dev branch and request a review
+## Frontend - React ⚛️
 
-## ✅ Code Guidelines
+### Tech Stack
 
-- Follow best practices for _React & Express.js_
-- Keep commits _small and meaningful_
-- Write _clear commit messages_
-- Run npm run lint before submitting PRs
+- React
+- Axios
+- React Router DOM
+- Tailwind CSS
 
-## 🛡️ Security & Best Practices
+### Getting Started - React Client
 
-- _Use environment variables_ (.env) for API keys & secrets
-- _Validate user input_ to prevent SQL injection
-- _Run tests before merging_
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+## Open [http://localhost:5173](http://localhost:5173) to view the app.
+
+## Backend - Node.js (Hono + TypeScript) 🔥
+
+### Tech Stack
+
+- Node.js
+- Hono (TypeScript)
+- SQLite
+- Prisma ORM
+- JWT
+
+### API Endpoints
+
+#### User Routes 👥
+
+| Method | Endpoint            | Description             |
+| ------ | ------------------- | ----------------------- |
+| POST   | /user/register      | Register a new user     |
+| GET    | /user/verify/:token | Verify user email       |
+| POST   | /user/login         | Log in an existing user |
+| POST   | /user/logout        | Log out a user          |
+| PUT    | /user/edit          | Edit user profile info  |
+| POST   | /user/upload        | Upload profile picture  |
+
+#### Course Routes 📖
+
+| Method | Endpoint           | Description             |
+| ------ | ------------------ | ----------------------- |
+| POST   | /course/create     | Create a new course     |
+| GET    | /course/get        | Fetch all courses       |
+| DELETE | /course/delete/:id | Delete a course         |
+| PATCH  | /course/edit/:id   | Edit an existing course |
+
+### Getting Started - Backend Server
+
+```bash
+cd backend
+npm install
+npm run dev
+```
+
+Backend runs at [http://localhost:3000](http://localhost:3000) 🌐
