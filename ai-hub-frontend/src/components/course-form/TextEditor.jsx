@@ -30,8 +30,7 @@ import { FaAlignLeft } from "react-icons/fa6";
 import { FaAlignCenter } from "react-icons/fa6";
 import { FaAlignRight } from "react-icons/fa6";
 import { FaAlignJustify } from "react-icons/fa6";
-
-const content = "<p>Course</p>";
+import Loading from "../loading/Loading";
 
 const Button = ({ onClick, children }) => (
   <button onClick={onClick} style={{ margin: "0 5px" }}>
@@ -210,6 +209,8 @@ const Toolbar = ({ editor }) => {
 
 const TextEditor = ({ setForm }) => {
   const [editorContent, setEditorContent] = useState(null);
+
+  const content = "<p>Courses</p>";
 
   useEffect(() => {
     setForm((f) => ({ ...f, content: editorContent }));
