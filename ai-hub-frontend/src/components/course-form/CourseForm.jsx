@@ -79,7 +79,12 @@ const CourseForm = ({ mode, oldForm }) => {
         </div>
         <div className="grid md:grid-cols-2 gap-7 md:h-[560px] 2xl:h-[650px] bg-black">
           <div className=" p-10 bg-white rounded-2xl overflow-y-auto">
-            <UploadImage setForm={setForm} length={4} />
+            <UploadImage
+              setForm={setForm}
+              length={4}
+              oldForm={oldForm}
+              mode={mode}
+            />
           </div>
           <div className=" p-10 bg-white rounded-2xl overflow-y-auto">
             <h1 className="font-bold text-xl text-black">Content</h1>
