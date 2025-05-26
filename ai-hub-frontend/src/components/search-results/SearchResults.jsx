@@ -48,7 +48,7 @@ export const SearchResults = ({ setIsSearch }) => {
           className="text-black border p-3"
           id={i}
           key={i}
-          onClick={() => redirect(i)}
+          onClick={() => redirect(c.id)}
         >
           {c.title}
         </div>
