@@ -4,9 +4,22 @@ import { Button } from "../ui/button";
 import ImgLists from "./ImgLists";
 import { RxCross2 } from "react-icons/rx";
 
-const UploadImage = ({ setForm, length }) => {
+const UploadImage = ({ setForm, length, oldForm, mode }) => {
   const [files, setFile] = useState([]);
   const [url, setUrl] = useState(null);
+
+  console.log(oldForm);
+
+  useEffect(() => {
+    if (oldForm) {
+      setFile([
+        { url: oldForm.img1 },
+        { url: oldForm.img2 },
+        { url: oldForm.img3 },
+        { url: oldForm.img4 },
+      ]);
+    }
+  }, [oldForm]);
 
   const ref = useRef(null);
 
@@ -124,7 +137,7 @@ const UploadImage = ({ setForm, length }) => {
       </div>
 
       {files.map((d, i) => (
-        <ImgLists key={i} data={d} index={i} setFile={setFile} />
+        <ImgLists key={i} data={d} index={i} setFile={setFile} mode={mode} />
       ))}
     </div>
   );
